@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "draw_grid.h"
+#include "util.cpp"
 
 const int GRID_SIZE = 10; // Square grid
 const sf::Time FRUIT_SPAWN_TIME = sf::seconds(2);
