@@ -1,8 +1,8 @@
 enum CellType {
+    EMPTY,
+    FRUIT,
     PLAYER_ONE,
     PLAYER_TWO,
-    FRUIT,
-    EMPTY
 };
 
 // Origin is bottom left. 
