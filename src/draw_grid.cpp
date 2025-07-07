@@ -1,17 +1,43 @@
 #include <SFML/Graphics.hpp>
+#include <vector>
 
-void draw_grid(sf::RenderWindow &window, int grid_size, float cell_size, sf::Vector2f position) {
-    sf::RectangleShape cell({cell_size, cell_size});
-    cell.setFillColor(sf::Color::Black);
-    cell.setPosition(position);
+#include "util.cpp"
 
-    for (int i = 0; i < grid_size; i++) {
-        for (int j = 0; j < grid_size; j++) {
+using namespace std;
+
+const float CELL_SIZE = 40; // temporary, the cell size will be dependent
+// on window size
+
+sf::Color celltype_to_color(CellType cell_type);
+
+void draw_grid(sf::RenderWindow &window, vector<vector<CellType>> cells) {
+    sf::RectangleShape cell({CELL_SIZE, CELL_SIZE});
+
+    for (int i = 0; i < cells.size(); i++) {
+        // Draws from the top, so have to work backwards in the array
+        for (int j = 0; j < cells.at(cells.size() - i - 1).size(); j++) {
+            cell.setFillColor(celltype_to_color(cells.at(i).at(j)));
             window.draw(cell);
-            sf::Vector2f next = cell.getPosition() + sf::Vector2f({cell_size, 0});
+
+            sf::Vector2f next = cell.getPosition() + sf::Vector2f({CELL_SIZE, 0});
             cell.setPosition(next);
         }
-        sf::Vector2f next({0, cell.getPosition().y + cell_size});
+
+        sf::Vector2f next({0, cell.getPosition().y + CELL_SIZE});
         cell.setPosition(next);
     }
+}
+
+sf::Color celltype_to_color(CellType cell_type) {
+    if (cell_type == CellType::FRUIT) {
+        return sf::Color::Red;
+    } else if (cell_type == CellType::EMPTY) {
+        return sf::Color::Black;
+    } else if (cell_type == PLAYER_ONE) {
+        return sf::Color::Blue;
+    } else if (cell_type == PLAYER_TWO) {
+        return sf::Color::Red;
+    }
+
+    throw logic_error("Missing CellType branch in celltype_to_color!");
 }
