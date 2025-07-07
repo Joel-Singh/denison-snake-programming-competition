@@ -2,14 +2,14 @@
 
 #include <vector>
 
-enum CellType {
+enum Cell {
     EMPTY,
     FRUIT,
     PLAYER_ONE,
     PLAYER_TWO,
 };
 
-using Cells = std::vector<std::vector<CellType>>;
+using Cells = std::vector<std::vector<Cell>>;
 
 // Origin is bottom left. 
 class Pos {

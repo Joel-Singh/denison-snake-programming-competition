@@ -6,7 +6,7 @@
 
 using namespace std;
 
-sf::Color celltype_to_color(CellType cell_type);
+sf::Color celltype_to_color(Cell cell_type);
 float calculate_cell_size(unsigned int win_height, unsigned int cells_height_count);
 sf::Vector2f calculate_centered_position(sf::Vector2u win_size, sf::Vector2f board_size);
 
@@ -40,10 +40,10 @@ void draw_grid(sf::RenderWindow &window, Cells cells) {
     }
 }
 
-sf::Color celltype_to_color(CellType cell_type) {
-    if (cell_type == CellType::FRUIT) {
+sf::Color celltype_to_color(Cell cell_type) {
+    if (cell_type == Cell::FRUIT) {
         return sf::Color::Red;
-    } else if (cell_type == CellType::EMPTY) {
+    } else if (cell_type == Cell::EMPTY) {
         return sf::Color::Black;
     } else if (cell_type == PLAYER_ONE) {
         return sf::Color::Blue;
@@ -51,7 +51,7 @@ sf::Color celltype_to_color(CellType cell_type) {
         return sf::Color::Red;
     }
 
-    throw logic_error("Missing CellType branch in celltype_to_color!");
+    throw logic_error("Missing Cell branch in celltype_to_color!");
 }
 
 float calculate_cell_size(unsigned int win_height, unsigned int cells_height_count) {
