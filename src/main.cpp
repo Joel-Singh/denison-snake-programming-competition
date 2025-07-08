@@ -4,7 +4,7 @@
 #include "util.cpp"
 
 const int GRID_SIZE = 10; // Square grid
-const sf::Time FRUIT_SPAWN_TIME = sf::seconds(2);
+const sf::Time GAME_TICK_TIME = sf::seconds(1);
 
 Cells initialize_cells();
 void spawn_fruit(Cells &cells);
@@ -15,6 +15,7 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode({200, 200}), "SFML works!");
     sf::Clock clock;
+    unsigned int game_ticks = 0;
 
     // The first row is on the bottom and the last row the top
     Cells cells = initialize_cells(); 
@@ -34,9 +35,12 @@ int main()
             }
         }
 
-        if (clock.getElapsedTime() > FRUIT_SPAWN_TIME) {
+        if (clock.getElapsedTime() > GAME_TICK_TIME) {
+            game_ticks++;
             clock.restart();
-            spawn_fruit(cells);
+            if (game_ticks % 2 == 0) {
+                spawn_fruit(cells);
+            }
         }
 
         window.clear(sf::Color::White);
