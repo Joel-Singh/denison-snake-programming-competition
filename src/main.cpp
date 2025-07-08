@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "draw_grid.h"
+#include "draw_cells.h"
 #include "util.cpp"
 
 const int GRID_SIZE = 10; // Square grid
@@ -40,7 +40,7 @@ int main()
         }
 
         window.clear(sf::Color::White);
-        draw_grid(window, cells);
+        draw_cells(window, cells);
         window.display();
     }
 }

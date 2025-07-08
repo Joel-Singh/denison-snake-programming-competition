@@ -11,7 +11,7 @@ float calculate_cell_size(unsigned int win_height, unsigned int cells_height_cou
 sf::Vector2f calculate_centered_position(sf::Vector2u win_size, sf::Vector2f board_size);
 
 // Draws a centered grid
-void draw_grid(sf::RenderWindow &window, Cells cells) {
+void draw_cells(sf::RenderWindow &window, Cells cells) {
     unsigned int cells_height_count = cells.size();
     // Assuming every row is the same size
     unsigned int cells_width_count = cells.at(0).size();

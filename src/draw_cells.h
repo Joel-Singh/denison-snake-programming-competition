@@ -6,4 +6,4 @@
 
 using namespace std;
 
-void draw_grid(sf::RenderWindow &window, vector<vector<Cell>> cells);
+void draw_cells(sf::RenderWindow &window, vector<vector<Cell>> cells);
