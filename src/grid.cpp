@@ -4,6 +4,7 @@
 Grid::Grid(const Cells &data, bool is_player_one) : data(data), is_player_one(is_player_one) {};
 
 
+// Is 0 indexed
 Cell Grid::get(int x, int y) const {
     int height = get_height();
     int width = get_width();
@@ -30,14 +31,14 @@ std::vector<Pos> Grid::find_fruits() const {
 
 Pos Grid::find_self_head() const {
     if (is_player_one) {
-        return find(Cell::PLAYER_ONE).at(0);
+        return find(Cell::PLAYER_ONE_HEAD).at(0);
     } else {
-        return find(Cell::PLAYER_TWO).at(0);
+        return find(Cell::PLAYER_TWO_HEAD).at(0);
     }
 }
 
 Pos Grid::find_other_head() const {
-    if (!is_player_one) {
+    if (is_player_one) {
         return find(Cell::PLAYER_TWO_HEAD).at(0);
     } else {
         return find(Cell::PLAYER_ONE_HEAD).at(0);
@@ -59,13 +60,13 @@ std::vector<Pos> Grid::find_self_positions() const {
 
 // Includes the head
 std::vector<Pos> Grid::find_other_positions() const {
-    if (!is_player_one) {
+    if (is_player_one) {
         std::vector<Pos> positions = find(Cell::PLAYER_TWO);
-        positions.push_back(find_self_head());
+        positions.push_back(find_other_head());
         return positions;
     } else {
         std::vector<Pos> positions = find(Cell::PLAYER_ONE);
-        positions.push_back(find_self_head());
+        positions.push_back(find_other_head());
         return positions;
     }
 }

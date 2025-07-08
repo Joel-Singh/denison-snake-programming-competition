@@ -3,6 +3,7 @@
 #include <vector>
 #include <optional>
 #include "util.cpp"
+#include <iostream>
 
 // Origin is bottom left. 
 class Pos {
@@ -10,7 +11,16 @@ public:
     int x;
     int y;
     Pos(int x, int y) : x(x), y(y) {};
+    bool operator==(const Pos &other) const {
+        return other.x == x && other.y == y;
+    }
 };
+
+std::ostream& operator<<(std::ostream& os, const Pos& pos)
+{
+    os << "Pos(" << pos.x << "," << pos.y << ")";
+    return os;
+}
 
 // Essentially a read only helper of `Cells`
 class Grid {
