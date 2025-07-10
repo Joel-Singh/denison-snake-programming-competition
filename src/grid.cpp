@@ -1,7 +1,7 @@
 #include "grid.h"
 #include "stdexcept"
 
-Grid::Grid(const Cells &data, bool is_player_one) : data(data), is_player_one(is_player_one) {};
+Grid::Grid(const Cells &cells, bool is_player_one) : cells(cells), is_player_one(is_player_one) {};
 
 
 // Is 0 indexed
@@ -13,16 +13,16 @@ Cell Grid::get(int x, int y) const {
         throw std::logic_error("Invalid x y when calling Grid::get");
     }
 
-    return data.at(y).at(x);
+    return cells.get(x, y);
 }
 
 int Grid::get_height() const {
-    return data.size();
+    return cells.height();
 }
 
 // Assume that there is atleast one row and that all rows are the same size
 int Grid::get_width() const {
-    return data.at(0).size();
+    return cells.width();
 }
 
 std::vector<Pos> Grid::find_fruits() const {

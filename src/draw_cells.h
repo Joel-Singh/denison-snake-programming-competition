@@ -1,9 +1,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "util.cpp"
+#include "cells.cpp"
 #include <vector>
 
 using namespace std;
 
-void draw_cells(sf::RenderWindow &window, vector<vector<Cell>> cells);
+void draw_cells(sf::RenderWindow &window, const Cells &cells);

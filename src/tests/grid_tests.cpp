@@ -2,18 +2,9 @@
 #include "../grid.cpp"
 
 TEST(Grid, get_methods) {
-  Cells cells;
+  Cells cells(10);
 
-  // Create a 10x10 grid of empty cells
-  for (int i = 0; i < 10; i++) {
-    cells.push_back(std::vector<Cell>());
-    for (int j = 0; j < 10; j++) {
-      cells.at(i).push_back(Cell::EMPTY);
-    }
-  }
-
-  
-  cells.at(3).at(3) = Cell::FRUIT;
+  cells.set(3, 3, Cell::FRUIT);
 
   Grid grid(cells, false);
 
@@ -29,29 +20,22 @@ TEST(Grid, get_methods) {
 }
 
 TEST(Grid, find_methods) {
-  Cells cells;
+  Cells cells(10);
 
-  // Create a 10x10 grid of empty cells
-  for (int i = 0; i < 10; i++) {
-    cells.push_back(std::vector<Cell>());
-    for (int j = 0; j < 10; j++) {
-      cells.at(i).push_back(Cell::EMPTY);
-    }
-  }
-  cells.at(0).at(0) = Cell::FRUIT;
-  cells.at(1).at(1) = Cell::FRUIT;
-  cells.at(2).at(2) = Cell::FRUIT;
+  cells.set(0, 0, Cell::FRUIT);
+  cells.set(1, 1, Cell::FRUIT);
+  cells.set(2, 2, Cell::FRUIT);
 
   // The first number is the y value, not the x
-  cells.at(9).at(0) = Cell::PLAYER_ONE;
-  cells.at(9).at(1) = Cell::PLAYER_ONE;
-  cells.at(9).at(2) = Cell::PLAYER_ONE;
-  cells.at(9).at(3) = Cell::PLAYER_ONE_HEAD;
+  cells.set(0, 9, Cell::PLAYER_ONE);
+  cells.set(1, 9, Cell::PLAYER_ONE);
+  cells.set(2, 9, Cell::PLAYER_ONE);
+  cells.set(3, 9, Cell::PLAYER_ONE_HEAD);
 
-  cells.at(8).at(0) = Cell::PLAYER_TWO;
-  cells.at(8).at(1) = Cell::PLAYER_TWO;
-  cells.at(8).at(2) = Cell::PLAYER_TWO;
-  cells.at(8).at(3) = Cell::PLAYER_TWO_HEAD;
+  cells.set(0, 8, Cell::PLAYER_TWO);
+  cells.set(1, 8, Cell::PLAYER_TWO);
+  cells.set(2, 8, Cell::PLAYER_TWO);
+  cells.set(3, 8, Cell::PLAYER_TWO_HEAD);
 
   Grid grid(cells, true);
 

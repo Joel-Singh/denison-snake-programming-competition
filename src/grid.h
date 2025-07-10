@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <optional>
-#include "util.cpp"
+#include "cells.cpp"
 #include <iostream>
 
 // Origin is bottom left. 
@@ -25,7 +25,7 @@ std::ostream& operator<<(std::ostream& os, const Pos& pos)
 // Essentially a read only helper of `Cells`
 class Grid {
 public:
-    Grid(const Cells &data, bool is_player_one);
+    Grid(const Cells &cells, bool is_player_one);
 
     // Will throw an error if x and y are invalid
     Cell get(int x, int y) const;
@@ -50,7 +50,7 @@ public:
     std::vector<Pos> find_other_positions() const;
 
 private:
-    const Cells &data;
+    const Cells &cells;
     bool is_player_one;
     std::vector<Pos> find(Cell cell) const;
 };

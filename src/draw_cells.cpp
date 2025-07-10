@@ -2,33 +2,27 @@
 #include <vector>
 #include <iostream>
 
-#include "util.cpp"
-
-using namespace std;
+#include "cells.cpp"
 
 sf::Color celltype_to_color(Cell cell_type);
-float calculate_cell_size(unsigned int win_height, unsigned int cells_height_count);
+float calculate_individual_cell_size(unsigned int win_height, unsigned int cells_height_count);
 sf::Vector2f calculate_centered_position(sf::Vector2u win_size, sf::Vector2f board_size);
 
 // Draws a centered grid
-void draw_cells(sf::RenderWindow &window, Cells cells) {
-    unsigned int cells_height_count = cells.size();
-    // Assuming every row is the same size
-    unsigned int cells_width_count = cells.at(0).size();
+void draw_cells(sf::RenderWindow &window, const Cells &cells) {
 
-    float cell_size = calculate_cell_size(window.getSize().y, cells.size());
+    float cell_size = calculate_individual_cell_size(window.getSize().y, cells.height());
     sf::Vector2f centered_position = calculate_centered_position(
         window.getSize(),
-        { cells_width_count * cell_size, cells_height_count * cell_size}
+        { cells.width() * cell_size, cells.height() * cell_size}
     );
 
     sf::RectangleShape cell({cell_size, cell_size});
     cell.setPosition(centered_position);
 
-    for (int i = 0; i < cells.size(); i++) {
-        // Draws from the top, so have to work backwards in the array
-        for (int j = 0; j < cells.at(cells.size() - i - 1).size(); j++) {
-            cell.setFillColor(celltype_to_color(cells.at(i).at(j)));
+    for (int i = cells.height()-1; i >= 0; i--) {
+        for (int j = 0; j < cells.width(); j++) {
+            cell.setFillColor(celltype_to_color(cells.get(j, i)));
             window.draw(cell);
 
             sf::Vector2f next = cell.getPosition() + sf::Vector2f({cell_size, 0});
@@ -55,15 +49,15 @@ sf::Color celltype_to_color(Cell cell_type) {
         return sf::Color::White;
     }
 
-    throw logic_error("Missing Cell branch in celltype_to_color!");
+    throw std::logic_error("Missing Cell branch in celltype_to_color!");
 }
 
-float calculate_cell_size(unsigned int win_height, unsigned int cells_height_count) {
+float calculate_individual_cell_size(unsigned int win_height, unsigned int cells_height_count) {
     const float MIN_CELL_SIZE = 5;
     const float MARGIN = 200;
     float cell_size = ((float) win_height - MARGIN) / cells_height_count;
 
-    return max(cell_size, MIN_CELL_SIZE);
+    return std::max(cell_size, MIN_CELL_SIZE);
 }
 
 sf::Vector2f calculate_centered_position(sf::Vector2u win_size, sf::Vector2f board_size) {
