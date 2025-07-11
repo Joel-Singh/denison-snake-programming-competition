@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../grid.cpp"
+#include "../grid.h"
 
 TEST(Grid, get_methods) {
   Cells cells(10);

@@ -33,6 +33,7 @@ add_executable(
   main_tests
   src/tests/main_tests.cpp
   src/space.cpp
+  src/grid.cpp
 )
 target_link_libraries(
   main_tests
