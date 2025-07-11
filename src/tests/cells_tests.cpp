@@ -10,6 +10,11 @@ TEST(Cells, get) {
   EXPECT_EQ(cells.get(2, 2), Cell::EMPTY);
   EXPECT_EQ(cells.get(9, 9), Cell::EMPTY);
 
+  EXPECT_EQ(cells.get(Pos(0, 0)), Cell::EMPTY);
+  EXPECT_EQ(cells.get(Pos(1, 1)), Cell::EMPTY);
+  EXPECT_EQ(cells.get(Pos(2, 2)), Cell::EMPTY);
+  EXPECT_EQ(cells.get(Pos(9, 9)), Cell::EMPTY);
+
   EXPECT_THROW(cells.get(10, 0), std::logic_error);
 }
 
@@ -22,7 +27,10 @@ TEST(Cells, height_and_width) {
 
 TEST(Cells, set) {
   Cells cells(5);
-  cells.set(2, 3, Cell::FRUIT);
 
+  cells.set(2, 3, Cell::FRUIT);
   EXPECT_EQ(cells.get(2, 3), Cell::FRUIT);
+
+  cells.set(Pos(1, 4), Cell::FRUIT);
+  EXPECT_EQ(cells.get(1, 4), Cell::FRUIT);
 }

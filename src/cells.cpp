@@ -4,6 +4,7 @@
 #include <cassert>
 #include <stdexcept>
 #include <iostream>
+#include "space.h"
 
 enum Cell {
     EMPTY,
@@ -48,11 +49,19 @@ struct Cells {
         return cells.at(y).at(x);
     }
 
+    Cell get(Pos pos) const {
+        return get(pos.x, pos.y);
+    }
+
     void set(unsigned int x, unsigned int y, Cell cell) {
         if (x >= width() || x < 0 || y >= height() || y < 0) {
             throw std::logic_error("Invalid x y when calling Cells::set");
         }
         cells.at(y).at(x) = cell;
+    }
+
+    void set(Pos pos, Cell cell) {
+        set(pos.x, pos.y, cell);
     }
 
 };
