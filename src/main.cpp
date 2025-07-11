@@ -6,8 +6,6 @@
 const int GRID_SIZE = 10; // Square grid
 const sf::Time GAME_TICK_TIME = sf::seconds(1);
 
-void spawn_fruit(Cells &cells);
-
 int main()
 {
     std::srand(time(NULL)); // Seed rng with current time
@@ -33,46 +31,10 @@ int main()
             }
         }
 
-        if (clock.getElapsedTime() > GAME_TICK_TIME) {
-            game_ticks++;
-            clock.restart();
-            if (game_ticks % 2 == 0) {
-                spawn_fruit(cells);
-            }
-        }
-
         window.clear(sf::Color::White);
 
         draw_cells(window, cells);
 
         window.display();
     }
-}
-
-// Spawn a fruit if there is an empty space, else do nothing
-void spawn_fruit(Cells &cells) {
-    bool has_empty = false;
-
-    for (int y = 0; y < cells.height(); y++) {
-        for (int x = 0; x < cells.width(); x++) {
-            if (cells.get(x, y) == Cell::EMPTY) {
-                has_empty = true;
-                break;
-            }
-        }
-        if (has_empty) {
-            break;
-        }
-    }
-
-    if (!has_empty) {
-        return;
-    }
-
-    sf::Vector2i random_position;
-    do {
-        random_position = { std::rand() % GRID_SIZE, std::rand() % GRID_SIZE };
-    } while (cells.get(random_position.x, random_position.y) != Cell::EMPTY);
-
-    cells.set(random_position.x, random_position.y, Cell::FRUIT);
 }
