@@ -3,7 +3,7 @@
 <!-- TODO: Add link to blog post -->
 
 Howdy! This is the repo for Denison University's Coding Club [Snake
-Programming Competition](). Participants will code a Snake AI in C++ to
+Programming Competition](). Participants will code a Snake bot in C++ to
 face off against others. The winner will be crowned Coding Supreme.
 
 <!-- TODO: Instead of crowning them Coding Supreme, perhaps we can get
