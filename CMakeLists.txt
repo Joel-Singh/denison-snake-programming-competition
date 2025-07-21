@@ -34,6 +34,7 @@ add_executable(
   src/tests/main_tests.cpp
   src/space.cpp
   src/grid.cpp
+  src/compute_game_logic.cpp
 )
 target_link_libraries(
   main_tests
