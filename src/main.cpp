@@ -10,7 +10,7 @@ int main()
 {
     std::srand(time(NULL)); // Seed rng with current time
 
-    sf::RenderWindow window(sf::VideoMode({200, 200}), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode({200, 200}), "Denison Snake!");
     sf::Clock clock;
     unsigned int game_ticks = 0;
 
