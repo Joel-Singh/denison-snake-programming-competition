@@ -100,6 +100,38 @@ TEST(compute_game_logic, multiple_segments_straight_movement) {
   );
 }
 
+TEST(compute_game_logic, moving_into_fruit_increases_length) {
+  std::vector<Pos> one_segments = {
+    Pos(0, 0),
+  };
+
+  std::vector<Pos> two_segments = {
+    Pos(1, 0),
+  };
+
+  Cells cells = create_from_segments(one_segments, two_segments);
+  cells.set(0, 1, Cell::FRUIT);
+
+  GameState game_state = compute_game_logic(
+    cells,
+    0,
+    Direction::UP,
+    Direction::UP,
+    one_segments,
+    two_segments
+  );
+
+  ASSERT_EQ(game_state, GameState::ON_GOING);
+  ASSERT_EQ(one_segments.size(), 2);
+
+  EXPECT_EQ(
+    one_segments,
+    std::vector<Pos>({
+      Pos(0, 1), Pos(0, 0)
+    })
+  );
+}
+
 TEST(compute_game_logic, multiple_segments_curved_movement) {
   std::vector<Pos> one_segments = {
     Pos(1, 4),
