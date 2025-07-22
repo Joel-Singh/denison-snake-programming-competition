@@ -2,9 +2,9 @@
 #include "../compute_game_logic.h"
 #include "../cells.cpp"
 
-// Passed in segments must be within 10x10 cells
-Cells create_from_segments(std::vector<Pos> one_segments, std::vector<Pos> two_segments) {
-  Cells cells(10);
+// Passed in segments must be within cell_size x cell_size
+Cells create_from_segments(unsigned int cell_size, std::vector<Pos> one_segments, std::vector<Pos> two_segments) {
+  Cells cells(cell_size);
 
   for (int i = 0; i < one_segments.size(); i++) {
     Cell cell_to_set = i == 0 ? Cell::PLAYER_ONE_HEAD : Cell::PLAYER_ONE;
@@ -31,7 +31,7 @@ TEST(compute_game_logic, head_movement) {
   std::vector<Pos> one_segments = { Pos(0, 0) };
   std::vector<Pos> two_segments = { Pos(0, 1) };
 
-  Cells cells = create_from_segments(one_segments, two_segments);
+  Cells cells = create_from_segments(10, one_segments, two_segments);
 
   GameState game_state = compute_game_logic(cells, 0, Direction::RIGHT, Direction::RIGHT, one_segments, two_segments);
 
@@ -66,7 +66,7 @@ TEST(compute_game_logic, multiple_segments_straight_movement) {
     Pos(1, 0),
   };
 
-  Cells cells = create_from_segments(one_segments, two_segments);
+  Cells cells = create_from_segments(10, one_segments, two_segments);
 
   GameState game_state = compute_game_logic(
     cells,
@@ -109,7 +109,7 @@ TEST(compute_game_logic, moving_into_fruit_increases_length) {
     Pos(1, 0),
   };
 
-  Cells cells = create_from_segments(one_segments, two_segments);
+  Cells cells = create_from_segments(10, one_segments, two_segments);
   cells.set(0, 1, Cell::FRUIT);
 
   GameState game_state = compute_game_logic(
@@ -151,7 +151,7 @@ TEST(compute_game_logic, multiple_segments_curved_movement) {
     Pos(3, 0),
   };
 
-  Cells cells = create_from_segments(one_segments, two_segments);
+  Cells cells = create_from_segments(10, one_segments, two_segments);
 
   GameState game_state = compute_game_logic(
     cells,
@@ -195,6 +195,36 @@ TEST(compute_game_logic, multiple_segments_curved_movement) {
   );
 }
 
+TEST(compute_game_logic, moving_into_tail) {
+  std::vector<Pos> one_segments = {
+    Pos(0, 0),
+  };
+
+  std::vector<Pos> two_segments = {
+    Pos(0, 1),
+  };
+
+  const int CELL_SIZE = 3;
+  Cells cells = create_from_segments(CELL_SIZE, one_segments, two_segments);
+
+  GameState game_state = compute_game_logic(
+    cells,
+    0,
+    Direction::UP,
+    Direction::UP,
+    one_segments,
+    two_segments
+  );
+
+  ASSERT_EQ(game_state, GameState::ON_GOING);
+
+  EXPECT_EQ(one_segments.front(), Pos(0, 1));
+  EXPECT_EQ(two_segments.front(), Pos(0, 2));
+
+  EXPECT_EQ(cells.get(0, 1), Cell::PLAYER_ONE_HEAD);
+  EXPECT_EQ(cells.get(0, 2), Cell::PLAYER_TWO_HEAD);
+};
+
 TEST(compute_game_logic, game_ending_logic_going_into_wall) {
   std::vector<Pos> one_segments = {
     Pos(0, 0),
@@ -204,7 +234,7 @@ TEST(compute_game_logic, game_ending_logic_going_into_wall) {
     Pos(1, 0),
   };
 
-  Cells cells = create_from_segments(one_segments, two_segments);
+  Cells cells = create_from_segments(10, one_segments, two_segments);
 
   GameState game_state = compute_game_logic(
     cells,
@@ -229,7 +259,7 @@ TEST(compute_game_logic, game_ending_logic_going_into_segment) {
     Pos(1, 0),
   };
 
-  Cells cells = create_from_segments(one_segments, two_segments);
+  Cells cells = create_from_segments(10, one_segments, two_segments);
 
   // One is going into two segment
   GameState game_state = compute_game_logic(
@@ -253,7 +283,7 @@ TEST(compute_game_logic, game_ending_logic_both_dying) {
     Pos(1, 0),
   };
 
-  Cells cells = create_from_segments(one_segments, two_segments);
+  Cells cells = create_from_segments(10, one_segments, two_segments);
 
   GameState game_state = compute_game_logic(
     cells,
@@ -276,7 +306,7 @@ TEST(compute_game_logic, game_ending_logic_both_going_into_eachother) {
     Pos(2, 0),
   };
 
-  Cells cells = create_from_segments(one_segments, two_segments);
+  Cells cells = create_from_segments(10, one_segments, two_segments);
 
   GameState game_state = compute_game_logic(
     cells,

@@ -10,12 +10,20 @@ static GameState check_for_game_end(
     const Direction one_dir,
     const Direction two_dir
 );
+
 static void compute_new_snake_positions(
-    Cells &cells,
     std::vector<Pos> &segments,
     Cell player_cell,
     Direction dir,
     bool is_eating_fruit
+);
+
+static void clear_cells_at(const std::vector<Pos> &positions, Cells &cells);
+
+static void update_cells_with_segments(
+    const std::vector<Pos> &segments,
+    const bool is_player_one,
+    Cells &cells
 );
 
 // First element of segments is the head
@@ -49,21 +57,24 @@ GameState compute_game_logic(
         cells.get(player_two_head.with_dir(player_two_dir))
         == Cell::FRUIT;
 
+    clear_cells_at(player_one_segments, cells);
+    clear_cells_at(player_two_segments, cells);
+
     compute_new_snake_positions(
-        cells,
         player_one_segments,
         Cell::PLAYER_ONE,
         player_one_dir,
         player_one_eating_fruit
     );
-
     compute_new_snake_positions(
-        cells,
         player_two_segments,
         Cell::PLAYER_TWO,
         player_two_dir,
         player_two_eating_fruit
     );
+
+    update_cells_with_segments(player_one_segments, true, cells);
+    update_cells_with_segments(player_two_segments, false, cells);
 
     // spawn_fruit happens last because we don't want to spawn a fruit
     // and then have it immediately eaten
@@ -135,7 +146,6 @@ static GameState check_for_game_end(
 
 // Precondition: New snake positions will not result in a game end
 static void compute_new_snake_positions(
-    Cells &cells,
     std::vector<Pos> &segments,
     Cell player_cell,
     Direction dir,
@@ -144,28 +154,36 @@ static void compute_new_snake_positions(
     assert(segments.size() > 0); // There exists at least a head
     assert(player_cell == Cell::PLAYER_ONE  || player_cell == Cell::PLAYER_TWO);
 
-    auto head_cell = [](Cell cell) {
-        if (cell == Cell::PLAYER_ONE) {
-            return Cell::PLAYER_ONE_HEAD;
-        } else {
-            return Cell::PLAYER_TWO_HEAD;
-        }
-    };
-
     Pos prev = segments.at(0).with_dir(dir);
     for (int i = 0; i < segments.size(); i++) {
         Pos new_pos = prev;
         prev = segments.at(i);
 
         segments.at(i) = new_pos;
-
-        cells.set(new_pos, i != 0 ? player_cell : head_cell(player_cell));
-        cells.set(prev, Cell::EMPTY);
     }
 
     if (is_eating_fruit) {
-        cells.set(prev, player_cell);
         segments.push_back(prev);
+    }
+}
+
+static void clear_cells_at(const std::vector<Pos> &positions, Cells &cells) {
+    for (auto pos : positions) {
+        cells.set(pos, Cell::EMPTY);
+    }
+}
+
+static void update_cells_with_segments(
+    const std::vector<Pos> &segments,
+    const bool is_player_one,
+    Cells &cells
+) {
+    const Cell head_cell = is_player_one ? Cell::PLAYER_ONE_HEAD : Cell::PLAYER_TWO_HEAD;
+    const Cell body_cell = is_player_one ? Cell::PLAYER_ONE : Cell::PLAYER_TWO;
+
+    cells.set(segments.front(), head_cell);
+    for (int i = 1; i < segments.size(); i++) {
+        cells.set(segments[i], body_cell);
     }
 }
 
