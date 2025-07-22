@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
 #include "../cells.cpp"
+#include <gtest/gtest.h>
 #include <stdexcept>
 
 TEST(Cells, get) {

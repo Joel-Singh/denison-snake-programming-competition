@@ -1,7 +1,7 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include "cells.cpp"
+#include <SFML/Graphics.hpp>
 #include <vector>
 
 using namespace std;

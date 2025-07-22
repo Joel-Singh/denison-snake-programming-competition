@@ -4,5 +4,5 @@
 
 class EvilBot : Bot {
 public:
-    Direction think(const Grid &grid);
+  Direction think(const Grid &grid);
 };

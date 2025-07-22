@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
 #include "../grid.h"
+#include <gtest/gtest.h>
 
 TEST(Grid, get_methods) {
   Cells cells(10);
@@ -39,27 +39,15 @@ TEST(Grid, find_methods) {
 
   Grid grid(cells, true);
 
-  EXPECT_EQ(grid.find_fruits(), std::vector<Pos>({
-    Pos(0, 0),
-    Pos(1, 1),
-    Pos(2, 2)
-  }));
+  EXPECT_EQ(grid.find_fruits(),
+            std::vector<Pos>({Pos(0, 0), Pos(1, 1), Pos(2, 2)}));
 
   EXPECT_EQ(grid.find_self_head(), Pos(3, 9));
-  EXPECT_EQ(grid.find_self_positions(), std::vector<Pos>({
-    Pos(0, 9),
-    Pos(1, 9),
-    Pos(2, 9),
-    Pos(3, 9)
-  }));
+  EXPECT_EQ(grid.find_self_positions(),
+            std::vector<Pos>({Pos(0, 9), Pos(1, 9), Pos(2, 9), Pos(3, 9)}));
 
   EXPECT_EQ(grid.find_other_head(), Pos(3, 8));
 
-  EXPECT_EQ(grid.find_other_positions(), std::vector<Pos>({
-    Pos(0, 8),
-    Pos(1, 8),
-    Pos(2, 8),
-    Pos(3, 8)
-  }));
+  EXPECT_EQ(grid.find_other_positions(),
+            std::vector<Pos>({Pos(0, 8), Pos(1, 8), Pos(2, 8), Pos(3, 8)}));
 }
-
