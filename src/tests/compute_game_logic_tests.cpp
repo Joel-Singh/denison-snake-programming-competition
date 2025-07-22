@@ -319,3 +319,44 @@ TEST(compute_game_logic, game_ending_logic_both_going_into_eachother) {
 
   EXPECT_EQ(game_state, GameState::DRAW);
 }
+
+TEST(compute_game_logic, spawns_fruit_every_ten_ticks) {
+  // Seed random explictly to make test reproducible
+  std::srand(0);
+  std::vector<Pos> one_segments = {
+    Pos(0, 0),
+  };
+
+  std::vector<Pos> two_segments = {
+    Pos(0, 1),
+  };
+
+  const int CELLS_SIZE = 3;
+  Cells cells = create_from_segments(3, one_segments, two_segments);
+
+  GameState game_state = compute_game_logic(
+    cells,
+    10,
+    Direction::UP,
+    Direction::UP,
+    one_segments,
+    two_segments
+  );
+
+  ASSERT_EQ(game_state, GameState::ON_GOING);
+
+  bool cells_has_fruit = false;
+  for (int i = 0; i < CELLS_SIZE; i++) {
+    for (int j = 0; j < CELLS_SIZE; j++) {
+      if (cells.get(i, j) == Cell::FRUIT) {
+        cells_has_fruit = true;
+      }
+    }
+  }
+
+  ASSERT_EQ(cells_has_fruit, true);
+
+  // Make sure fruit hasn't overwritten the heads
+  EXPECT_EQ(cells.get(0, 1), Cell::PLAYER_ONE_HEAD);
+  EXPECT_EQ(cells.get(0, 2), Cell::PLAYER_TWO_HEAD);
+}
