@@ -23,7 +23,19 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(main src/main.cpp src/draw_cells.cpp)
+add_executable(
+  main
+  src/main.cpp
+
+  src/space.cpp
+  src/grid.cpp
+  src/compute_game_logic.cpp
+  src/my_bot.cpp
+  src/evil_bot.cpp
+  src/draw_cells.cpp
+  src/create_from_segments.cpp
+)
+
 target_compile_features(main PRIVATE cxx_std_17)
 target_link_libraries(main PRIVATE SFML::Graphics)
 
@@ -32,9 +44,11 @@ enable_testing()
 add_executable(
   main_tests
   src/tests/main_tests.cpp
+
   src/space.cpp
   src/grid.cpp
   src/compute_game_logic.cpp
+  src/create_from_segments.cpp
 )
 target_link_libraries(
   main_tests

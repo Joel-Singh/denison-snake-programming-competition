@@ -39,14 +39,10 @@ sf::Color celltype_to_color(Cell cell_type) {
         return sf::Color::Red;
     } else if (cell_type == Cell::EMPTY) {
         return sf::Color::Black;
-    } else if (cell_type == Cell::PLAYER_ONE) {
-        return sf::Color::Blue;
-    } else if (cell_type == Cell::PLAYER_ONE_HEAD) {
-        return sf::Color::White;
-    } else if (cell_type == Cell::PLAYER_TWO) {
-        return sf::Color::Red;
-    } else if (cell_type == Cell::PLAYER_TWO_HEAD) {
-        return sf::Color::White;
+    } else if (cell_type == Cell::PLAYER_ONE || cell_type == Cell::PLAYER_ONE_HEAD) {
+        return sf::Color(203, 157, 240);
+    } else if (cell_type == Cell::PLAYER_TWO || cell_type == Cell::PLAYER_TWO_HEAD) {
+        return sf::Color(255, 249, 191);
     }
 
     throw std::logic_error("Missing Cell branch in celltype_to_color!");
