@@ -1,3 +1,7 @@
+/// \file grid.h
+/// \brief File containing grid
+///
+
 #pragma once
 
 #include "cells.h"
@@ -6,7 +10,9 @@
 #include <optional>
 #include <vector>
 
-// Essentially a read only helper of `Cells`
+///
+/// \brief The public facing Grid class used by students to create their bots
+///
 class Grid {
 public:
   Grid(const Cells &cells, bool is_player_one);
