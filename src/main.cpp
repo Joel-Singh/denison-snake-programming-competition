@@ -10,8 +10,9 @@
 
 const int CELL_SIZE = 20; // Square grid
 const sf::Time GAME_TICK_TIME = sf::seconds(1);
-const Pos player_one_start = Pos(0, 0);
-const Pos player_two_start = Pos(0, 1);
+
+const Pos player_one_start = Pos(2, CELL_SIZE / 2);
+const Pos player_two_start = Pos(CELL_SIZE - 3, CELL_SIZE / 2);
 
 int main() {
   std::srand(time(NULL)); // Seed rng with current time
