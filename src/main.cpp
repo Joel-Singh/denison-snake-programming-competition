@@ -43,7 +43,7 @@ int main() {
       }
     }
 
-    window.clear(sf::Color::White);
+    window.clear(sf::Color(46, 43, 41));
 
     if (clock.getElapsedTime() > GAME_TICK_TIME) {
       clock.restart();
