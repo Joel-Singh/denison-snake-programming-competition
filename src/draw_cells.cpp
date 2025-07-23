@@ -5,8 +5,10 @@
 #include "cells.h"
 
 sf::Color celltype_to_color(Cell cell_type);
+
 float calculate_individual_cell_size(unsigned int win_height,
                                      unsigned int cells_height_count);
+
 sf::Vector2f calculate_centered_position(sf::Vector2u win_size,
                                          sf::Vector2f board_size);
 
@@ -15,6 +17,7 @@ void draw_cells(sf::RenderWindow &window, const Cells &cells) {
 
   float cell_size =
       calculate_individual_cell_size(window.getSize().y, cells.height());
+
   sf::Vector2f centered_position = calculate_centered_position(
       window.getSize(),
       {cells.width() * cell_size, cells.height() * cell_size});
@@ -54,8 +57,10 @@ sf::Color celltype_to_color(Cell cell_type) {
 
 float calculate_individual_cell_size(unsigned int win_height,
                                      unsigned int cells_height_count) {
+
   const float MIN_CELL_SIZE = 5;
   const float MARGIN = 200;
+
   float cell_size = ((float)win_height - MARGIN) / cells_height_count;
 
   return std::max(cell_size, MIN_CELL_SIZE);
@@ -63,8 +68,10 @@ float calculate_individual_cell_size(unsigned int win_height,
 
 sf::Vector2f calculate_centered_position(sf::Vector2u win_size,
                                          sf::Vector2f board_size) {
+
   sf::Vector2f empty_space = {win_size.x - board_size.x,
                               win_size.y - board_size.y};
+
   sf::Vector2f position = {empty_space.x / 2, empty_space.y / 2};
 
   return position;
