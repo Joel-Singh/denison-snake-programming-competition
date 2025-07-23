@@ -1,4 +1,4 @@
-#include "cells.cpp"
+#include "cells.h"
 
 Cells create_from_segments(unsigned int cell_size,
                            std::vector<Pos> one_segments,

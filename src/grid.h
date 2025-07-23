@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cells.cpp"
+#include "cells.h"
 #include "space.h"
 #include <iostream>
 #include <optional>

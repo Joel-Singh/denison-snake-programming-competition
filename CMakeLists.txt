@@ -29,6 +29,7 @@ add_executable(
 
   src/space.cpp
   src/grid.cpp
+  src/cells.cpp
   src/compute_game_logic.cpp
   src/my_bot.cpp
   src/evil_bot.cpp
@@ -49,6 +50,7 @@ add_executable(
   src/grid.cpp
   src/compute_game_logic.cpp
   src/create_from_segments.cpp
+  src/cells.cpp
 )
 target_link_libraries(
   main_tests

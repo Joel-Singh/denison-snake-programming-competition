@@ -1,4 +1,4 @@
-#include "cells.cpp"
+#include "cells.h"
 
 // Passed in segments must be within cell_size x cell_size
 Cells create_from_segments(unsigned int cell_size,

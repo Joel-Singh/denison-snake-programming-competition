@@ -1,5 +1,5 @@
 #include "assert.h"
-#include "cells.cpp"
+#include "cells.h"
 #include "compute_game_logic.h"
 #include "create_from_segments.h"
 #include "draw_cells.h"
@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-const int CELL_SIZE = 10; // Square grid
+const int CELL_SIZE = 20; // Square grid
 const sf::Time GAME_TICK_TIME = sf::seconds(1);
 const Pos player_one_start = Pos(0, 0);
 const Pos player_two_start = Pos(0, 1);

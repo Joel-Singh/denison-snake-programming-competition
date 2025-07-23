@@ -1,5 +1,5 @@
 #include "compute_game_logic.h"
-#include "cells.cpp"
+#include "cells.h"
 #include "space.h"
 
 static void spawn_fruit(Cells &cells);

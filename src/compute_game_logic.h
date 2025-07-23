@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cells.cpp"
+#include "cells.h"
 #include <SFML/Graphics.hpp>
 
 enum GameState { PLAYER_ONE_WON, PLAYER_TWO_WON, DRAW, ON_GOING };

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "cells.cpp"
+#include "cells.h"
 
 sf::Color celltype_to_color(Cell cell_type);
 float calculate_individual_cell_size(unsigned int win_height,

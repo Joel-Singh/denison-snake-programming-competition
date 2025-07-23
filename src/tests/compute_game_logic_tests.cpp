@@ -1,4 +1,4 @@
-#include "../cells.cpp"
+#include "../cells.h"
 #include "../compute_game_logic.h"
 #include "../create_from_segments.h"
 #include <gtest/gtest.h>
