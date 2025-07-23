@@ -193,7 +193,7 @@ TEST(compute_game_logic, game_ending_logic_both_dying) {
   EXPECT_EQ(game_state, GameState::DRAW);
 }
 
-TEST(compute_game_logic, game_ending_logic_both_going_into_eachother) {
+TEST(compute_game_logic, game_ending_logic_both_going_into_the_same_cell) {
   std::vector<Pos> one_segments = {
       Pos(0, 0),
   };
