@@ -34,6 +34,7 @@ add_executable(
   src/my_bot.cpp
   src/evil_bot.cpp
   src/draw_cells.cpp
+  src/draw_text.cpp
   src/create_from_segments.cpp
 )
 
