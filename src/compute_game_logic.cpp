@@ -53,7 +53,9 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
 
   // spawn_fruit happens last because we don't want to spawn a fruit
   // and then have it immediately eaten
-  if (game_ticks % 10 == 0) {
+  if (game_ticks % 10 == 0 &&
+      game_ticks != 0 // So it doesn't happen the first tick
+  ) {
     spawn_fruit(cells);
   }
 
