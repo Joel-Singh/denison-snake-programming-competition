@@ -2,4 +2,4 @@
 #include "grid.h"
 #include "space.h"
 
-Direction EvilBot::think(const Grid &grid) { return Direction::UP; }
+Direction EvilBot::think(const Grid &grid) { return Direction::LEFT; }

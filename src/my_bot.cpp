@@ -2,4 +2,4 @@
 #include "grid.h"
 #include "space.h"
 
-Direction MyBot::think(const Grid &grid) { return Direction::UP; }
+Direction MyBot::think(const Grid &grid) { return Direction::RIGHT; }
