@@ -44,6 +44,7 @@ int main() {
   EvilBot player_two;
 
   sf::RenderWindow window(sf::VideoMode({200, 200}), "Denison Snake!");
+  window.setFramerateLimit(60);
 
   while (window.isOpen()) {
     while (const std::optional event = window.pollEvent()) {
