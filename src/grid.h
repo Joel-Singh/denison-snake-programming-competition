@@ -41,6 +41,12 @@ public:
   /// is valid inclusively from 0 to Grid::get_width() -1.
   Cell get(int x, int y) const;
 
+  /// \brief Returns a \ref Cell at `pos` or throws if pos is invalid
+  ///
+  /// A valid `pos` has an x-component inclusively from 0 to Grid::get_height()
+  /// -1 and has y-component from 0 to Grid::get_width() -1.
+  Cell get(Pos pos) const;
+
   /// \brief Returns the height of the grid.
   int get_height() const;
 

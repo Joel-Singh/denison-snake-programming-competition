@@ -20,6 +20,8 @@ Cell Grid::get(int x, int y) const {
   return cells.get(x, y);
 }
 
+Cell Grid::get(Pos pos) const { return this->get(pos.x, pos.y); }
+
 int Grid::get_height() const { return cells.height(); }
 
 // Assume that there is atleast one row and that all rows are the same size
