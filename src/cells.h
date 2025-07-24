@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cell.h"
-#include "space.h"
+#include "pos.h"
 #include <vector>
 
 class Cells {

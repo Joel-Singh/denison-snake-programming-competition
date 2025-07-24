@@ -1,6 +1,6 @@
 #include "cells.h"
 #include "cell.h"
-#include "space.h"
+#include "pos.h"
 #include <cassert>
 #include <iostream>
 #include <stdexcept>

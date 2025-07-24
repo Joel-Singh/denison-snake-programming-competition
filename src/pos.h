@@ -1,9 +1,8 @@
 #pragma once
 
+#include "direction.h"
 #include "stdexcept"
 #include <iostream>
-
-enum Direction { UP, DOWN, LEFT, RIGHT };
 
 // Origin is bottom left.
 class Pos {

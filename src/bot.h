@@ -1,7 +1,7 @@
 #pragma once
 
 #include "grid.h"
-#include "space.h"
+#include "pos.h"
 
 class Bot {
 public:

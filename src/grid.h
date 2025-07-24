@@ -6,7 +6,7 @@
 
 #include "cell.h"
 #include "cells.h"
-#include "space.h"
+#include "pos.h"
 #include <iostream>
 #include <optional>
 #include <vector>

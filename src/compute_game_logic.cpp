@@ -1,7 +1,7 @@
 #include "compute_game_logic.h"
 #include "cell.h"
 #include "cells.h"
-#include "space.h"
+#include "pos.h"
 
 static void spawn_fruit(Cells &cells);
 static GameState check_for_game_end(const Cells &cells,

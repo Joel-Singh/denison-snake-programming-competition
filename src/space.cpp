@@ -1,4 +1,4 @@
-#include "space.h"
+#include "pos.h"
 #include "stdexcept"
 #include <iostream>
 
