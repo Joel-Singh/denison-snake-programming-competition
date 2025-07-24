@@ -17,7 +17,8 @@
 ///
 /// Also see the std library
 /// [vector](https://en.cppreference.com/w/cpp/container/vector.html) that is
-/// returned from multiple methods.
+/// returned from multiple methods. You can think of a vector as analagous to a
+/// python list.
 class Grid {
 public:
   ///
@@ -49,16 +50,18 @@ public:
   /// \brief Returns all fruit as a std::vector<@ref Pos>
   std::vector<Pos> find_fruits() const;
 
-  // Get the position of your head
+  /// \brief Get the position of your head
   Pos find_self_head() const;
 
-  // Get the positions of all your parts
+  /// \brief Get the ordered positions of all your parts. The first element is
+  /// the head.
   std::vector<Pos> find_self_positions() const;
 
-  // Get the position of the other snake's head
+  /// \brief Returns the head of the other snake.
   Pos find_other_head() const;
 
-  // Get the positions of the other snake's parts
+  /// \brief Get the ordered positions of the other snake. The first element is
+  /// their head.
   std::vector<Pos> find_other_positions() const;
 
 private:
