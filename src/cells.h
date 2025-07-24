@@ -4,6 +4,7 @@
 #include "pos.h"
 #include <vector>
 
+/// \cond INTERNAL
 class Cells {
 private:
   std::vector<std::vector<Cell>> cells;
@@ -24,3 +25,4 @@ public:
 
   void set(Pos pos, Cell cell);
 };
+/// \endcond
