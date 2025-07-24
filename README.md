@@ -114,6 +114,12 @@ issue](https://github.com/Joel-Singh/denison-snake-programming-competition/issue
 with the relevant errors, contact Joel on the Coding Club discord server,
 or see Joel directly at the next coding club meeting.
 
+Can we use external libraries or the std library?
+
+- You may not use external libraries. However, you can use anything from the
+std library barring anything like network or file access. Also, you may not
+seed `std::rand` with `std::srand`, this is done already in main.
+
 # Attributions
 
 I was heavily inspired by Sebastian Lague's [Chess Challenge](https://github.com/SebLague/Chess-Challenge) and this idea for two player snake was taken from one of his [unfinished projects.](https://youtu.be/kIMHRQWorkE?t=711)
