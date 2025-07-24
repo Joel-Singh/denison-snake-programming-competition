@@ -13,7 +13,7 @@
 
 ///
 /// \brief Represents the grid of cells containing snakes and fruits. Grid is
-/// used in the [think](@ref MyBot) function to create your bot
+/// used in the \ref MyBot::think function to create your bot
 ///
 /// Also see the std library
 /// [vector](https://en.cppreference.com/w/cpp/container/vector.html) that is
