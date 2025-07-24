@@ -64,8 +64,10 @@ int main() {
     if (clock.getElapsedTime() > GAME_TICK_TIME && !is_game_over) {
       clock.restart();
 
-      Grid player_one_grid(cells, true);
-      Grid player_two_grid(cells, false);
+      Grid player_one_grid(true, cells, player_one_segments,
+                           player_two_segments);
+      Grid player_two_grid(false, cells, player_one_segments,
+                           player_two_segments);
 
       Direction player_one_dir = player_one.think(player_one_grid);
       Direction player_two_dir = player_two.think(player_two_grid);

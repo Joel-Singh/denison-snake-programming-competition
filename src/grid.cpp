@@ -1,8 +1,12 @@
 #include "grid.h"
 #include "stdexcept"
 
-Grid::Grid(const Cells &cells, bool is_player_one)
-    : cells(cells), is_player_one(is_player_one) {};
+Grid::Grid(bool is_player_one, const Cells &cells,
+           const std::vector<Pos> &player_one_segments,
+           const std::vector<Pos> &player_two_segments)
+    : cells(cells), is_player_one(is_player_one),
+      player_one_segments(player_one_segments),
+      player_two_segments(player_two_segments) {};
 
 // Is 0 indexed
 Cell Grid::get(int x, int y) const {
@@ -42,26 +46,18 @@ Pos Grid::find_other_head() const {
 // Includes the head
 std::vector<Pos> Grid::find_self_positions() const {
   if (is_player_one) {
-    std::vector<Pos> positions = find(Cell::PLAYER_ONE);
-    positions.push_back(find_self_head());
-    return positions;
+    return player_one_segments;
   } else {
-    std::vector<Pos> positions = find(Cell::PLAYER_TWO);
-    positions.push_back(find_self_head());
-    return positions;
+    return player_two_segments;
   }
 }
 
 // Includes the head
 std::vector<Pos> Grid::find_other_positions() const {
   if (is_player_one) {
-    std::vector<Pos> positions = find(Cell::PLAYER_TWO);
-    positions.push_back(find_other_head());
-    return positions;
+    return player_two_segments;
   } else {
-    std::vector<Pos> positions = find(Cell::PLAYER_ONE);
-    positions.push_back(find_other_head());
-    return positions;
+    return player_one_segments;
   }
 }
 

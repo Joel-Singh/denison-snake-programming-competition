@@ -1,3 +1,4 @@
+#include "../create_from_segments.h"
 #include "../grid.h"
 #include <gtest/gtest.h>
 
@@ -6,7 +7,7 @@ TEST(Grid, get_methods) {
 
   cells.set(3, 3, Cell::FRUIT);
 
-  Grid grid(cells, false);
+  Grid grid(false, cells, std::vector<Pos>(), std::vector<Pos>());
 
   EXPECT_EQ(grid.get_height(), 10);
   EXPECT_EQ(grid.get_width(), 10);
@@ -20,34 +21,26 @@ TEST(Grid, get_methods) {
 }
 
 TEST(Grid, find_methods) {
-  Cells cells(10);
+  std::vector<Pos> player_one_segments = {Pos(3, 9), Pos(2, 9), Pos(1, 9),
+                                          Pos(0, 9)};
+
+  std::vector<Pos> player_two_segments = {Pos(3, 8), Pos(2, 8), Pos(1, 8),
+                                          Pos(0, 8)};
+  Cells cells =
+      create_from_segments(10, player_one_segments, player_two_segments);
 
   cells.set(0, 0, Cell::FRUIT);
   cells.set(1, 1, Cell::FRUIT);
   cells.set(2, 2, Cell::FRUIT);
 
-  // The first number is the y value, not the x
-  cells.set(0, 9, Cell::PLAYER_ONE);
-  cells.set(1, 9, Cell::PLAYER_ONE);
-  cells.set(2, 9, Cell::PLAYER_ONE);
-  cells.set(3, 9, Cell::PLAYER_ONE_HEAD);
-
-  cells.set(0, 8, Cell::PLAYER_TWO);
-  cells.set(1, 8, Cell::PLAYER_TWO);
-  cells.set(2, 8, Cell::PLAYER_TWO);
-  cells.set(3, 8, Cell::PLAYER_TWO_HEAD);
-
-  Grid grid(cells, true);
+  Grid grid(true, cells, player_one_segments, player_two_segments);
 
   EXPECT_EQ(grid.find_fruits(),
             std::vector<Pos>({Pos(0, 0), Pos(1, 1), Pos(2, 2)}));
 
   EXPECT_EQ(grid.find_self_head(), Pos(3, 9));
-  EXPECT_EQ(grid.find_self_positions(),
-            std::vector<Pos>({Pos(0, 9), Pos(1, 9), Pos(2, 9), Pos(3, 9)}));
+  EXPECT_EQ(grid.find_self_positions(), player_one_segments);
 
   EXPECT_EQ(grid.find_other_head(), Pos(3, 8));
-
-  EXPECT_EQ(grid.find_other_positions(),
-            std::vector<Pos>({Pos(0, 8), Pos(1, 8), Pos(2, 8), Pos(3, 8)}));
+  EXPECT_EQ(grid.find_other_positions(), player_two_segments);
 }

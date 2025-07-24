@@ -24,7 +24,12 @@ public:
   /// \cond INTERNAL
   /// Hide the constructor as students will never directly use the constructor
   /// themselves
-  Grid(const Cells &cells, bool is_player_one);
+  ///
+  /// \param player_one_segments,player_two_segments the ordered segments of
+  /// each snake with the first element being the head.
+  Grid(bool is_player_one, const Cells &cells,
+       const std::vector<Pos> &player_one_segments,
+       const std::vector<Pos> &player_two_segments);
   ///
   /// \endcond
   ///
@@ -59,5 +64,7 @@ public:
 private:
   const Cells &cells;
   bool is_player_one;
+  const std::vector<Pos> &player_one_segments;
+  const std::vector<Pos> &player_two_segments;
   std::vector<Pos> find(Cell cell) const;
 };
