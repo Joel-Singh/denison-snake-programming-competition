@@ -19,6 +19,8 @@ static void clear_cells_at(const std::vector<Pos> &positions, Cells &cells);
 static void update_cells_with_segments(const std::vector<Pos> &segments,
                                        const bool is_player_one, Cells &cells);
 
+const int FRUIT_SPAWN_INTERVAL = 5; // in ticks
+
 // First element of segments is the head
 GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
                              const Direction player_one_dir,
@@ -54,7 +56,7 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
 
   // spawn_fruit happens last because we don't want to spawn a fruit
   // and then have it immediately eaten
-  if (game_ticks % 10 == 0 &&
+  if (game_ticks % FRUIT_SPAWN_INTERVAL == 0 &&
       game_ticks != 0 // So it doesn't happen the first tick
   ) {
     spawn_fruit(cells);
