@@ -5,8 +5,8 @@
 bool is_safe_to_move(Pos pos, const Grid &grid);
 
 /// \brief The function you'll implement for your bot! The default code here
-/// simply has `MyBot` move up and down, trying not to move into the top or
-/// bottom walls.
+/// simply has `MyBot` move randomly, only going into squares that are empty or
+/// have fruit.
 Direction MyBot::think(const Grid &grid) {
   Pos head = grid.find_self_head();
 
