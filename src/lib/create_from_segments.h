@@ -1,5 +1,5 @@
 #include "cell.h"
-#include "cells.h"
+#include "lib/cells.h"
 
 Cells create_from_segments(unsigned int cell_size,
                            std::vector<Pos> one_segments,

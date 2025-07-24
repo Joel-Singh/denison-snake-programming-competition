@@ -1,4 +1,4 @@
-#include "../cells.h"
+#include "lib/cells.h"
 #include <gtest/gtest.h>
 #include <stdexcept>
 

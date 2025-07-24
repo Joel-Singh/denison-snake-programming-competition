@@ -1,6 +1,6 @@
-#include "../cells.h"
-#include "../compute_game_logic.h"
-#include "../create_from_segments.h"
+#include "lib/cells.h"
+#include "lib/compute_game_logic.h"
+#include "lib/create_from_segments.h"
 #include <gtest/gtest.h>
 
 TEST(compute_game_logic, head_movement) {

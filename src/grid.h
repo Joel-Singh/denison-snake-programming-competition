@@ -5,7 +5,7 @@
 #pragma once
 
 #include "cell.h"
-#include "cells.h"
+#include "lib/cells.h"
 #include "pos.h"
 #include <iostream>
 #include <optional>

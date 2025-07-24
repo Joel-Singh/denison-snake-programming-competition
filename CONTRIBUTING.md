@@ -4,6 +4,8 @@
 
 This is a C++ project using the [SFML](https://www.sfml-dev.org/tutorials/3.0/) library for graphics and input; CMake for building; [GoogleTest](https://github.com/google/googletest) for testing; and [Doxygen](https://doxygen.nl/) for documentation.
 
+Code is split in two in the `src/` folder. Within `src/lib` are all the files students participating in the competition do not need to worry about. While the files in the root of `src/` are ones the students will worry about.
+
 ### The Main Program
 
 If you open `src/main.cpp`, you'll notice that it essentially manages the window, draws the graphics, and keeps state around the the `compute_game_logic` function. As you can guess, `compute_game_logic` does all the heavy lifting for deciding how snakes move, spawning fruits, etc.

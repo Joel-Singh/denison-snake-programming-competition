@@ -1,11 +1,11 @@
 #include "assert.h"
 #include "cell.h"
-#include "cells.h"
-#include "compute_game_logic.h"
-#include "create_from_segments.h"
-#include "draw_cells.h"
-#include "draw_text.h"
 #include "evil_bot.h"
+#include "lib/cells.h"
+#include "lib/compute_game_logic.h"
+#include "lib/create_from_segments.h"
+#include "lib/draw_cells.h"
+#include "lib/draw_text.h"
 #include "my_bot.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>

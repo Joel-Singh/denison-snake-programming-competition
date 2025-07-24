@@ -1,4 +1,4 @@
-#include "bot.h"
+#include "lib/bot.h"
 
 class MyBot : Bot {
 public:

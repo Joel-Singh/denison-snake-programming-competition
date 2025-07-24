@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cell.h"
-#include "cells.h"
+#include "lib/cells.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 

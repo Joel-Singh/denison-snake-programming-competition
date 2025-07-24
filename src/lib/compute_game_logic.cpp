@@ -1,6 +1,6 @@
-#include "compute_game_logic.h"
+#include "lib/compute_game_logic.h"
 #include "cell.h"
-#include "cells.h"
+#include "lib/cells.h"
 #include "pos.h"
 
 static void spawn_fruit(Cells &cells);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cell.h"
-#include "cells.h"
+#include "lib/cells.h"
 #include <SFML/Graphics.hpp>
 
 enum GameState { PLAYER_ONE_WON, PLAYER_TWO_WON, DRAW, ON_GOING };

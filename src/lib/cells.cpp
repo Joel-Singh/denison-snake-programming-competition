@@ -1,4 +1,4 @@
-#include "cells.h"
+#include "lib/cells.h"
 #include "cell.h"
 #include "pos.h"
 #include <cassert>

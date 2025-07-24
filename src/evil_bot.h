@@ -1,6 +1,6 @@
 #pragma once
 
-#include "bot.h"
+#include "lib/bot.h"
 
 class EvilBot : Bot {
 public:

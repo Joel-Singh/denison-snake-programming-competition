@@ -1,5 +1,5 @@
-#include "../create_from_segments.h"
-#include "../grid.h"
+#include "lib/create_from_segments.h"
+#include "grid.h"
 #include <gtest/gtest.h>
 
 TEST(Grid, get_methods) {
