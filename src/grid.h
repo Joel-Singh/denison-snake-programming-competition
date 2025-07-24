@@ -29,14 +29,19 @@ public:
   /// \endcond
   ///
 
-  /// Will throw an error if x and y are invalid
+  /// \brief Returns a \ref Cell at (x, y) or throws if x and y are invalid
+  ///
+  /// x is valid inclusively from 0 to Grid::get_height() -1 and y
+  /// is valid inclusively from 0 to Grid::get_width() -1.
   Cell get(int x, int y) const;
 
+  /// \brief Returns the height of the grid.
   int get_height() const;
 
+  /// \brief Returns the width of the grid.
   int get_width() const;
 
-  // Get the location of all fruits
+  /// \brief Returns all fruit as a std::vector<@ref Pos>
   std::vector<Pos> find_fruits() const;
 
   // Get the position of your head

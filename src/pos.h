@@ -4,7 +4,8 @@
 #include "stdexcept"
 #include <iostream>
 
-// Origin is bottom left.
+/// \brief @ref Pos represents a position on the @ref Grid; the origin is bottom
+/// left.
 class Pos {
 public:
   int x;
