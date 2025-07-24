@@ -13,6 +13,7 @@
 
 const int CELL_SIZE = 20; // Square grid
 const sf::Time GAME_TICK_TIME = sf::seconds(0.2);
+const sf::Color BACKGROUND_COLOR = sf::Color::Black;
 
 const Pos player_one_start = Pos(2, CELL_SIZE / 2);
 const Pos player_two_start = Pos(CELL_SIZE - 3, CELL_SIZE / 2);
@@ -59,7 +60,7 @@ int main() {
       }
     }
 
-    window.clear(sf::Color(46, 43, 41));
+    window.clear(BACKGROUND_COLOR);
 
     if (clock.getElapsedTime() > GAME_TICK_TIME && !is_game_over) {
       clock.restart();

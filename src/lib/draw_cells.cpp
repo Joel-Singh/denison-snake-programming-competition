@@ -13,6 +13,13 @@ float calculate_individual_cell_size(unsigned int win_height,
 sf::Vector2f calculate_centered_position(sf::Vector2u win_size,
                                          sf::Vector2f board_size);
 
+const sf::Color PLAYER_ONE_HEAD_COLOR = sf::Color(115, 45, 217);
+const sf::Color PLAYER_ONE_BODY_COLOR = sf::Color(149, 117, 205);
+const sf::Color PLAYER_TWO_HEAD_COLOR = sf::Color(232, 202, 0);
+const sf::Color PLAYER_TWO_BODY_COLOR = sf::Color(255, 225, 26);
+const sf::Color FRUIT_COLOR = sf::Color(255, 29, 35);
+const sf::Color EMPTY_COLOR = sf::Color(46, 43, 41);
+
 // Draws a centered grid
 void draw_cells(sf::RenderWindow &window, const Cells &cells) {
 
@@ -42,15 +49,17 @@ void draw_cells(sf::RenderWindow &window, const Cells &cells) {
 
 sf::Color celltype_to_color(Cell cell_type) {
   if (cell_type == Cell::FRUIT) {
-    return sf::Color::Red;
+    return FRUIT_COLOR;
   } else if (cell_type == Cell::EMPTY) {
-    return sf::Color::Black;
-  } else if (cell_type == Cell::PLAYER_ONE ||
-             cell_type == Cell::PLAYER_ONE_HEAD) {
-    return sf::Color(203, 157, 240);
-  } else if (cell_type == Cell::PLAYER_TWO ||
-             cell_type == Cell::PLAYER_TWO_HEAD) {
-    return sf::Color(255, 249, 191);
+    return EMPTY_COLOR;
+  } else if (cell_type == Cell::PLAYER_ONE_HEAD) {
+    return PLAYER_ONE_HEAD_COLOR;
+  } else if (cell_type == Cell::PLAYER_ONE) {
+    return PLAYER_ONE_BODY_COLOR;
+  } else if (cell_type == Cell::PLAYER_TWO_HEAD) {
+    return PLAYER_TWO_HEAD_COLOR;
+  } else if (cell_type == Cell::PLAYER_TWO) {
+    return PLAYER_TWO_BODY_COLOR;
   }
 
   throw std::logic_error("Missing Cell branch in celltype_to_color!");
