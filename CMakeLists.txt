@@ -27,7 +27,7 @@ add_executable(
   main
   src/main.cpp
 
-  src/space.cpp
+  src/pos.cpp
   src/grid.cpp
   src/cells.cpp
   src/compute_game_logic.cpp
@@ -47,7 +47,7 @@ add_executable(
   main_tests
   src/tests/main_tests.cpp
 
-  src/space.cpp
+  src/pos.cpp
   src/grid.cpp
   src/compute_game_logic.cpp
   src/create_from_segments.cpp
