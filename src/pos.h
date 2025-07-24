@@ -12,6 +12,18 @@ public:
   int y;
   Pos(int x, int y);
   bool operator==(const Pos &other) const;
+
+  /// \brief Helper method to give the position if it went in a certain
+  /// direction.
+  ///
+  /// For example:
+  /// ```
+  /// Pos my_pos(3, 4);
+  /// Direction up = Direction::UP;
+  ///
+  /// // Will print "Pos(3, 5)"
+  /// std::cout << my_pos.with_dir(up) << std::endl;
+  /// ```
   Pos with_dir(const Direction dir) const;
 };
 
