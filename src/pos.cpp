@@ -9,6 +9,8 @@ bool Pos::operator==(const Pos &other) const {
   return other.x == x && other.y == y;
 }
 
+/// \brief Returns a position if it moved in the given direction. Note,
+/// Pos::with_dir does NOT mutate the position this is called on.
 Pos Pos::with_dir(const Direction dir) const {
   if (dir == Direction::UP) {
     return Pos(x, y + 1);
