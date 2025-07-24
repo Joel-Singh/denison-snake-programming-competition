@@ -1,8 +1,14 @@
+///
+/// \file cells.h
+///
 #pragma once
 
 #include "space.h"
 #include <vector>
 
+/// \enum Cell
+/// \brief Represents every cell on a [Grid](\ref Grid). \ref Cell is returned
+/// by [Grid](\ref Grid)::get.
 enum Cell {
   EMPTY,
   FRUIT,
