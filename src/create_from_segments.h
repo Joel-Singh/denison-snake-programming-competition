@@ -1,3 +1,4 @@
+#include "cell.h"
 #include "cells.h"
 
 Cells create_from_segments(unsigned int cell_size,

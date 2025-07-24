@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include "cell.h"
 #include "cells.h"
 #include "space.h"
 #include <iostream>

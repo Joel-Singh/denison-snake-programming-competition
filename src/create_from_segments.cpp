@@ -1,3 +1,4 @@
+#include "cell.h"
 #include "cells.h"
 
 // Passed in segments must be within cell_size x cell_size

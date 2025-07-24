@@ -1,4 +1,5 @@
 #include "cells.h"
+#include "cell.h"
 #include "space.h"
 #include <cassert>
 #include <iostream>

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 
+#include "cell.h"
 #include "cells.h"
 
 sf::Color celltype_to_color(Cell cell_type);

@@ -1,4 +1,5 @@
 #include "compute_game_logic.h"
+#include "cell.h"
 #include "cells.h"
 #include "space.h"
 

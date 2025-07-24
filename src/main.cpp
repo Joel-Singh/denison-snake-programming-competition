@@ -1,4 +1,5 @@
 #include "assert.h"
+#include "cell.h"
 #include "cells.h"
 #include "compute_game_logic.h"
 #include "create_from_segments.h"
