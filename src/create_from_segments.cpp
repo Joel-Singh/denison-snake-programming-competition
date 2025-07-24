@@ -1,7 +1,8 @@
 #include "cell.h"
 #include "cells.h"
 
-// Passed in segments must be within cell_size x cell_size
+// Passed in segments must be within cell_size x cell_size and ordered with the
+// first element being the head.
 Cells create_from_segments(unsigned int cell_size,
                            std::vector<Pos> one_segments,
                            std::vector<Pos> two_segments) {
