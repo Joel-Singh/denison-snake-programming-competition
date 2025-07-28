@@ -54,6 +54,7 @@ add_executable(
   src/lib/compute_game_logic.cpp
   src/lib/create_from_segments.cpp
   src/lib/cells.cpp
+  ./src/lib/get_player_two_from_args.cpp
 )
 target_link_libraries(
   main_tests
