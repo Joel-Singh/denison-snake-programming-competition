@@ -46,7 +46,6 @@ int main() {
   Input input;
 
   GameState game_state = GameState::ON_GOING;
-  bool is_game_over = false;
   unsigned int game_ticks = 0;
 
   MyBot player_one;
@@ -72,35 +71,25 @@ int main() {
       update_input(event, input);
     }
 
-    if (clock.getElapsedTime() > GAME_TICK_TIME && !is_game_over) {
-      clock.restart();
-
-      game_state =
-          run_two_bot_game(cells, player_one_segments, player_two_segments,
-                           player_one, player_two, game_ticks);
-
-      if (game_state != GameState::ON_GOING) {
-        is_game_over = true;
-      }
-
-      game_ticks++;
-    }
-
     window.clear(BACKGROUND_COLOR);
 
-    if (is_game_over) {
-      std::cout << "game_state: " << (game_state) << std::endl;
+    if (game_state == GameState::ON_GOING) {
+      if (clock.getElapsedTime() > GAME_TICK_TIME) {
+        clock.restart();
+
+        game_state =
+            run_two_bot_game(cells, player_one_segments, player_two_segments,
+                             player_one, player_two, game_ticks);
+
+        game_ticks++;
+      }
+    } else {
       if (game_state == GameState::PLAYER_ONE_WON) {
         draw_text("Player 1 Won!", window, font);
       } else if (game_state == GameState::PLAYER_TWO_WON) {
         draw_text("Player 2 Won!", window, font);
       } else if (game_state == GameState::DRAW) {
         draw_text("Draw!", window, font);
-      } else if (game_state == GameState::ON_GOING) {
-        throw std::logic_error(
-            "`is_game_over` is true but game_state is `ON_GOING`");
-      } else {
-        throw std::logic_error("Missing branch for GameState");
       }
     }
 
