@@ -6,6 +6,7 @@
 #include "lib/create_from_segments.h"
 #include "lib/draw_cells.h"
 #include "lib/draw_text.h"
+#include "lib/get_player_from_args.h"
 #include "lib/input.h"
 #include "my_bot.h"
 #include <SFML/Graphics.hpp>
@@ -21,10 +22,10 @@ const Pos player_two_start = Pos(CELL_SIZE - 3, CELL_SIZE / 2);
 
 GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
                            std::vector<Pos> &player_two_segments,
-                           const Bot &player_one, const Bot &player_two,
+                           const Bot *player_one, const Bot *player_two,
                            const unsigned int game_ticks);
 
-int main() {
+int main(int argc, char *argv[]) {
   std::srand(time(NULL)); // Seed rng with current time
 
   sf::Font font;
@@ -48,10 +49,24 @@ int main() {
   GameState game_state = GameState::ON_GOING;
   unsigned int game_ticks = 0;
 
-  MyBot player_one;
+  Bot *player_one = new MyBot();
   std::vector<Pos> player_one_segments = {player_one_start};
 
-  EvilBot player_two;
+  PlayerType player_two_type;
+  try {
+    player_two_type = get_player_from_args(argc, argv);
+  } catch (std::invalid_argument &e) {
+    std::cerr << e.what() << std::endl;
+    return 1;
+  }
+
+  Bot *player_two = nullptr;
+  if (player_two_type == PlayerType::MyBot) {
+    player_two = new MyBot();
+  } else {
+    player_two = new EvilBot();
+  }
+
   std::vector<Pos> player_two_segments = {player_two_start};
 
   Cells cells =
@@ -100,14 +115,17 @@ int main() {
 
 GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
                            std::vector<Pos> &player_two_segments,
-                           const Bot &player_one, const Bot &player_two,
+                           const Bot *player_one, const Bot *player_two,
                            const unsigned int game_ticks) {
+
+  assert(player_one != nullptr);
+  assert(player_two != nullptr);
 
   Grid player_one_grid(true, cells, player_one_segments, player_two_segments);
   Grid player_two_grid(false, cells, player_one_segments, player_two_segments);
 
-  Direction player_one_dir = player_one.think(player_one_grid);
-  Direction player_two_dir = player_two.think(player_two_grid);
+  Direction player_one_dir = player_one->think(player_one_grid);
+  Direction player_two_dir = player_two->think(player_two_grid);
 
   GameState game_state =
       compute_game_logic(cells, game_ticks, player_one_dir, player_two_dir,
