@@ -10,9 +10,8 @@ static GameState check_for_game_end(const Cells &cells,
                                     const Direction one_dir,
                                     const Direction two_dir);
 
-static void compute_new_snake_positions(std::vector<Pos> &segments,
-                                        Cell player_cell, Direction dir,
-                                        bool is_eating_fruit);
+static void compute_new_segment_positions(std::vector<Pos> &segments,
+                                          Direction dir, bool is_eating_fruit);
 
 static void clear_cells_at(const std::vector<Pos> &positions, Cells &cells);
 
@@ -46,10 +45,10 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
   clear_cells_at(player_one_segments, cells);
   clear_cells_at(player_two_segments, cells);
 
-  compute_new_snake_positions(player_one_segments, Cell::PLAYER_ONE,
-                              player_one_dir, player_one_eating_fruit);
-  compute_new_snake_positions(player_two_segments, Cell::PLAYER_TWO,
-                              player_two_dir, player_two_eating_fruit);
+  compute_new_segment_positions(player_one_segments, player_one_dir,
+                                player_one_eating_fruit);
+  compute_new_segment_positions(player_two_segments, player_two_dir,
+                                player_two_eating_fruit);
 
   update_cells_with_segments(player_one_segments, true, cells);
   update_cells_with_segments(player_two_segments, false, cells);
@@ -120,12 +119,11 @@ static GameState check_for_game_end(const Cells &cells,
   }
 }
 
-// Precondition: New snake positions will not result in a game end
-static void compute_new_snake_positions(std::vector<Pos> &segments,
-                                        Cell player_cell, Direction dir,
-                                        bool is_eating_fruit) {
+/// Precondition: New snake positions will not result in a game end
+/// Mutates `segments` to new position according to `dir` and `is_eating_fruit`
+static void compute_new_segment_positions(std::vector<Pos> &segments,
+                                          Direction dir, bool is_eating_fruit) {
   assert(segments.size() > 0); // There exists at least a head
-  assert(player_cell == Cell::PLAYER_ONE || player_cell == Cell::PLAYER_TWO);
 
   Pos prev = segments.at(0).with_dir(dir);
   for (int i = 0; i < segments.size(); i++) {
