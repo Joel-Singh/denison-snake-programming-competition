@@ -6,6 +6,7 @@
 #include "lib/create_from_segments.h"
 #include "lib/draw_cells.h"
 #include "lib/draw_text.h"
+#include "lib/input.h"
 #include "my_bot.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -42,6 +43,7 @@ int main() {
 
   // Create all of our game data
   sf::Clock clock;
+  Input input;
 
   GameState game_state = GameState::ON_GOING;
   bool is_game_over = false;
@@ -66,6 +68,8 @@ int main() {
         sf::FloatRect visibleArea({0.f, 0.f}, sf::Vector2f(resized->size));
         window.setView(sf::View(visibleArea));
       }
+
+      update_input(event, input);
     }
 
     if (clock.getElapsedTime() > GAME_TICK_TIME && !is_game_over) {
@@ -118,6 +122,23 @@ GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
 
   GameState game_state =
       compute_game_logic(cells, game_ticks, player_one_dir, player_two_dir,
+                         player_one_segments, player_two_segments);
+
+  return game_state;
+}
+
+GameState run_game_with_manual(Cells &cells,
+                               std::vector<Pos> &player_one_segments,
+                               std::vector<Pos> &player_two_segments,
+                               const Bot &player_one,
+                               const Direction manual_player_dir,
+                               unsigned int game_ticks) {
+  Grid player_one_grid(true, cells, player_one_segments, player_two_segments);
+
+  Direction player_one_dir = player_one.think(player_one_grid);
+
+  GameState game_state =
+      compute_game_logic(cells, game_ticks, player_one_dir, manual_player_dir,
                          player_one_segments, player_two_segments);
 
   return game_state;

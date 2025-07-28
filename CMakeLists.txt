@@ -37,6 +37,7 @@ add_executable(
   src/evil_bot.cpp
   src/lib/draw_cells.cpp
   src/lib/draw_text.cpp
+  src/lib/input.cpp
   src/lib/create_from_segments.cpp
 )
 
