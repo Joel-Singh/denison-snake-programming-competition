@@ -30,6 +30,8 @@ int main() {
         << std::endl;
 
     std::cerr << "Perhaps the working directory is incorrect?" << std::endl;
+
+    return 1;
   }
 
   unsigned int game_ticks = 0;
