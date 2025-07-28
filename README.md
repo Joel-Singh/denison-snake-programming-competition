@@ -42,6 +42,8 @@ When running this project, there are three options for testing:
 To choose one, pass in `--evil-bot`, `--yourself`, or `--my-bot` as an
 option to the compiled binary.
 
+Evil bot will be chosen by default if no flags are passed.
+
 # Compilation Instructions
 
 For context, this project uses `cmake` and was created from the [sfml
