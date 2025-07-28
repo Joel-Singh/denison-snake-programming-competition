@@ -18,10 +18,13 @@ const sf::Color BACKGROUND_COLOR = sf::Color::Black;
 const Pos player_one_start = Pos(2, CELL_SIZE / 2);
 const Pos player_two_start = Pos(CELL_SIZE - 3, CELL_SIZE / 2);
 
+GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
+                           std::vector<Pos> &player_two_segments,
+                           const Bot &player_one, const Bot &player_two,
+                           const unsigned int game_ticks);
+
 int main() {
   std::srand(time(NULL)); // Seed rng with current time
-
-  sf::Clock clock;
 
   sf::Font font;
   if (!font.openFromFile("./assets/OpenSans-Regular.ttf")) {
@@ -34,21 +37,24 @@ int main() {
     return 1;
   }
 
-  unsigned int game_ticks = 0;
-  bool is_game_over = false;
-  GameState game_state;
+  sf::RenderWindow window(sf::VideoMode({200, 200}), "Denison Snake!");
+  window.setFramerateLimit(60);
 
+  // Create all of our game data
+  sf::Clock clock;
+
+  GameState game_state = GameState::ON_GOING;
+  bool is_game_over = false;
+  unsigned int game_ticks = 0;
+
+  MyBot player_one;
   std::vector<Pos> player_one_segments = {player_one_start};
+
+  EvilBot player_two;
   std::vector<Pos> player_two_segments = {player_two_start};
 
   Cells cells =
       create_from_segments(CELL_SIZE, player_one_segments, player_two_segments);
-
-  MyBot player_one;
-  EvilBot player_two;
-
-  sf::RenderWindow window(sf::VideoMode({200, 200}), "Denison Snake!");
-  window.setFramerateLimit(60);
 
   while (window.isOpen()) {
     while (const std::optional event = window.pollEvent()) {
@@ -62,22 +68,12 @@ int main() {
       }
     }
 
-    window.clear(BACKGROUND_COLOR);
-
     if (clock.getElapsedTime() > GAME_TICK_TIME && !is_game_over) {
       clock.restart();
 
-      Grid player_one_grid(true, cells, player_one_segments,
-                           player_two_segments);
-      Grid player_two_grid(false, cells, player_one_segments,
-                           player_two_segments);
-
-      Direction player_one_dir = player_one.think(player_one_grid);
-      Direction player_two_dir = player_two.think(player_two_grid);
-
       game_state =
-          compute_game_logic(cells, game_ticks, player_one_dir, player_two_dir,
-                             player_one_segments, player_two_segments);
+          run_two_bot_game(cells, player_one_segments, player_two_segments,
+                           player_one, player_two, game_ticks);
 
       if (game_state != GameState::ON_GOING) {
         is_game_over = true;
@@ -86,7 +82,10 @@ int main() {
       game_ticks++;
     }
 
+    window.clear(BACKGROUND_COLOR);
+
     if (is_game_over) {
+      std::cout << "game_state: " << (game_state) << std::endl;
       if (game_state == GameState::PLAYER_ONE_WON) {
         draw_text("Player 1 Won!", window, font);
       } else if (game_state == GameState::PLAYER_TWO_WON) {
@@ -102,7 +101,24 @@ int main() {
     }
 
     draw_cells(window, cells);
-
     window.display();
   }
+}
+
+GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
+                           std::vector<Pos> &player_two_segments,
+                           const Bot &player_one, const Bot &player_two,
+                           const unsigned int game_ticks) {
+
+  Grid player_one_grid(true, cells, player_one_segments, player_two_segments);
+  Grid player_two_grid(false, cells, player_one_segments, player_two_segments);
+
+  Direction player_one_dir = player_one.think(player_one_grid);
+  Direction player_two_dir = player_two.think(player_two_grid);
+
+  GameState game_state =
+      compute_game_logic(cells, game_ticks, player_one_dir, player_two_dir,
+                         player_one_segments, player_two_segments);
+
+  return game_state;
 }

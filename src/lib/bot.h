@@ -11,5 +11,5 @@ public:
   Bot() {}
   /// \brief The function that determines how a bot moves by looking at the
   /// @ref Grid
-  virtual Direction think(const Grid &grid) = 0;
+  virtual Direction think(const Grid &grid) const = 0;
 };

@@ -1,6 +1,8 @@
+#pragma once
+
 #include "lib/bot.h"
 
-class MyBot : Bot {
+class MyBot : public Bot {
 public:
-  Direction think(const Grid &grid);
+  Direction think(const Grid &grid) const;
 };

@@ -13,7 +13,7 @@ int get_distance(Pos a, Pos b);
 /// Secondly, EvilBot never moves towards fruit diagonally, only cardinally. And
 /// many more. This initial code is meant to give an example of how to use \ref
 /// Grid and write a bot.
-Direction EvilBot::think(const Grid &grid) {
+Direction EvilBot::think(const Grid &grid) const {
   std::vector<Pos> fruits = grid.find_fruits();
 
   // if no fruits, just go in random direction

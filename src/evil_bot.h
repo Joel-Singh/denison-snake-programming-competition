@@ -2,7 +2,7 @@
 
 #include "lib/bot.h"
 
-class EvilBot : Bot {
+class EvilBot : public Bot {
 public:
-  Direction think(const Grid &grid);
+  Direction think(const Grid &grid) const;
 };

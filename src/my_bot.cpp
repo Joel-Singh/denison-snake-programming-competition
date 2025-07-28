@@ -7,7 +7,7 @@ bool is_safe_to_move(Pos pos, const Grid &grid);
 /// \brief The function you'll implement for your bot! The default code here
 /// simply has `MyBot` move randomly, only going into squares that are empty or
 /// have fruit.
-Direction MyBot::think(const Grid &grid) {
+Direction MyBot::think(const Grid &grid) const {
   Pos head = grid.find_self_head();
 
   Direction random_direction;
