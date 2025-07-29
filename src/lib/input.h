@@ -9,6 +9,7 @@ struct Input {
   bool was_down_pressed = false;
   bool was_left_pressed = false;
   bool was_right_pressed = false;
+  bool any_pressed() const; /// Returns true if any pressed bools are true
 };
 
 /// Update an input from SFML events. `update_input` only ever sets an input to

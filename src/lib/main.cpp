@@ -25,6 +25,11 @@ GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
                            const Bot *player_one, const Bot *player_two,
                            const unsigned int game_ticks);
 
+GameState run_manual_game(Cells &cells, std::vector<Pos> &player_one_segments,
+                          std::vector<Pos> &player_two_segments,
+                          const Bot *player_one, Input &input,
+                          unsigned int game_ticks);
+
 int main(int argc, char *argv[]) {
   std::srand(time(NULL)); // Seed rng with current time
 
@@ -63,9 +68,10 @@ int main(int argc, char *argv[]) {
   Bot *player_two = nullptr;
   if (player_two_type == PlayerType::MyBot) {
     player_two = new MyBot();
-  } else {
+  } else if (player_two_type == PlayerType::EvilBot) {
     player_two = new EvilBot();
   }
+  // player_two can potentially be null, but if it is, it won't be used.
 
   std::vector<Pos> player_two_segments = {player_two_start};
 
@@ -89,14 +95,22 @@ int main(int argc, char *argv[]) {
     window.clear(BACKGROUND_COLOR);
 
     if (game_state == GameState::ON_GOING) {
-      if (clock.getElapsedTime() > GAME_TICK_TIME) {
-        clock.restart();
+      if (player_two_type != PlayerType::Manual) {
+        if (clock.getElapsedTime() > GAME_TICK_TIME) {
+          clock.restart();
 
-        game_state =
-            run_two_bot_game(cells, player_one_segments, player_two_segments,
-                             player_one, player_two, game_ticks);
+          game_state =
+              run_two_bot_game(cells, player_one_segments, player_two_segments,
+                               player_one, player_two, game_ticks);
 
-        game_ticks++;
+          game_ticks++;
+        }
+      } else {
+        if (input.any_pressed()) {
+          run_manual_game(cells, player_one_segments, player_two_segments,
+                          player_one, input, game_ticks);
+          game_ticks++;
+        }
       }
     } else {
       if (game_state == GameState::PLAYER_ONE_WON) {
@@ -134,15 +148,36 @@ GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
   return game_state;
 }
 
-GameState run_game_with_manual(Cells &cells,
-                               std::vector<Pos> &player_one_segments,
-                               std::vector<Pos> &player_two_segments,
-                               const Bot &player_one,
-                               const Direction manual_player_dir,
-                               unsigned int game_ticks) {
+/// Runs a game with one bot and a manual player, should only be called when
+/// there has been an input pressed
+GameState run_manual_game(Cells &cells, std::vector<Pos> &player_one_segments,
+                          std::vector<Pos> &player_two_segments,
+                          const Bot *player_one, Input &input,
+                          unsigned int game_ticks) {
+  assert(player_one != nullptr);
+  assert(input.any_pressed() == true);
+
+  Direction manual_player_dir;
+  if (input.was_up_pressed) {
+    manual_player_dir = Direction::UP;
+    input.was_up_pressed = false;
+
+  } else if (input.was_down_pressed) {
+    manual_player_dir = Direction::DOWN;
+    input.was_down_pressed = false;
+
+  } else if (input.was_left_pressed) {
+    manual_player_dir = Direction::LEFT;
+    input.was_left_pressed = false;
+
+  } else if (input.was_right_pressed) {
+    manual_player_dir = Direction::RIGHT;
+    input.was_right_pressed = false;
+  }
+
   Grid player_one_grid(true, cells, player_one_segments, player_two_segments);
 
-  Direction player_one_dir = player_one.think(player_one_grid);
+  Direction player_one_dir = player_one->think(player_one_grid);
 
   GameState game_state =
       compute_game_logic(cells, game_ticks, player_one_dir, manual_player_dir,

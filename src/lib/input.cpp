@@ -1,5 +1,10 @@
 #include "lib/input.h"
 
+bool Input::any_pressed() const {
+  return was_up_pressed || was_down_pressed || was_left_pressed ||
+         was_right_pressed;
+}
+
 void update_input(const std::optional<sf::Event> &event, Input &input) {
   // see the sfml tutorial on key preessed and key released events:
   // https://www.sfml-dev.org/tutorials/3.0/window/events/#the-keypressed-and-keyreleased-events
