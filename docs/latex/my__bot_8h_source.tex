@@ -2,11 +2,13 @@
 \hypertarget{my__bot_8h_source}{}\label{my__bot_8h_source}\index{src/my\_bot.h@{src/my\_bot.h}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}lib/bot.h"{}}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMyBot}{MyBot}}\ :\ Bot\ \{}
-\DoxyCodeLine{00004\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00005\ \ \ \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}\ \mbox{\hyperlink{classMyBot_a151821cb333df5504ff72cc8e0df791b}{think}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGrid}{Grid}}\ \&grid);}
-\DoxyCodeLine{00006\ \};}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}lib/bot.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMyBot}{MyBot}}\ :\ \textcolor{keyword}{public}\ Bot\ \{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00007\ \ \ \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}\ \mbox{\hyperlink{classMyBot_a8e87b3b7791d6e4d41db764c8e453347}{think}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGrid}{Grid}}\ \&grid)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00008\ \};}
 
 \end{DoxyCode}
