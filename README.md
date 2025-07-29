@@ -40,7 +40,7 @@ When running this project, there are three options for testing:
 - MyBot vs MyBot
 
 To choose one, pass in `--evil-bot`, `--yourself`, or `--my-bot` as an
-option to the compiled binary.
+option to the compiled binary (e.g `./build/bin/main --yourself`).
 
 Evil bot will be chosen by default if no flags are passed.
 
