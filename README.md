@@ -49,23 +49,59 @@ Evil bot will be chosen by default if no flags are passed.
 For context, this project uses `cmake` and was created from the [sfml
 template](https://github.com/SFML/cmake-sfml-project)
 
-## Windows
-1. Install [cmake](https://cmake.org/download/)
+## Windows and Visual Studio
+In order to build and run this repository, you'll need to install cmake, our
+build system, and a C++ compiler. If you're on Windows and use a different
+IDE, feel free to reach out to Joel for help getting set up!
 
-2. Clone the repository
+1. Install [CMake](https://cmake.org/download)
 
-3. Configuring and building
+you'll specifically want to download and run the Windows x64 installer, `cmake-4.1.0-rc4-windows-x86_64.msi`.
 
-Instructions for integrating directly with VSCode are provided further
-down. If you wish to run the project directly on the command line:
-```
-# Make sure these are run in the root of the project
-cmake -B build # Only needs to be run once
-cmake --build build
-./build/bin/main
-```
+2. Install [Microsoft C++ compiler](https://code.visualstudio.com/docs/cpp/config-msvc) (MSVC)
 
-<!-- TODO: Create instructions for Windows -->
+You can install MSVC from the vscode installer, here are the instructions from the above link:
+> open the Visual Studio Installer from the Windows Start menu and verify that
+> the C++ workload is checked. If it's not installed, then check the box and
+> select the Modify button in the installer.
+
+
+3. Install the C++ and CMake VSCode extensions:
+
+    - [C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+
+    - [CMake extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
+
+4. Clone the repository
+
+Also, when running the rest of these instructions, switch to the
+`writing-window-and-vscode-instructions` branch (`git switch
+writing-window-and-vscode-instructions`), as it contains extra files that
+configure VS Code.
+
+5. Configuring Intellisense:
+
+note: the following is taken from an [official vscode guide.](https://code.visualstudio.com/docs/cpp/cmake-linux#_configure-hello-world)
+
+Run each of the following commands, **after opening the project (file > open folder) in VS Code**, with the command pallete (Ctrl + Shift + P):
+
+`CMake: Select a Kit`: scans your computer for compilers and lets you select one for use. Simply click MSVC.
+
+`CMake: Select variant`: lets you select the kind of build to do. Simply click Debug.
+
+`CMake: Configure`: Takes what you selected before, and generates the necessary files in build/.
+
+You only need to run the above once.
+
+6. Running the project
+
+You can now use the "Run and Debug" section on the left to run your code :-).
+Simply choose what to run `MyBot` against.
+
+![What Run and Debug looks like](./README-assets/run-and-debug-in-vs-code.png)
+
+p.s you have to use the "Run and Debug" section on the left, trying to run
+`MyBot.cpp` directly with the run button in the top right won't work.
 
 ## MacOS
 
@@ -93,21 +129,14 @@ sudo apt install \
 ```
 
 3. Configuring and building
-
-Instructions for integrating directly with VSCode are provided further
-down. If you wish to run the project directly on the command line:
 ```
 # Make sure these are run in the root of the project
-cmake -B build
+cmake -B build # Only needs to run once
 cmake --build build
 ./build/bin/main
 ```
 
-## Integrating with VSCode
-
-<!-- TODO : Add instructions for how to set up passing in the relevant flags (`--evil-bot`, `--yourself`, or `--my-bot`) -->
-
-Use the [cmake extension](https://code.visualstudio.com/docs/cpp/cmake-linux)
+Remember, you can pass flags to `main` to control what `MyBot` goes up against.
 
 # Additional Rules
 
