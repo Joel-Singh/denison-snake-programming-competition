@@ -50,6 +50,20 @@ For context, this project uses `cmake` and was created from the [sfml
 template](https://github.com/SFML/cmake-sfml-project)
 
 ## Windows
+1. Install [cmake](https://cmake.org/download/)
+
+2. Clone the repository
+
+3. Configuring and building
+
+Instructions for integrating directly with VSCode are provided further
+down. If you wish to run the project directly on the command line:
+```
+# Make sure these are run in the root of the project
+cmake -B build # Only needs to be run once
+cmake --build build
+./build/bin/main
+```
 
 <!-- TODO: Create instructions for Windows -->
 
