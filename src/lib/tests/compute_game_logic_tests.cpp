@@ -210,6 +210,23 @@ TEST(compute_game_logic, game_ending_logic_both_going_into_the_same_cell) {
   EXPECT_EQ(game_state, GameState::DRAW);
 }
 
+TEST(compute_game_logic, going_directly_into_each_other_results_in_draw) {
+  std::vector<Pos> one_segments = {
+      Pos(0, 0),
+  };
+
+  std::vector<Pos> two_segments = {
+      Pos(1, 0),
+  };
+
+  Cells cells = create_from_segments(10, one_segments, two_segments);
+
+  GameState game_state = compute_game_logic(
+      cells, 0, Direction::RIGHT, Direction::LEFT, one_segments, two_segments);
+
+  EXPECT_EQ(game_state, GameState::DRAW);
+}
+
 TEST(compute_game_logic, spawns_fruit_every_ten_ticks) {
   // Seed random explictly to make test reproducible
   std::srand(0);

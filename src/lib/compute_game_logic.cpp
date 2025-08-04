@@ -69,11 +69,17 @@ static GameState check_for_game_end(const Cells &cells,
                                     const std::vector<Pos> &two_segments,
                                     const Direction one_dir,
                                     const Direction two_dir) {
-  Pos one_head_moved = one_segments.front().with_dir(one_dir);
-  Pos two_head_moved = two_segments.front().with_dir(two_dir);
+  Pos one_head = one_segments.front();
+  Pos two_head = two_segments.front();
 
-  // Heads moved into each other
-  if (one_head_moved == two_head_moved) {
+  Pos one_head_moved = one_head.with_dir(one_dir);
+  Pos two_head_moved = two_head.with_dir(two_dir);
+
+  bool heads_ran_into_eachother =
+      (one_head_moved == two_head) && (two_head_moved == one_head);
+  bool heads_moved_into_same_space = one_head_moved == two_head_moved;
+
+  if (heads_moved_into_same_space || heads_ran_into_eachother) {
     return GameState::DRAW;
   }
 
