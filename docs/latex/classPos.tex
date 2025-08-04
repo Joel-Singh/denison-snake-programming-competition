@@ -1,0 +1,53 @@
+\doxysection{Pos Class Reference}
+\hypertarget{classPos}{}\label{classPos}\index{Pos@{Pos}}
+
+
+\doxylink{classPos}{Pos} represents a position on the \doxylink{classGrid}{Grid}; the origin is bottom left.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPos_a2bc6640b2acd4c1bca662b96b9e78713}\label{classPos_a2bc6640b2acd4c1bca662b96b9e78713} 
+{\bfseries Pos} (int x, int y)
+\item 
+\Hypertarget{classPos_a8085f102e3af6e1937e2e30929f11f44}\label{classPos_a8085f102e3af6e1937e2e30929f11f44} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classPos}{Pos}} \&other) const
+\item 
+\mbox{\hyperlink{classPos}{Pos}} \mbox{\hyperlink{classPos_a56059a0c4a3530733b19e012f931a21a}{with\+\_\+dir}} (const \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} dir) const
+\begin{DoxyCompactList}\small\item\em Helper method to give the position if it went in a certain direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPos_a4bcafee8dc3800fb8c3792de54996496}\label{classPos_a4bcafee8dc3800fb8c3792de54996496} 
+int {\bfseries x}
+\item 
+\Hypertarget{classPos_a6b309684454df6615bce567e09437348}\label{classPos_a6b309684454df6615bce567e09437348} 
+int {\bfseries y}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPos_a56059a0c4a3530733b19e012f931a21a}\index{Pos@{Pos}!with\_dir@{with\_dir}}
+\index{with\_dir@{with\_dir}!Pos@{Pos}}
+\doxysubsubsection{\texorpdfstring{with\_dir()}{with\_dir()}}
+{\footnotesize\ttfamily \label{classPos_a56059a0c4a3530733b19e012f931a21a} 
+\mbox{\hyperlink{classPos}{Pos}} Pos\+::with\+\_\+dir (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}]{dir}{}\end{DoxyParamCaption}) const}
+
+Returns a position if it moved in the given direction. Note, \doxylink{classPos_a56059a0c4a3530733b19e012f931a21a}{Pos\+::with\+\_\+dir} does NOT mutate the position this is called on.
+
+For example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Pos\ my\_pos(3,\ 4);}
+\DoxyCodeLine{\mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}\ up\ =\ Direction::UP;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Will\ print\ "{}Pos(3,\ 5)"{}}}
+\DoxyCodeLine{std::cout\ <<\ my\_pos.with\_dir(up)\ <<\ std::endl;}
+
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/pos.\+h\item 
+src/pos.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,23 @@
+\doxysection{pos.\+h}
+\hypertarget{pos_8h_source}{}\label{pos_8h_source}\index{src/pos.h@{src/pos.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{direction_8h}{direction.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}stdexcept"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }Pos\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{int}\ y;}
+\DoxyCodeLine{00013\ \ \ Pos(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ Pos\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00027\ \ \ Pos\ \mbox{\hyperlink{classPos_a56059a0c4a3530733b19e012f931a21a}{with\_dir}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{direction_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}\ dir)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPos}{Pos}}\ \&pos);}
+
+\end{DoxyCode}
