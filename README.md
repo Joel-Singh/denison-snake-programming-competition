@@ -96,6 +96,7 @@ Use the [cmake extension](https://code.visualstudio.com/docs/cpp/cmake-linux)
 # Additional Rules
 
 - You may work alone or in a group (no size limit)
+- You are allowed to submit multiple bots, up to 3, as long as they are significantly different from one another.
 
 # FAQ
 
