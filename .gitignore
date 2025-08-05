@@ -3,6 +3,9 @@ out
 .cache
 .idea
 .vs
-.vscode
+.vscode/* 
+!.vscode/launch.json
+!.vscode/c_cpp_properties.json
+compile_commands.json
 .direnv
 .ccls-cache
