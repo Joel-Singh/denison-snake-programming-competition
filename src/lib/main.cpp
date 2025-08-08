@@ -107,8 +107,9 @@ int main(int argc, char *argv[]) {
         }
       } else {
         if (input.any_pressed()) {
-          run_manual_game(cells, player_one_segments, player_two_segments,
-                          player_one, input, game_ticks);
+          game_state =
+              run_manual_game(cells, player_one_segments, player_two_segments,
+                              player_one, input, game_ticks);
           game_ticks++;
         }
       }
