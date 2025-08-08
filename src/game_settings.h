@@ -1,0 +1,4 @@
+/// \brief The final tick that the game runs on. Will determine a winner (or
+/// draw) at the end of this tick. Grid::get_current_tick will only ever be as
+/// high as FINAL_TICK
+const unsigned int FINAL_TICK = 100;

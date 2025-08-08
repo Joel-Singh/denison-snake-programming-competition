@@ -1,3 +1,4 @@
+#include "game_settings.h"
 #include "lib/cells.h"
 #include "lib/compute_game_logic.h"
 #include "lib/create_from_segments.h"
@@ -260,4 +261,41 @@ TEST(compute_game_logic, spawns_fruit_every_ten_ticks) {
   // Make sure fruit hasn't overwritten the heads
   EXPECT_EQ(cells.get(0, 1), Cell::PLAYER_ONE_HEAD);
   EXPECT_EQ(cells.get(0, 2), Cell::PLAYER_TWO_HEAD);
+}
+
+TEST(compute_game_logic, ends_game_in_draw_after_time_limit) {
+  std::vector<Pos> one_segments = {
+      Pos(0, 0),
+  };
+
+  std::vector<Pos> two_segments = {
+      Pos(1, 0),
+  };
+
+  Cells cells = create_from_segments(10, one_segments, two_segments);
+
+  GameState game_state =
+      compute_game_logic(cells, FINAL_TICK, Direction::UP, Direction::UP,
+                         one_segments, two_segments);
+
+  EXPECT_EQ(game_state, GameState::DRAW);
+}
+
+TEST(compute_game_logic, ends_game_in_win_for_longer_after_time_limit) {
+  std::vector<Pos> one_segments = {
+      Pos(0, 1),
+      Pos(0, 0),
+  };
+
+  std::vector<Pos> two_segments = {
+      Pos(1, 0),
+  };
+
+  Cells cells = create_from_segments(10, one_segments, two_segments);
+
+  GameState game_state =
+      compute_game_logic(cells, FINAL_TICK, Direction::UP, Direction::UP,
+                         one_segments, two_segments);
+
+  EXPECT_EQ(game_state, GameState::PLAYER_ONE_WON);
 }

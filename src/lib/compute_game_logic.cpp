@@ -1,5 +1,6 @@
 #include "lib/compute_game_logic.h"
 #include "cell.h"
+#include "game_settings.h"
 #include "lib/cells.h"
 #include "pos.h"
 
@@ -52,6 +53,19 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
 
   update_cells_with_segments(player_one_segments, true, cells);
   update_cells_with_segments(player_two_segments, false, cells);
+
+  if (game_ticks == FINAL_TICK) {
+    int one_length = player_one_segments.size();
+    int two_length = player_two_segments.size();
+
+    if (one_length > two_length) {
+      return GameState::PLAYER_ONE_WON;
+    } else if (two_length > one_length) {
+      return GameState::PLAYER_TWO_WON;
+    } else {
+      return GameState::DRAW;
+    }
+  }
 
   // spawn_fruit happens last because we don't want to spawn a fruit
   // and then have it immediately eaten
