@@ -1,10 +1,10 @@
 #include "grid.h"
 #include "stdexcept"
 
-Grid::Grid(bool is_player_one, const Cells &cells,
+Grid::Grid(bool is_player_one, const int current_tick, const Cells &cells,
            const std::vector<Pos> &player_one_segments,
            const std::vector<Pos> &player_two_segments)
-    : cells(cells), is_player_one(is_player_one),
+    : is_player_one(is_player_one), current_tick(current_tick), cells(cells),
       player_one_segments(player_one_segments),
       player_two_segments(player_two_segments) {};
 
@@ -26,6 +26,8 @@ int Grid::get_height() const { return cells.height(); }
 
 // Assume that there is atleast one row and that all rows are the same size
 int Grid::get_width() const { return cells.width(); }
+
+int Grid::get_current_tick() const { return current_tick; }
 
 std::vector<Pos> Grid::find_fruits() const { return find(Cell::FRUIT); }
 
