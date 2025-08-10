@@ -5,12 +5,65 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "MyBot vs EvilBot",
+            "name": "(Windows) MyBot vs EvilBot",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/main.exe",
+            "presentation": {
+                "hidden": false,
+                "group": "Windows",
+                "order": 1
+            },
+            "preLaunchTask": "CMake: build",
+            "cwd": "${workspaceFolder}",
+            "args": [],
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+        },
+        {
+            "name": "(Windows) MyBot vs MyBot",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/main.exe",
+            "presentation": {
+                "hidden": false,
+                "group": "Windows",
+                "order": 1
+            },
+            "preLaunchTask": "CMake: build",
+            "cwd": "${workspaceFolder}",
+            "args": ["--my-bot"],
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+        },
+        {
+            "name": "(Windows) MyBot vs Yourself",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/main.exe",
+            "presentation": {
+                "hidden": false,
+                "group": "Windows",
+                "order": 1
+            },
+            "preLaunchTask": "CMake: build",
+            "cwd": "${workspaceFolder}",
+            "args": ["--yourself"],
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+        },
+        {
+            "name": "(Linux) MyBot vs EvilBot",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/main",
-            "windows": {
-                "program": "${workspaceFolder}/build/bin/Debug/main.exe",           
+            "presentation": {
+                "hidden": false,
+                "group": "Linux",
+                "order": 2
             },
             "preLaunchTask": "CMake: build",
             "args": [],
@@ -33,12 +86,14 @@
             ]
         },
         {
-            "name": "MyBot vs MyBot",
+            "name": "(Linux) MyBot vs MyBot",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/main",
-            "windows": {
-                "program": "${workspaceFolder}/build/bin/Debug/main.exe",           
+            "presentation": {
+                "hidden": false,
+                "group": "Linux",
+                "order": 2
             },
             "preLaunchTask": "CMake: build",
             "args": ["--my-bot"],
@@ -61,12 +116,14 @@
             ]
         },
         {
-            "name": "MyBot vs Yourself (WASD or arrows)",
+            "name": "(Linux) MyBot vs Yourself",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/main",
-            "windows": {
-                "program": "${workspaceFolder}/build/bin/Debug/main.exe",           
+            "presentation": {
+                "hidden": false,
+                "group": "Linux",
+                "order": 2
             },
             "preLaunchTask": "CMake: build",
             "args": ["--yourself"],
