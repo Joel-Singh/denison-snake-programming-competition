@@ -1,6 +1,7 @@
 #include "assert.h"
 #include "cell.h"
 #include "evil_bot.h"
+#include "game_settings.h"
 #include "lib/cells.h"
 #include "lib/compute_game_logic.h"
 #include "lib/create_from_segments.h"
@@ -13,7 +14,6 @@
 #include <iostream>
 #include <stdexcept>
 
-const int CELL_SIZE = 20; // Square grid
 const sf::Time GAME_TICK_TIME = sf::seconds(0.2);
 const sf::Color BACKGROUND_COLOR = sf::Color::Black;
 

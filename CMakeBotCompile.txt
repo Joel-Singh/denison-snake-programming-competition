@@ -1,0 +1,11 @@
+add_executable(
+  bot
+  src/bot_compile/main.cpp
+
+  src/pos.cpp
+  src/grid.cpp
+  src/lib/cells.cpp
+  src/lib/create_from_segments.cpp
+  src/bot_compile/compile_bot.cpp
+  src/direction.cpp
+)

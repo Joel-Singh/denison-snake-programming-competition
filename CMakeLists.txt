@@ -65,3 +65,5 @@ target_link_libraries(
 
 include(GoogleTest)
 gtest_discover_tests(main_tests)
+
+include("CMakeBotCompile.txt")
