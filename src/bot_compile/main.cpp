@@ -13,9 +13,12 @@
 /// separated by a newline:
 ///
 /// a bool indicating if the bot is player one, "true"
-/// or "false". the current tick as an integer The size of each row on the board
+/// or "false".
 ///
-/// All the cells from top to bottom separated by spaces
+/// the current tick as an intege
+///
+/// The size of each row on the board and all the cells from top to bottom
+/// separated by spaces in one line.
 ///
 /// Player one segments as numbers separated by spaces. The first pair of
 /// numbers is the head. There must be an even count of numbers.

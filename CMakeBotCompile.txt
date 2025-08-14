@@ -21,6 +21,7 @@ add_executable(
   src/direction.cpp
   src/bot_compile/compile_bot.cpp
   src/bot_compile/readers/is_player_one.cpp
+  src/bot_compile/readers/current_tick.cpp
 )
 target_link_libraries(
   bot_compile_tests
