@@ -8,3 +8,5 @@ TEST(reader_tests, is_player_one) {
   EXPECT_EQ(is_player_one("false"), false);
   EXPECT_THROW(is_player_one("not true or false"), std::invalid_argument);
 }
+
+#include "bot_compile/tests/read_cells_tests.cpp"

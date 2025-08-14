@@ -3,6 +3,7 @@
 #include <string>
 
 namespace reader {
-/// \brief as*
+/// \brief takes in string and converts it to an integer, throws if malformed
+/// input
 int current_tick(std::string str);
 } // namespace reader

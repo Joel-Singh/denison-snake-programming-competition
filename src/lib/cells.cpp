@@ -18,6 +18,8 @@ Cells::Cells(unsigned int size) {
   }
 }
 
+Cells::Cells(std::vector<std::vector<Cell>> cells_vec) : cells(cells_vec) {}
+
 unsigned int Cells::height() const {
   assert(cells.size() > 0);
   return cells.size();
@@ -35,6 +37,7 @@ Cell Cells::get(unsigned int x, unsigned int y) const {
     throw std::logic_error("Invalid x y when calling Cells::get");
   }
 
+  /// We can use y directly because the "bottom" of cells is the first element.
   return cells.at(y).at(x);
 }
 
