@@ -1,11 +1,28 @@
 add_executable(
-  bot
+  bot_compile
   src/bot_compile/main.cpp
 
   src/pos.cpp
   src/grid.cpp
   src/lib/cells.cpp
   src/lib/create_from_segments.cpp
-  src/bot_compile/compile_bot.cpp
   src/direction.cpp
+  src/bot_compile/compile_bot.cpp
+  src/bot_compile/readers/is_player_one.cpp
+)
+add_executable(
+  bot_compile_tests
+  src/bot_compile/tests/bot_compile_tests.cpp
+
+  src/pos.cpp
+  src/grid.cpp
+  src/lib/cells.cpp
+  src/lib/create_from_segments.cpp
+  src/direction.cpp
+  src/bot_compile/compile_bot.cpp
+  src/bot_compile/readers/is_player_one.cpp
+)
+target_link_libraries(
+  bot_compile_tests
+  GTest::gtest_main
 )
