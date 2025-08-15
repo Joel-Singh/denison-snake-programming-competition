@@ -23,7 +23,7 @@
 /// Player one segments as numbers separated by spaces. The first pair of
 /// numbers is the head. There must be an even count of numbers.
 ///
-/// Same as player one segments but represents player two segments.
+/// Same as player one segments but represents the second player
 int main(int argc, char *argv[]) {
   std::vector<Pos> player_one_segments = {Pos(0, 0)};
   std::vector<Pos> player_two_segments = {Pos(1, 0)};
