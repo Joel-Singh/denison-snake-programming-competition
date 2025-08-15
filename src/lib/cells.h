@@ -7,7 +7,8 @@
 /// \cond INTERNAL
 class Cells {
 private:
-  std::vector<std::vector<Cell>> cells;
+  std::vector<std::vector<Cell>>
+      cells; ///< The first index of cells is considered the "bottom".
 
 public:
   Cells(unsigned int size);
