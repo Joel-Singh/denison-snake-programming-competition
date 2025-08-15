@@ -10,3 +10,4 @@ TEST(reader_tests, is_player_one) {
 }
 
 #include "bot_compile/tests/read_cells_tests.cpp"
+#include "bot_compile/tests/read_player_segments_tests.cpp"

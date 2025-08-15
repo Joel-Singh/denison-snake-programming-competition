@@ -16,9 +16,6 @@ TEST(reader_tests, read_cells_correct_input_cases_complicated) {
       read_cells("3 EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY PLAYER_ONE_HEAD "
                  "PLAYER_TWO_HEAD EMPTY");
 
-  std::cout << cells.get(0, 2) << std::endl;
-  std::cout << cells.get(1, 2) << std::endl;
-
   EXPECT_EQ(cells.get(0, 0), Cell::PLAYER_ONE_HEAD);
   EXPECT_EQ(cells.get(1, 0), Cell::PLAYER_TWO_HEAD);
 }

@@ -25,6 +25,7 @@ add_executable(
   src/bot_compile/readers/is_player_one.cpp
   src/bot_compile/readers/current_tick.cpp
   src/bot_compile/readers/read_cells.cpp
+  src/bot_compile/readers/read_player_segments.cpp
 )
 target_link_libraries(
   bot_compile_tests
