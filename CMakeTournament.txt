@@ -1,0 +1,10 @@
+add_executable(
+  tournament_tests
+  src/tournament/tests/tournament_tests.cpp
+
+  src/tournament/create_round_robin.cpp
+)
+target_link_libraries(
+  tournament_tests
+  GTest::gtest_main
+)
