@@ -2,6 +2,7 @@
 /// \file
 
 #pragma once
+#include <string>
 
 /// \enum Cell
 /// \brief Represents every cell on a [Grid](\ref Grid). \ref Cell is returned

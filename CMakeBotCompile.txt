@@ -21,12 +21,16 @@ add_executable(
   src/grid.cpp
   src/lib/cells.cpp
   src/lib/create_from_segments.cpp
+  src/lib/cell_to_str.cpp
+
   src/direction.cpp
+
   src/bot_compile/compile_bot.cpp
   src/bot_compile/readers/is_player_one.cpp
   src/bot_compile/readers/current_tick.cpp
   src/bot_compile/readers/read_cells.cpp
   src/bot_compile/readers/read_player_segments.cpp
+  src/bot_compile/writers/write_cells.cpp
 )
 target_link_libraries(
   bot_compile_tests

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "lib/cells.h"
 #include <string>
 
