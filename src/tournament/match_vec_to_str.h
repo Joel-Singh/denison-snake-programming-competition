@@ -14,4 +14,4 @@
 /// first-last-name first-last-name MatchResult::NotRun
 /// ...
 ///
-string match_vec_to_str(vector<Match> match_vec);
+string match_vec_to_str(vector<Match> const &match_vec);

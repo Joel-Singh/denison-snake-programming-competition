@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-string match_vec_to_str(vector<Match> match_vec) {
+string match_vec_to_str(vector<Match> const &match_vec) {
   string str = "";
   for (int i = 0; i < match_vec.size(); i++) {
     auto match = match_vec.at(i);

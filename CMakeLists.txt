@@ -40,6 +40,13 @@ add_executable(
   src/lib/input.cpp
   src/lib/create_from_segments.cpp
   src/lib/get_player_from_args.cpp
+  src/lib/split_by_char.cpp
+
+  src/tournament/create_round_robin.cpp
+  src/tournament/file_to_str.cpp
+  src/tournament/match.cpp
+  src/tournament/str_to_match_vec.cpp
+  src/tournament/match_vec_to_str.cpp
 )
 
 target_compile_features(main PRIVATE cxx_std_17)

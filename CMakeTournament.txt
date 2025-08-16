@@ -9,6 +9,7 @@ add_executable(
   src/tournament/match_vec_to_str.cpp
   src/tournament/str_to_match_vec.cpp
   src/lib/cells.cpp
+  src/lib/split_by_char.cpp
   src/pos.cpp
   src/lib/cell_to_str.cpp
 )
