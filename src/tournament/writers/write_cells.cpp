@@ -1,4 +1,4 @@
-#include "bot_compile/writers/write_cells.h"
+#include "write_cells.h"
 #include "lib/cell_to_str.h"
 
 namespace writer {

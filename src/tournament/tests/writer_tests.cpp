@@ -1,5 +1,5 @@
-#include "bot_compile/writers/write_cells.h"
-#include "bot_compile/writers/write_segments.h"
+#include "tournament/writers/write_cells.h"
+#include "tournament/writers/write_segments.h"
 #include <gtest/gtest.h>
 
 using namespace writer;

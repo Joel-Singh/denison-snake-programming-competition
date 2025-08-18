@@ -3,6 +3,11 @@ add_executable(
   src/tournament/tests/tournament_tests.cpp
 
   src/tournament/create_round_robin.cpp
+  src/tournament/writers/write_cells.cpp
+  src/tournament/writers/write_segments.cpp
+  src/lib/cells.cpp
+  src/pos.cpp
+  src/lib/cell_to_str.cpp
 )
 target_link_libraries(
   tournament_tests
