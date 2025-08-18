@@ -1,6 +1,17 @@
 #include "match.h"
 
 using namespace std;
+string match_result_to_str(MatchResult match_result) {
+  if (match_result == MatchResult::PlayerOneWon) {
+    return "PlayerOneWon";
+  } else if (match_result == MatchResult::PlayerTwoWon) {
+    return "PlayerTwoWon";
+  } else if (match_result == MatchResult::Draw) {
+    return "Draw";
+  } else {
+    return "NotRun";
+  }
+}
 
 string Match::get_player_one() const { return this->player_one; }
 string Match::get_player_two() const { return this->player_two; }
@@ -15,21 +26,17 @@ bool Match::operator==(const Match &other) const {
          this->match_result == other.match_result;
 }
 
+Match &Match::operator=(Match const &other) {
+  this->player_one = other.player_one;
+  this->get_player_two() = other.player_two;
+  this->match_result = other.match_result;
+
+  return *this;
+}
+
 std::ostream &operator<<(std::ostream &out, const Match &match) {
-  string result;
-
-  if (match.match_result == MatchResult::PlayerOneWon) {
-    result = "PlayerOneWon";
-  } else if (match.match_result == MatchResult::PlayerTwoWon) {
-    result = "PlayerTwoWon";
-  } else if (match.match_result == MatchResult::Draw) {
-    result = "Draw";
-  } else {
-    result = "NotRun";
-  }
-
   out << match.get_player_one() << string(" vs. ") << match.get_player_two()
-      << string("result: ") << result;
+      << string("result: ") << match_result_to_str(match.match_result);
 
   return out;
 }
