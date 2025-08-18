@@ -3,6 +3,7 @@ add_executable(
   src/tournament/tests/tournament_tests.cpp
 
   src/tournament/create_round_robin.cpp
+  src/tournament/match.cpp
   src/tournament/writers/write_cells.cpp
   src/tournament/writers/write_segments.cpp
   src/lib/cells.cpp
