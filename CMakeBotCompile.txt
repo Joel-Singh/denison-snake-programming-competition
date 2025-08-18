@@ -31,6 +31,7 @@ add_executable(
   src/bot_compile/readers/read_cells.cpp
   src/bot_compile/readers/read_player_segments.cpp
   src/bot_compile/writers/write_cells.cpp
+  src/bot_compile/writers/write_segments.cpp
 )
 target_link_libraries(
   bot_compile_tests
