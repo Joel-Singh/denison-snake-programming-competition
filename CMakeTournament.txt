@@ -7,6 +7,7 @@ add_executable(
   src/tournament/writers/write_cells.cpp
   src/tournament/writers/write_segments.cpp
   src/tournament/match_vec_to_str.cpp
+  src/tournament/str_to_match_vec.cpp
   src/lib/cells.cpp
   src/pos.cpp
   src/lib/cell_to_str.cpp

@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
 #include "tournament/tests/create_round_robin_tests.cpp"
-#include "tournament/tests/match_vec_to_str.cpp"
+#include "tournament/tests/match_vec_to_str_tests.cpp"
+#include "tournament/tests/str_to_match_vec_tests.cpp"
 #include "tournament/tests/writer_tests.cpp"

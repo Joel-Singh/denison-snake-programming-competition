@@ -12,6 +12,7 @@ enum class MatchResult {
 };
 
 string match_result_to_str(MatchResult match_result);
+MatchResult str_to_match_result(string const &match_result);
 
 /// \brief represents a match. player_one and player_two follow the
 /// first-last-name convention.

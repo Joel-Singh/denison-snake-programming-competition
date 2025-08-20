@@ -1,4 +1,5 @@
 #include "match.h"
+#include <stdexcept>
 
 using namespace std;
 string match_result_to_str(MatchResult match_result) {
@@ -11,6 +12,20 @@ string match_result_to_str(MatchResult match_result) {
   } else {
     return "NotRun";
   }
+}
+
+MatchResult str_to_match_result(string const &str) {
+  if (str == "PlayerOneWon") {
+    return MatchResult::PlayerOneWon;
+  } else if (str == "PlayerTwoWon") {
+    return MatchResult::PlayerTwoWon;
+  } else if (str == "Draw") {
+    return MatchResult::Draw;
+  } else if (str == "NotRun") {
+    return MatchResult::NotRun;
+  }
+
+  throw invalid_argument("`" + str + "`" + "is not a valid match result");
 }
 
 string Match::get_player_one() const { return this->player_one; }
@@ -36,7 +51,7 @@ Match &Match::operator=(Match const &other) {
 
 std::ostream &operator<<(std::ostream &out, const Match &match) {
   out << match.get_player_one() << string(" vs. ") << match.get_player_two()
-      << string("result: ") << match_result_to_str(match.match_result);
+      << string(" result: ") << match_result_to_str(match.match_result);
 
   return out;
 }
