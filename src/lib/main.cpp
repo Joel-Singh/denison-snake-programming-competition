@@ -10,6 +10,7 @@
 #include "lib/get_player_from_args.h"
 #include "lib/input.h"
 #include "my_bot.h"
+#include "tournament/run_bot.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <stdexcept>
@@ -26,7 +27,17 @@ GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
                            const unsigned int game_ticks);
 
 int main(int argc, char *argv[]) {
-  std::srand(time(NULL)); // Seed rng with current time
+  vector<Pos> player_one_segments = {Pos(0, 0)};
+  vector<Pos> player_two_segments = {Pos(1, 0)};
+  Cells cells =
+      create_from_segments(10, player_one_segments, player_two_segments);
+
+  auto [error_str, direction] =
+      run_bot("./build/bin/bot_compile", false, 0, cells, player_one_segments,
+              player_two_segments);
+
+  std::cout << "error_str: " << (error_str) << std::endl;
+  std::cout << "direction: " << (dir_to_str(direction)) << std::endl;
 }
 
 GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,

@@ -6,8 +6,11 @@
 
 #include <string>
 
+using namespace std;
+
 /// \brief Represents a direction and is returned by your bot in \ref
 /// MyBot::think
 enum class Direction { UP, DOWN, LEFT, RIGHT };
 
 std::string dir_to_str(Direction dir);
+Direction str_to_dir(string str);

@@ -52,5 +52,5 @@ int main(int argc, char *argv[]) {
   Grid grid(is_player_one, current_tick, cells, player_one_segments,
             player_two_segments);
 
-  std::cout << (dir_to_str(bot.think(grid))) << std::endl;
+  std::cout << (dir_to_str(bot.think(grid)));
 }
