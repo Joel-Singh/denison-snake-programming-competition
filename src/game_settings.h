@@ -1,3 +1,5 @@
+#include <chrono>
+
 /// \brief The final tick that the game runs on. Will determine a winner (or
 /// draw) at the end of this tick. Grid::get_current_tick will only ever be as
 /// high as FINAL_TICK
@@ -13,5 +15,5 @@ const int RAM_LIMIT = 1000;
 /// \brief the limit of CPU in megahertz bots in the tournament are run at.
 const int CPU_LIMIT = 1000;
 
-/// \brief the time limit in miliseconds bots in the tournamnet have.
-const int TIME_LIMIT = 5000;
+/// \brief the time limit bots in the tournamnet have.
+const std::chrono::duration TIME_LIMIT = std::chrono::milliseconds(5000);

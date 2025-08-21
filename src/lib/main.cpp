@@ -32,12 +32,14 @@ int main(int argc, char *argv[]) {
   Cells cells =
       create_from_segments(10, player_one_segments, player_two_segments);
 
-  auto [error_str, direction] =
-      run_bot("./build/bin/bot_compile", false, 0, cells, player_one_segments,
-              player_two_segments);
+  try {
+    Direction direction = run_bot("./build/bin/bot_compile", false, 0, cells,
+                                  player_one_segments, player_two_segments);
 
-  std::cout << "error_str: " << (error_str) << std::endl;
-  std::cout << "direction: " << (dir_to_str(direction)) << std::endl;
+    std::cout << "direction: " << (dir_to_str(direction)) << std::endl;
+  } catch (runtime_error e) {
+    std::cout << "e.what(): " << (e.what()) << std::endl;
+  }
 }
 
 GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
