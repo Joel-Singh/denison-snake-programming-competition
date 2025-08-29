@@ -65,6 +65,10 @@ issue](https://github.com/Joel-Singh/denison-snake-programming-competition/issue
 with the relevant errors, contact Joel on the Coding Club discord server,
 or see Joel directly at the next coding club meeting.
 
+Can I use AI?
+
+no.
+
 # Attributions
 
 I was heavily inspired by Sebastian Lague's [Chess Challenge](https://github.com/SebLague/Chess-Challenge) and this idea for two player snake was taken from one of his [unfinished projects.](https://youtu.be/kIMHRQWorkE?t=711)
