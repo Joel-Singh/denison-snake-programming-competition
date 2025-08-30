@@ -77,7 +77,8 @@ You can install MSVC from the vscode installer, here are the instructions from t
 Also, when running the rest of these instructions, switch to the
 `writing-window-and-vscode-instructions` branch (`git switch
 writing-window-and-vscode-instructions`), as it contains extra files that
-configure VS Code.
+configure VS Code. NOTE: switching to a specific branch won't be necessary in
+the final instructions.
 
 5. Configuring Intellisense:
 
@@ -138,6 +139,10 @@ cmake --build build
 ```
 
 Remember, you can pass flags to `main` to control what `MyBot` goes up against.
+
+alternatively, if working in VS Code, you can follow the window instructions
+starting from step 3 (installing the extensions) and just run the project from
+VS Code
 
 # Additional Rules
 
