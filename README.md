@@ -86,7 +86,6 @@ note: the following is taken from an [official vscode guide.](https://code.visua
 
 Run each of the following commands, **after opening the project (file > open folder) in VS Code**, with the command pallete (Ctrl + Shift + P):
 
-note to self: ask Colin if the option to have it choose for you was "unspecified" or something else.
 `CMake: Select a Kit`: scans your computer for compilers and lets you select one for use. Simply click "unspecified" and let it choose for you.
 
 `CMake: Select variant`: lets you select the kind of build to do. Simply click Debug.
