@@ -139,7 +139,7 @@ cmake --build build
 
 Remember, you can pass flags to `main` to control what `MyBot` goes up against.
 
-alternatively, if working in VS Code, you can follow the window instructions
+Alternatively, if working in VS Code, you can follow the window instructions
 starting from step 3 (installing the extensions) and just run the project from
 VS Code
 
