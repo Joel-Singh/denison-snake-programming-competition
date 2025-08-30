@@ -80,7 +80,7 @@ writing-window-and-vscode-instructions`), as it contains extra files that
 configure VS Code. NOTE: switching to a specific branch won't be necessary in
 the final instructions.
 
-5. Configuring Intellisense:
+5. Configuring CMake:
 
 note: the following is taken from an [official vscode guide.](https://code.visualstudio.com/docs/cpp/cmake-linux#_configure-hello-world)
 
