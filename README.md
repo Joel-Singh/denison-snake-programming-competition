@@ -105,10 +105,27 @@ p.s you have to use the "Run and Debug" section on the left, trying to run
 `MyBot.cpp` directly with the run button in the top right won't work.
 
 ## MacOS
+<!-- add instructions to make sure g++ is installed and if not, it should prompt you to intsall it -->
+1. Install [cmake](https://cmake.org/download/)
+Install the dmg file for your version of macOS and double click
 
-<!-- TODO: Create instructions for MacOS -->
+2. Configuring and building
+```
+# Make sure these are run in the root of the project
+cmake -B build # Only needs to run once
+cmake --build build
+./build/bin/main
+```
+
+Remember, you can pass flags to `main` to control what `MyBot` goes up against.
+
+Alternatively, if working in VS Code, you can follow the window instructions
+starting from step 3 (installing the extensions) and just run the project from
+VS Code
+
 
 ## Linux
+<!-- gdb might have to also be installed -->
 1. Install [cmake](https://cmake.org/download/)
 2. Ensure all dependencies are installed
 
