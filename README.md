@@ -6,7 +6,7 @@ face off against others. The winner will be crowned Coding Supreme.
 
 # Game format
 
-The game is very similar to classic snake except there are two slithery snakes.
+The game is very similar to classic snake except there are two.
 Every timestep, the head of each snake will go up, down, left, or right and
 a fruit will spawn on a regular interval. If the head of one snake runs into the
 edge, itself, or the other snake, it loses. If the heads of the snakes run into
