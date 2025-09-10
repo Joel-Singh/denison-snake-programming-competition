@@ -1,4 +1,4 @@
 var classMyBot =
 [
-    [ "think", "classMyBot.html#a151821cb333df5504ff72cc8e0df791b", null ]
+    [ "think", "classMyBot.html#a8e87b3b7791d6e4d41db764c8e453347", null ]
 ];

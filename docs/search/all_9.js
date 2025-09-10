@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['macos_0',['MacOS',['../md_README.html#autotoc_md6',1,'']]],
-  ['mybot_1',['MyBot',['../classMyBot.html',1,'']]]
+  ['macos_0',['MacOS',['../md_documentation_2COMPILING.html#autotoc_md10',1,'']]],
+  ['manual_1',['Game Manual',['../md_documentation_2GAME__MANUAL.html',1,'']]],
+  ['mybot_2',['MyBot',['../classMyBot.html',1,'']]]
 ];
