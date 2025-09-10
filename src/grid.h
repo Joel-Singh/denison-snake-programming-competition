@@ -28,7 +28,7 @@ public:
   ///
   /// \param player_one_segments,player_two_segments the ordered segments of
   /// each snake with the first element being the head.
-  Grid(bool is_player_one, const Cells &cells,
+  Grid(bool is_player_one, const int current_tick, const Cells &cells,
        const std::vector<Pos> &player_one_segments,
        const std::vector<Pos> &player_two_segments);
   ///
@@ -53,6 +53,11 @@ public:
   /// \brief Returns the width of the grid.
   int get_width() const;
 
+  /// \brief Returns the current tick with 0 being the first tick and \ref
+  /// FINAL_TICK being the last. If get_current_tick() == \ref FINAL_TICK, then
+  /// the game will finish at the end of this tick.
+  int get_current_tick() const;
+
   /// \brief Returns all fruit as a std::vector<@ref Pos>
   std::vector<Pos> find_fruits() const;
 
@@ -73,6 +78,7 @@ public:
 private:
   const Cells &cells;
   bool is_player_one;
+  const int current_tick;
   const std::vector<Pos> &player_one_segments;
   const std::vector<Pos> &player_two_segments;
   std::vector<Pos> find(Cell cell) const;

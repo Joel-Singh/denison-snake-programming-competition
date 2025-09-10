@@ -1,5 +1,6 @@
 #include "lib/compute_game_logic.h"
 #include "cell.h"
+#include "game_settings.h"
 #include "lib/cells.h"
 #include "pos.h"
 
@@ -53,6 +54,19 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
   update_cells_with_segments(player_one_segments, true, cells);
   update_cells_with_segments(player_two_segments, false, cells);
 
+  if (game_ticks == FINAL_TICK) {
+    int one_length = player_one_segments.size();
+    int two_length = player_two_segments.size();
+
+    if (one_length > two_length) {
+      return GameState::PLAYER_ONE_WON;
+    } else if (two_length > one_length) {
+      return GameState::PLAYER_TWO_WON;
+    } else {
+      return GameState::DRAW;
+    }
+  }
+
   // spawn_fruit happens last because we don't want to spawn a fruit
   // and then have it immediately eaten
   if (game_ticks % FRUIT_SPAWN_INTERVAL == 0 &&
@@ -69,11 +83,17 @@ static GameState check_for_game_end(const Cells &cells,
                                     const std::vector<Pos> &two_segments,
                                     const Direction one_dir,
                                     const Direction two_dir) {
-  Pos one_head_moved = one_segments.front().with_dir(one_dir);
-  Pos two_head_moved = two_segments.front().with_dir(two_dir);
+  Pos one_head = one_segments.front();
+  Pos two_head = two_segments.front();
 
-  // Heads moved into each other
-  if (one_head_moved == two_head_moved) {
+  Pos one_head_moved = one_head.with_dir(one_dir);
+  Pos two_head_moved = two_head.with_dir(two_dir);
+
+  bool heads_ran_into_eachother =
+      (one_head_moved == two_head) && (two_head_moved == one_head);
+  bool heads_moved_into_same_space = one_head_moved == two_head_moved;
+
+  if (heads_moved_into_same_space || heads_ran_into_eachother) {
     return GameState::DRAW;
   }
 

@@ -1,0 +1,150 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) MyBot vs EvilBot",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/main.exe",
+            "presentation": {
+                "hidden": false,
+                "group": "Windows",
+                "order": 1
+            },
+            "preLaunchTask": "CMake: build",
+            "cwd": "${workspaceFolder}",
+            "args": [],
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+        },
+        {
+            "name": "(Windows) MyBot vs MyBot",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/main.exe",
+            "presentation": {
+                "hidden": false,
+                "group": "Windows",
+                "order": 1
+            },
+            "preLaunchTask": "CMake: build",
+            "cwd": "${workspaceFolder}",
+            "args": ["--my-bot"],
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+        },
+        {
+            "name": "(Windows) MyBot vs Yourself",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Debug/main.exe",
+            "presentation": {
+                "hidden": false,
+                "group": "Windows",
+                "order": 1
+            },
+            "preLaunchTask": "CMake: build",
+            "cwd": "${workspaceFolder}",
+            "args": ["--yourself"],
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+        },
+        {
+            "name": "(Linux) MyBot vs EvilBot",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/main",
+            "presentation": {
+                "hidden": false,
+                "group": "Linux",
+                "order": 2
+            },
+            "preLaunchTask": "CMake: build",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "(Linux) MyBot vs MyBot",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/main",
+            "presentation": {
+                "hidden": false,
+                "group": "Linux",
+                "order": 2
+            },
+            "preLaunchTask": "CMake: build",
+            "args": ["--my-bot"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "(Linux) MyBot vs Yourself",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/main",
+            "presentation": {
+                "hidden": false,
+                "group": "Linux",
+                "order": 2
+            },
+            "preLaunchTask": "CMake: build",
+            "args": ["--yourself"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    
+    ]
+}

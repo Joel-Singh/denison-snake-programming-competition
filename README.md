@@ -44,57 +44,6 @@ option to the compiled binary (e.g `./build/bin/main --yourself`).
 
 Evil bot will be chosen by default if no flags are passed.
 
-# Compilation Instructions
-
-For context, this project uses `cmake` and was created from the [sfml
-template](https://github.com/SFML/cmake-sfml-project)
-
-## Windows
-
-<!-- TODO: Create instructions for Windows -->
-
-## MacOS
-
-<!-- TODO: Create instructions for MacOS -->
-
-## Linux
-1. Install [cmake](https://cmake.org/download/)
-2. Ensure all dependencies are installed
-
-On Ubuntu and other Debian based distributions:
-<!-- Taken from https://github.com/SFML/cmake-sfml-project -->
-```
-sudo apt update
-sudo apt install \
-    libxrandr-dev \
-    libxcursor-dev \
-    libxi-dev \
-    libudev-dev \
-    libfreetype-dev \
-    libflac-dev \
-    libvorbis-dev \
-    libgl1-mesa-dev \
-    libegl1-mesa-dev \
-    libfreetype-dev
-```
-
-3. Configuring and building
-
-Instructions for integrating directly with VSCode are provided further
-down. If you wish to run the project directly on the command line:
-```
-# Make sure these are run in the root of the project
-cmake -B build
-cmake --build build
-./build/bin/main
-```
-
-## Integrating with VSCode
-
-<!-- TODO : Add instructions for how to set up passing in the relevant flags (`--evil-bot`, `--yourself`, or `--my-bot`) -->
-
-Use the [cmake extension](https://code.visualstudio.com/docs/cpp/cmake-linux)
-
 # Additional Rules
 
 - You may work alone or in a group (no size limit)
