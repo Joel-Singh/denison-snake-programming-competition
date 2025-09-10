@@ -4,8 +4,8 @@
 \Hypertarget{md_README_autotoc_md0}%
 
 
-Howdy! This is the repo for Denison University\textquotesingle{}s Coding Club \mbox{[}Snake Programming Competition\mbox{]}(). Participants will code a Snake bot in C++ to face off against others. The winner will be crowned Coding Supreme.\hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Game format}{Game format}}\label{md_README_autotoc_md1}
-The game is very similar to classic snake except there are two of the slithery fellows. Every timestep, the head of each snake will go up, down, left, or right and every 10 seconds a fruit will spawn. If the head of one snake runs into the edge, itself, or the other snake, it loses. If the heads of the snakes run into each other, the game is considered a draw. And of course, if a fruit is eaten, the snake gets longer.\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Writing a bot}{Writing a bot}}\label{md_README_autotoc_md2}
+Howdy! This is the repo for Denison University\textquotesingle{}s Coding Club Snake Programming Competition. Participants will code a Snake bot in C++ to face off against others. The winner will be crowned Coding Supreme.\hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Game format}{Game format}}\label{md_README_autotoc_md1}
+The game is very similar to classic snake except there are two slithery snakes. Every timestep, the head of each snake will go up, down, left, or right and a fruit will spawn on a regular interval. If the head of one snake runs into the edge, itself, or the other snake, it loses. If the heads of the snakes run into each other, the game is considered a draw. And of course, if a fruit is eaten, the snake gets longer.\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Writing a bot}{Writing a bot}}\label{md_README_autotoc_md2}
 Your bot will be implemented in {\ttfamily src/\+My\+Bot.\+cpp}, this is what will be submitted. You may write additional helper methods and functions but they must be contained within that single file and you may not modify the signature of the {\ttfamily think} function. You can of course create more scripts to test your bot, but in the end, {\ttfamily My\+Bot.\+cpp} is what will be submitted.
 
 The {\ttfamily think} function is what will be called every time step and is what determines what your bot does. See the \mbox{[}documentation\mbox{]}().\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Testing your bot}{Testing your bot}}\label{md_README_autotoc_md3}
@@ -18,57 +18,13 @@ When running this project, there are three options for testing\+:
 \item \doxylink{classMyBot}{My\+Bot} vs \doxylink{classMyBot}{My\+Bot}
 \end{DoxyItemize}
 
-To choose one, pass in {\ttfamily -\/-\/evil-\/bot}, {\ttfamily -\/-\/yourself}, or {\ttfamily -\/-\/my-\/bot} as an option to the compiled binary.
+To choose one, pass in {\ttfamily -\/-\/evil-\/bot}, {\ttfamily -\/-\/yourself}, or {\ttfamily -\/-\/my-\/bot} as an option to the compiled binary (e.\+g {\ttfamily ./build/bin/main -\/-\/yourself}).
 
-Evil bot will be chosen by default if no flags are passed.\hypertarget{md_README_autotoc_md4}{}\doxysection{\texorpdfstring{Compilation Instructions}{Compilation Instructions}}\label{md_README_autotoc_md4}
-For context, this project uses {\ttfamily cmake} and was created from the \href{https://github.com/SFML/cmake-sfml-project}{\texttt{ sfml template}}\hypertarget{md_README_autotoc_md5}{}\doxysubsection{\texorpdfstring{Windows}{Windows}}\label{md_README_autotoc_md5}
-\hypertarget{md_README_autotoc_md6}{}\doxysubsection{\texorpdfstring{Mac\+OS}{Mac\+OS}}\label{md_README_autotoc_md6}
-\hypertarget{md_README_autotoc_md7}{}\doxysubsection{\texorpdfstring{Linux}{Linux}}\label{md_README_autotoc_md7}
-
-\begin{DoxyEnumerate}
-\item Install \href{https://cmake.org/download/}{\texttt{ cmake}}
-\item Ensure all dependencies are installed
-\end{DoxyEnumerate}
-
-On Ubuntu and other Debian based distributions\+:
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{sudo\ apt\ update}
-\DoxyCodeLine{sudo\ apt\ install\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libxrandr-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libxcursor-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libxi-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libudev-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libfreetype-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libflac-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libvorbis-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libgl1-\/mesa-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libegl1-\/mesa-\/dev\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ libfreetype-\/dev}
-
-\end{DoxyCode}
-
-
-
-\begin{DoxyEnumerate}
-\item Configuring and building
-\end{DoxyEnumerate}
-
-Instructions for integrating directly with VSCode are provided further down. If you wish to run the project directly on the command line\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\#\ Make\ sure\ these\ are\ run\ in\ the\ root\ of\ the\ project}
-\DoxyCodeLine{cmake\ -\/B\ build}
-\DoxyCodeLine{cmake\ -\/-\/build\ build}
-\DoxyCodeLine{./build/bin/main}
-
-\end{DoxyCode}
-\hypertarget{md_README_autotoc_md8}{}\doxysubsection{\texorpdfstring{Integrating with VSCode}{Integrating with VSCode}}\label{md_README_autotoc_md8}
-Use the \href{https://code.visualstudio.com/docs/cpp/cmake-linux}{\texttt{ cmake extension}}\hypertarget{md_README_autotoc_md9}{}\doxysection{\texorpdfstring{Additional Rules}{Additional Rules}}\label{md_README_autotoc_md9}
+Evil bot will be chosen by default if no flags are passed.\hypertarget{md_README_autotoc_md4}{}\doxysection{\texorpdfstring{Additional Rules}{Additional Rules}}\label{md_README_autotoc_md4}
 
 \begin{DoxyItemize}
 \item You may work alone or in a group (no size limit)
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md10}{}\doxysection{\texorpdfstring{FAQ}{FAQ}}\label{md_README_autotoc_md10}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysection{\texorpdfstring{FAQ}{FAQ}}\label{md_README_autotoc_md5}
 What is the competition format?
 
 
@@ -82,5 +38,9 @@ I\textquotesingle{}m having issues compiling and running the project
 
 \begin{DoxyItemize}
 \item You can \href{https://github.com/Joel-Singh/denison-snake-programming-competition/issues}{\texttt{ create an issue}} with the relevant errors, contact Joel on the Coding Club discord server, or see Joel directly at the next coding club meeting.
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md11}{}\doxysection{\texorpdfstring{Attributions}{Attributions}}\label{md_README_autotoc_md11}
+\end{DoxyItemize}
+
+Can I use AI?
+
+no.\hypertarget{md_README_autotoc_md6}{}\doxysection{\texorpdfstring{Attributions}{Attributions}}\label{md_README_autotoc_md6}
 I was heavily inspired by Sebastian Lague\textquotesingle{}s \href{https://github.com/SebLague/Chess-Challenge}{\texttt{ Chess Challenge}} and this idea for two player snake was taken from one of his \href{https://youtu.be/kIMHRQWorkE?t=711}{\texttt{ unfinished projects.}} 

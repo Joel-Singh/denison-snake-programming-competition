@@ -29,16 +29,30 @@ var NAVTREE =
       [ "Game format", "md_README.html#autotoc_md1", null ],
       [ "Writing a bot", "md_README.html#autotoc_md2", null ],
       [ "Testing your bot", "md_README.html#autotoc_md3", null ],
-      [ "Compilation Instructions", "md_README.html#autotoc_md4", [
-        [ "Windows", "md_README.html#autotoc_md5", null ],
-        [ "MacOS", "md_README.html#autotoc_md6", null ],
-        [ "Linux", "md_README.html#autotoc_md7", null ],
-        [ "Integrating with VSCode", "md_README.html#autotoc_md8", null ]
-      ] ],
-      [ "Additional Rules", "md_README.html#autotoc_md9", null ],
-      [ "FAQ", "md_README.html#autotoc_md10", null ],
-      [ "Attributions", "md_README.html#autotoc_md11", null ]
+      [ "Additional Rules", "md_README.html#autotoc_md4", null ],
+      [ "FAQ", "md_README.html#autotoc_md5", null ],
+      [ "Attributions", "md_README.html#autotoc_md6", null ]
     ] ],
+    [ "Compilation Instructions", "md_documentation_2COMPILING.html", [
+      [ "Windows and Visual Studio", "md_documentation_2COMPILING.html#autotoc_md8", [
+        [ "Configuring VSCode", "md_documentation_2COMPILING.html#autotoc_md9", null ]
+      ] ],
+      [ "MacOS", "md_documentation_2COMPILING.html#autotoc_md10", null ],
+      [ "Linux", "md_documentation_2COMPILING.html#autotoc_md11", null ]
+    ] ],
+    [ "Contributing", "md_documentation_2CONTRIBUTING.html", [
+      [ "Architecture", "md_documentation_2CONTRIBUTING.html#autotoc_md13", [
+        [ "The Main Program", "md_documentation_2CONTRIBUTING.html#autotoc_md14", null ]
+      ] ],
+      [ "Workflow", "md_documentation_2CONTRIBUTING.html#autotoc_md15", null ],
+      [ "Running The Project", "md_documentation_2CONTRIBUTING.html#autotoc_md16", null ],
+      [ "Tests", "md_documentation_2CONTRIBUTING.html#autotoc_md17", null ],
+      [ "Documentation", "md_documentation_2CONTRIBUTING.html#autotoc_md18", [
+        [ "Structure", "md_documentation_2CONTRIBUTING.html#autotoc_md19", null ],
+        [ "Building", "md_documentation_2CONTRIBUTING.html#autotoc_md20", null ]
+      ] ]
+    ] ],
+    [ "Game Manual", "md_documentation_2GAME__MANUAL.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

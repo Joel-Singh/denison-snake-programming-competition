@@ -1,0 +1,135 @@
+\chapter{Compilation Instructions}
+\hypertarget{md_documentation_2COMPILING}{}\label{md_documentation_2COMPILING}\index{Compilation Instructions@{Compilation Instructions}}
+\label{md_documentation_2COMPILING_autotoc_md7}%
+\Hypertarget{md_documentation_2COMPILING_autotoc_md7}%
+
+
+For context, this project uses {\ttfamily cmake} and was created from the \href{https://github.com/SFML/cmake-sfml-project}{\texttt{ sfml template}}\hypertarget{md_documentation_2COMPILING_autotoc_md8}{}\doxysection{\texorpdfstring{Windows and Visual Studio}{Windows and Visual Studio}}\label{md_documentation_2COMPILING_autotoc_md8}
+In order to build and run this repository, you\textquotesingle{}ll need to install cmake, our build system, and a C++ compiler. If you\textquotesingle{}re on Windows and use a different IDE, feel free to reach out to Joel for help getting set up!
+
+
+\begin{DoxyEnumerate}
+\item Install \href{https://cmake.org/download}{\texttt{ CMake}}
+\end{DoxyEnumerate}
+
+you\textquotesingle{}ll specifically want to download and run the Windows x64 installer, {\ttfamily cmake-\/4.\+1.\+0-\/rc4-\/windows-\/x86\+\_\+64.\+msi}.
+
+
+\begin{DoxyEnumerate}
+\item Install \href{https://code.visualstudio.com/download}{\texttt{ VSCode}}
+\item Install \href{https://visualstudio.microsoft.com/downloads/\#remote-tools-for-visual-studio-2022}{\texttt{ the build tools for Visual Studio}} which will allow us to install the Microsoft C++ Compiler
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item Go to \href{https://visualstudio.microsoft.com/downloads/\#remote-tools-for-visual-studio-2022}{\texttt{ https\+://visualstudio.\+microsoft.\+com/downloads/\#remote-\/tools-\/for-\/visual-\/studio-\/2022}}
+\item Scroll down to "{}\+Build Tools for Visual Studio"{} and download.
+\item Run the downloaded installer.
+\item If the website keeps redirecting you to bing instead of a download, see Joel.
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Install the \href{https://code.visualstudio.com/docs/cpp/config-msvc}{\texttt{ Microsoft C++ compiler}} (MSVC)
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item type in "{}\+Visual Studio Installer"{} on the search menu then run the installer
+\item Click "{}\+Modify"{} on Visual Studio Build Tools 2022
+\item Check "{}\+Desktop development with C++"{}
+\item Hit modify to save changes
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Now, scroll down and follow the instructions for configuring VSCode
+\end{DoxyEnumerate}\hypertarget{md_documentation_2COMPILING_autotoc_md9}{}\doxysubsection{\texorpdfstring{Configuring VSCode}{Configuring VSCode}}\label{md_documentation_2COMPILING_autotoc_md9}
+
+\begin{DoxyEnumerate}
+\item Install the C++ and CMake VSCode extensions\+:
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools}{\texttt{ C++ extension}}
+\item \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools}{\texttt{ CMake extension}}
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Clone the repository
+\item Configuring CMake\+:
+\end{DoxyEnumerate}
+
+note\+: the following is taken from an \href{https://code.visualstudio.com/docs/cpp/cmake-linux\#_configure-hello-world}{\texttt{ official vscode guide.}}
+
+Run each of the following commands, {\bfseries{after opening the project (file \texorpdfstring{$>$}{>} open folder) in VSCode}}, with the command pallete (Ctrl + Shift + P)\+:
+
+{\ttfamily CMake\+: Select a Kit}\+: scans your computer for compilers and lets you select one for use. Simply click "{}unspecified"{} and let it choose for you.
+
+{\ttfamily CMake\+: Select variant}\+: lets you select the kind of build to do. Simply click Debug.
+
+{\ttfamily CMake\+: Configure}\+: Takes what you selected before, and generates the necessary files in build/.
+
+You only need to run the above once.
+
+
+\begin{DoxyEnumerate}
+\item Running the project
+\end{DoxyEnumerate}
+
+You can now use the "{}\+Run and Debug"{} section on the left to run your code \+:-\/). Simply choose what to run {\ttfamily \doxylink{classMyBot}{My\+Bot}} against with your operating system.
+
+note to self update thiis image 
+
+p.\+s you have to use the "{}\+Run and Debug"{} section on the left, trying to run {\ttfamily My\+Bot.\+cpp} directly with the run button in the top right won\textquotesingle{}t work.
+
+p.\+s.\+s {\ttfamily \doxylink{classMyBot}{My\+Bot}}, the one you\textquotesingle{}re writing, is the purple one\hypertarget{md_documentation_2COMPILING_autotoc_md10}{}\doxysection{\texorpdfstring{Mac\+OS}{Mac\+OS}}\label{md_documentation_2COMPILING_autotoc_md10}
+
+\begin{DoxyEnumerate}
+\item Install \href{https://cmake.org/download/}{\texttt{ cmake}} Install the dmg file for your version of mac\+OS and double click
+\item Configuring and building 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Make\ sure\ these\ are\ run\ in\ the\ root\ of\ the\ project}
+\DoxyCodeLine{cmake\ -\/B\ build\ \#\ Only\ needs\ to\ run\ once}
+\DoxyCodeLine{cmake\ -\/-\/build\ build}
+\DoxyCodeLine{./build/bin/main}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+
+Remember, you can pass flags to {\ttfamily main} to control what {\ttfamily \doxylink{classMyBot}{My\+Bot}} goes up against.
+
+Alternatively, if working in VSCode, you can follow the window instructions starting from step 3 (installing the extensions) and just run the project from VSCode\hypertarget{md_documentation_2COMPILING_autotoc_md11}{}\doxysection{\texorpdfstring{Linux}{Linux}}\label{md_documentation_2COMPILING_autotoc_md11}
+
+\begin{DoxyEnumerate}
+\item Install \href{https://cmake.org/download/}{\texttt{ cmake}}
+\item Ensure all dependencies are installed
+\end{DoxyEnumerate}
+
+On Ubuntu and other Debian based distributions\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ apt\ update}
+\DoxyCodeLine{sudo\ apt\ install\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libxrandr-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libxcursor-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libxi-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libudev-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libfreetype-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libflac-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libvorbis-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libgl1-\/mesa-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libegl1-\/mesa-\/dev\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ libfreetype-\/dev}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item Configuring and building 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Make\ sure\ these\ are\ run\ in\ the\ root\ of\ the\ project}
+\DoxyCodeLine{cmake\ -\/B\ build\ \#\ Only\ needs\ to\ run\ once}
+\DoxyCodeLine{cmake\ -\/-\/build\ build}
+\DoxyCodeLine{./build/bin/main}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+
+Remember, you can pass flags to {\ttfamily main} to control what {\ttfamily \doxylink{classMyBot}{My\+Bot}} goes up against.
+
+Alternatively, if working in VSCode, you can follow the window instructions starting from step 3 (installing the extensions) and just run the project from VSCode 

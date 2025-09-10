@@ -5,7 +5,7 @@ var indexSectionsWithContent =
   2: "cdg",
   3: "fgtw",
   4: "cd",
-  5: "cdps"
+  5: "cdgimps"
 };
 
 var indexSectionNames =
