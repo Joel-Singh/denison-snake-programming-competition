@@ -58,29 +58,30 @@ IDE, feel free to reach out to Joel for help getting set up!
 
 you'll specifically want to download and run the Windows x64 installer, `cmake-4.1.0-rc4-windows-x86_64.msi`.
 
-2. Install [Microsoft C++ compiler](https://code.visualstudio.com/docs/cpp/config-msvc) (MSVC)
+2. Install [VS Code](https://code.visualstudio.com/download)
 
-You can install MSVC from the vscode installer, here are the instructions from the above link:
-> open the Visual Studio Installer from the Windows Start menu and verify that
-> the C++ workload is checked. If it's not installed, then check the box and
-> select the Modify button in the installer.
+3. Install [the build tools for Visual Studio](https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022) which will allow us to install the Microsoft C++ Compiler
 
+- Go to [https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022](https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022)
+- Scroll down to "Build Tools for Visual Studio" and download.
+- Run the downloaded installer.
+- If the website keeps redirecting you to bing instead of a download, see Joel.
 
-3. Install the C++ and CMake VSCode extensions:
+4. Install the [Microsoft C++ compiler](https://code.visualstudio.com/docs/cpp/config-msvc) (MSVC)
 
-    - [C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+- type in "Visual Studio Installer" on the search menu then run the installer
+- Click "Modify" on Visual Studio Build Tools 2022
+- Check "Desktop development with C++"
+- Hit modify to save changes
 
-    - [CMake extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
+5. Install the C++ and CMake VSCode extensions:
 
-4. Clone the repository
+- [C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+- [CMake extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
 
-Also, when running the rest of these instructions, switch to the
-`writing-window-and-vscode-instructions` branch (`git switch
-writing-window-and-vscode-instructions`), as it contains extra files that
-configure VS Code. NOTE: switching to a specific branch won't be necessary in
-the final instructions.
+6. Clone the repository
 
-5. Configuring CMake:
+7. Configuring CMake:
 
 note: the following is taken from an [official vscode guide.](https://code.visualstudio.com/docs/cpp/cmake-linux#_configure-hello-world)
 
@@ -94,7 +95,7 @@ Run each of the following commands, **after opening the project (file > open fol
 
 You only need to run the above once.
 
-6. Running the project
+8. Running the project
 
 You can now use the "Run and Debug" section on the left to run your code :-).
 Simply choose what to run `MyBot` against.
@@ -103,6 +104,8 @@ Simply choose what to run `MyBot` against.
 
 p.s you have to use the "Run and Debug" section on the left, trying to run
 `MyBot.cpp` directly with the run button in the top right won't work.
+
+p.s.s `MyBot`, the one you're writing, is the purple one
 
 ## MacOS
 <!-- add instructions to make sure g++ is installed and if not, it should prompt you to intsall it -->
