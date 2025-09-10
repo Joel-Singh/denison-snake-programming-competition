@@ -1,22 +1,17 @@
 # DU CODE Snake Programming Competition
 
-<!-- TODO: Add link to blog post -->
-
-Howdy! This is the repo for Denison University's Coding Club [Snake
-Programming Competition](). Participants will code a Snake bot in C++ to
+Howdy! This is the repo for Denison University's Coding Club Snake
+Programming Competition. Participants will code a Snake bot in C++ to
 face off against others. The winner will be crowned Coding Supreme.
-
-<!-- TODO: Instead of crowning them Coding Supreme, perhaps we can get
-teachers to agree to a bit of extra credit -->
 
 # Game format
 
-The game is very similar to classic snake except there are two of the
-slithery fellows. Every timestep, the head of each snake will go up, down,
-left, or right and every 10 seconds a fruit will spawn. If the head of
-one snake runs into the edge, itself, or the other snake, it loses. If
-the heads of the snakes run into each other, the game is considered a
-draw. And of course, if a fruit is eaten, the snake gets longer.
+The game is very similar to classic snake except there are two slithery snakes.
+Every timestep, the head of each snake will go up, down, left, or right and
+a fruit will spawn on a regular interval. If the head of one snake runs into the
+edge, itself, or the other snake, it loses. If the heads of the snakes run into
+each other, the game is considered a draw. And of course, if a fruit is eaten,
+the snake gets longer.
 
 # Writing a bot
 
