@@ -21,10 +21,11 @@ must be contained within that single file and you may not modify the
 signature of the `think` function. You can of course create more scripts
 to test your bot, but in the end, `MyBot.cpp` is what will be submitted.
 
-<!-- TODO: Add a documentation link -->
-
 The `think` function is what will be called every time step and is what
-determines what your bot does. See the [documentation]().
+determines what your bot does. See the
+[documentation](https://joel-singh.github.io/denison-snake-programming-competition/).
+In particular, the `Grid` class which is passed into `think` and is the main
+way for you to see what is on the board.
 
 # Testing your bot
 
