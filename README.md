@@ -58,7 +58,7 @@ IDE, feel free to reach out to Joel for help getting set up!
 
 you'll specifically want to download and run the Windows x64 installer, `cmake-4.1.0-rc4-windows-x86_64.msi`.
 
-2. Install [VS Code](https://code.visualstudio.com/download)
+2. Install [VSCode](https://code.visualstudio.com/download)
 
 3. Install [the build tools for Visual Studio](https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022) which will allow us to install the Microsoft C++ Compiler
 
@@ -74,6 +74,7 @@ you'll specifically want to download and run the Windows x64 installer, `cmake-4
 - Check "Desktop development with C++"
 - Hit modify to save changes
 
+### Configuring VSCode
 5. Install the C++ and CMake VSCode extensions:
 
 - [C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
@@ -85,7 +86,7 @@ you'll specifically want to download and run the Windows x64 installer, `cmake-4
 
 note: the following is taken from an [official vscode guide.](https://code.visualstudio.com/docs/cpp/cmake-linux#_configure-hello-world)
 
-Run each of the following commands, **after opening the project (file > open folder) in VS Code**, with the command pallete (Ctrl + Shift + P):
+Run each of the following commands, **after opening the project (file > open folder) in VSCode**, with the command pallete (Ctrl + Shift + P):
 
 `CMake: Select a Kit`: scans your computer for compilers and lets you select one for use. Simply click "unspecified" and let it choose for you.
 
@@ -98,8 +99,9 @@ You only need to run the above once.
 8. Running the project
 
 You can now use the "Run and Debug" section on the left to run your code :-).
-Simply choose what to run `MyBot` against.
+Simply choose what to run `MyBot` against with your operating system.
 
+note to self update thiis image
 ![What Run and Debug looks like](./README-assets/run-and-debug-in-vs-code.png)
 
 p.s you have to use the "Run and Debug" section on the left, trying to run
@@ -122,9 +124,9 @@ cmake --build build
 
 Remember, you can pass flags to `main` to control what `MyBot` goes up against.
 
-Alternatively, if working in VS Code, you can follow the window instructions
+Alternatively, if working in VSCode, you can follow the window instructions
 starting from step 3 (installing the extensions) and just run the project from
-VS Code
+VSCode
 
 
 ## Linux
@@ -159,9 +161,9 @@ cmake --build build
 
 Remember, you can pass flags to `main` to control what `MyBot` goes up against.
 
-Alternatively, if working in VS Code, you can follow the window instructions
+Alternatively, if working in VSCode, you can follow the window instructions
 starting from step 3 (installing the extensions) and just run the project from
-VS Code
+VSCode
 
 # Additional Rules
 
