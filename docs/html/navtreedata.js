@@ -24,15 +24,8 @@
 */
 var NAVTREE =
 [
-  [ "DUCODE Snake Competition", "index.html", [
-    [ "DU CODE Snake Programming Competition", "md_README.html", [
-      [ "Game format", "md_README.html#autotoc_md1", null ],
-      [ "Writing a bot", "md_README.html#autotoc_md2", null ],
-      [ "Testing your bot", "md_README.html#autotoc_md3", null ],
-      [ "Additional Rules", "md_README.html#autotoc_md4", null ],
-      [ "FAQ", "md_README.html#autotoc_md5", null ],
-      [ "Attributions", "md_README.html#autotoc_md6", null ]
-    ] ],
+  [ "DU CODE Snake Competition", "index.html", [
+    [ "DU CODE Snake Programming Competition", "index.html", "index" ],
     [ "Compilation Instructions", "md_documentation_2COMPILING.html", [
       [ "Windows and Visual Studio", "md_documentation_2COMPILING.html#autotoc_md8", [
         [ "Configuring VSCode", "md_documentation_2COMPILING.html#autotoc_md9", null ]
