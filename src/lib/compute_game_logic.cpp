@@ -19,8 +19,6 @@ static void clear_cells_at(const std::vector<Pos> &positions, Cells &cells);
 static void update_cells_with_segments(const std::vector<Pos> &segments,
                                        const bool is_player_one, Cells &cells);
 
-const int FRUIT_SPAWN_INTERVAL = 5; // in ticks
-
 // First element of segments is the head
 GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
                              const Direction player_one_dir,
