@@ -90,6 +90,11 @@ game tick to think in the tournament. Unlike a computationally expensive game
 like Chess, computing the logic for this game should not reach anywhere near
 these limits unless you accidentally have an infinite loop.
 
+Can I use the standard cpp library?
+
+Yes, except for parts that obviously don't make sense such as network or IO. Also, you may not use
+`std::srand`, this is done already in main, just use `std::rand`.
+
 # Attributions
 
 I was heavily inspired by Sebastian Lague's [Chess Challenge](https://github.com/SebLague/Chess-Challenge) and this idea for two player snake was taken from one of his [unfinished projects.](https://youtu.be/kIMHRQWorkE?t=711)
