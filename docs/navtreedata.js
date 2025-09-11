@@ -27,11 +27,12 @@ var NAVTREE =
   [ "DU CODE Snake Competition", "index.html", [
     [ "DU CODE Snake Programming Competition", "index.html", "index" ],
     [ "Compilation Instructions", "md_documentation_2COMPILING.html", [
-      [ "Windows and Visual Studio", "md_documentation_2COMPILING.html#autotoc_md8", [
-        [ "Configuring VSCode", "md_documentation_2COMPILING.html#autotoc_md9", null ]
-      ] ],
+      [ "Introduction", "md_documentation_2COMPILING.html#autotoc_md8", null ],
+      [ "Windows", "md_documentation_2COMPILING.html#autotoc_md9", null ],
       [ "MacOS", "md_documentation_2COMPILING.html#autotoc_md10", null ],
-      [ "Linux", "md_documentation_2COMPILING.html#autotoc_md11", null ]
+      [ "Linux", "md_documentation_2COMPILING.html#autotoc_md11", null ],
+      [ "Running from the terminal", "md_documentation_2COMPILING.html#autotoc_md12", null ],
+      [ "Configuring VSCode", "md_documentation_2COMPILING.html#autotoc_md13", null ]
     ] ],
     [ "Game Manual", "md_documentation_2GAME__MANUAL.html", null ],
     [ "Classes", "annotated.html", [

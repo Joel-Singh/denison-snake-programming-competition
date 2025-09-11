@@ -108,8 +108,11 @@ $(function(){initNavTree('md_documentation_2COMPILING.html',''); initResizable(t
 <div class="textblock"><p><a class="anchor" id="autotoc_md7"></a></p>
 <p>For context, this project uses <code>cmake</code> and was created from the <a href="https://github.com/SFML/cmake-sfml-project">sfml template</a></p>
 <h1><a class="anchor" id="autotoc_md8"></a>
-Windows and Visual Studio</h1>
-<p>In order to build and run this repository, you'll need to install cmake, our build system, and a C++ compiler. If you're on Windows and use a different IDE, feel free to reach out to Joel for help getting set up!</p>
+Introduction</h1>
+<p>In order to build and run this repository, you'll need to install cmake, our build system, and a C++ compiler. Additionally, these instructions include setup for VSCode. There are instructions for most operating systems. If you don't see your operating system or flavor of linux (Any nix users???,) you can see Joel to help get setup.</p>
+<p>Daily sessions to help with DU Slither are held Thursdays in Olin 311 from 7 to 8 pm. If compiling is a hurdle to participating, come get Joel! Environment setup is the most frustrating part of programming.</p>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Windows</h1>
 <ol type="1">
 <li>Install <a href="https://cmake.org/download">CMake</a></li>
 </ol>
@@ -134,10 +137,47 @@ Windows and Visual Studio</h1>
 <li>Hit modify to save changes</li>
 </ul>
 <ol type="1">
-<li>Now, scroll down and follow the instructions for configuring VSCode</li>
+<li>Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md9"></a>
-Configuring VSCode</h2>
+<h1><a class="anchor" id="autotoc_md10"></a>
+MacOS</h1>
+<p>First, we need to install a cpp compiler or check if we have one.</p><ol type="1">
+<li>Open a terminal</li>
+<li>Type <code>g++ --version</code></li>
+<li>If you don't see output describing the cpp compiler you have installed, a prompt should appear to install it</li>
+<li>Install <a href="https://cmake.org/download/">cmake</a> for your version of MacOS</li>
+<li>Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Linux</h1>
+<ol type="1">
+<li>Install <a href="https://cmake.org/download/">cmake</a></li>
+<li>Ensure all dependencies are installed</li>
+</ol>
+<p>On Ubuntu and other Debian based distributions: </p><div class="fragment"><div class="line">sudo apt update</div>
+<div class="line">sudo apt install \</div>
+<div class="line">    libxrandr-dev \</div>
+<div class="line">    libxcursor-dev \</div>
+<div class="line">    libxi-dev \</div>
+<div class="line">    libudev-dev \</div>
+<div class="line">    libfreetype-dev \</div>
+<div class="line">    libflac-dev \</div>
+<div class="line">    libvorbis-dev \</div>
+<div class="line">    libgl1-mesa-dev \</div>
+<div class="line">    libegl1-mesa-dev \</div>
+<div class="line">    libfreetype-dev</div>
+</div><!-- fragment --><ol type="1">
+<li>Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md12"></a>
+Running from the terminal</h1>
+<div class="fragment"><div class="line"># Make sure these are run in the root of the project</div>
+<div class="line">cmake -B build # Only needs to run once</div>
+<div class="line">cmake --build build # The build command, the last argument specifies the build directory</div>
+<div class="line">./build/bin/main</div>
+</div><!-- fragment --><p>You can pass the following flags to put <code><a class="el" href="classMyBot.html">MyBot</a></code> up against different other bots: <code>--evil-bot</code> to go against the evil bot, <code>--my-bot</code> to go against itself, and <code>--yourself</code> to go against yourself with WASD controls.</p>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Configuring VSCode</h1>
 <ol type="1">
 <li>Install the C++ and CMake VSCode extensions:</li>
 </ol>
@@ -161,47 +201,7 @@ Configuring VSCode</h2>
 <p>You can now use the "Run and Debug" section on the left to run your code :-). Simply choose what to run <code><a class="el" href="classMyBot.html">MyBot</a></code> against with your operating system.</p>
 <p>note to self update thiis image <img src="./README-assets/run-and-debug-in-vs-code.png" alt="What Run and Debug looks like" class="inline"/></p>
 <p>p.s you have to use the "Run and Debug" section on the left, trying to run <code>MyBot.cpp</code> directly with the run button in the top right won't work.</p>
-<p>p.s.s <code><a class="el" href="classMyBot.html">MyBot</a></code>, the one you're writing, is the purple one</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
-MacOS</h1>
-<ol type="1">
-<li>Install <a href="https://cmake.org/download/">cmake</a> Install the dmg file for your version of macOS and double click</li>
-<li>Configuring and building <div class="fragment"><div class="line"># Make sure these are run in the root of the project</div>
-<div class="line">cmake -B build # Only needs to run once</div>
-<div class="line">cmake --build build</div>
-<div class="line">./build/bin/main</div>
-</div><!-- fragment --></li>
-</ol>
-<p>Remember, you can pass flags to <code>main</code> to control what <code><a class="el" href="classMyBot.html">MyBot</a></code> goes up against.</p>
-<p>Alternatively, if working in VSCode, you can follow the window instructions starting from step 3 (installing the extensions) and just run the project from VSCode</p>
-<h1><a class="anchor" id="autotoc_md11"></a>
-Linux</h1>
-<ol type="1">
-<li>Install <a href="https://cmake.org/download/">cmake</a></li>
-<li>Ensure all dependencies are installed</li>
-</ol>
-<p>On Ubuntu and other Debian based distributions:</p>
-<div class="fragment"><div class="line">sudo apt update</div>
-<div class="line">sudo apt install \</div>
-<div class="line">    libxrandr-dev \</div>
-<div class="line">    libxcursor-dev \</div>
-<div class="line">    libxi-dev \</div>
-<div class="line">    libudev-dev \</div>
-<div class="line">    libfreetype-dev \</div>
-<div class="line">    libflac-dev \</div>
-<div class="line">    libvorbis-dev \</div>
-<div class="line">    libgl1-mesa-dev \</div>
-<div class="line">    libegl1-mesa-dev \</div>
-<div class="line">    libfreetype-dev</div>
-</div><!-- fragment --><ol type="1">
-<li>Configuring and building <div class="fragment"><div class="line"># Make sure these are run in the root of the project</div>
-<div class="line">cmake -B build # Only needs to run once</div>
-<div class="line">cmake --build build</div>
-<div class="line">./build/bin/main</div>
-</div><!-- fragment --></li>
-</ol>
-<p>Remember, you can pass flags to <code>main</code> to control what <code><a class="el" href="classMyBot.html">MyBot</a></code> goes up against.</p>
-<p>Alternatively, if working in VSCode, you can follow the window instructions starting from step 3 (installing the extensions) and just run the project from VSCode </p>
+<p>p.s.s <code><a class="el" href="classMyBot.html">MyBot</a></code>, the one you're writing, is the purple one </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
