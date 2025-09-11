@@ -68,6 +68,8 @@ Please immediately tell Joel if you find any bugs!
 
 - For more specifics on how the game works, see [the game manual](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/GAME_MANUAL.md).
 
+- For the api see [the documentation](https://joel-singh.github.io/denison-snake-programming-competition/)
+
 # FAQ
 
 What is the competition format?
