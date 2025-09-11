@@ -82,6 +82,14 @@ Can I use AI?
 
 no.
 
+Will there be resource limits on the bots?
+
+Yes, but for the purpose of logistics rather than an actual limitation on you.
+Every bot will receive 2 gigs of ram, 1 gigahertz of CPU, and 5 seconds every
+game tick to think in the tournament. Unlike a computationally expensive game
+like Chess, computing the logic for this game should not reach anywhere near
+these limits unless you accidentally have an infinite loop.
+
 # Attributions
 
 I was heavily inspired by Sebastian Lague's [Chess Challenge](https://github.com/SebLague/Chess-Challenge) and this idea for two player snake was taken from one of his [unfinished projects.](https://youtu.be/kIMHRQWorkE?t=711)

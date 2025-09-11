@@ -6,7 +6,12 @@ as you can guess computes the core snake game logic. Furthermore, Joel is
 always available for questions! Whether at DU Slither help sessions every
 Thursday from 7 to 8 pm in Olin 311 or on the discord server.
 
+
 Game constants such as board size are kept in `src/game_settings.h`, their names are used throughout this document.
+
+note: You don't need to understand or read this document to program a bot! Just
+do stuff with your bot and experiment. This document is for the nitty gritty
+details when you need it.
 
 ## How the game logic works
 
@@ -19,8 +24,27 @@ Ticks start at 0, so the first tick returned by `Grid::get_current_tick` will be
 
 ## Fruits
 
+Fruits spawn at the end of every time `FRUIT_SPAWN_INTERVAL` ticks pass, for
+instance, a fruit will spawn on the `FRUIT_SPAWN_INTERVAL` tick, on the
+`FRUIT_SPAWN_INTERVAL * 2` tick, etc. However, you will not be able to see this
+fruit when `Grid::get_current_tick() == FRUIT_SPAWN_INTERVAL`, it will be one
+after because the fruit is spawned at the end of the tick, after your think
+method is called. For instance, the first fruit you'll see will be when
+`Grid::get_current_tick() == (FRUIT_SPAWN_INTERVAL + 1)`. 
+
 ## Board
 
-The board is 20x20 discrete grid of squares. The origin of the board is at the bottom left and is zero indexed (i.e the bottom left cell is `(0, 0)`). Each part of each snake takes up one cell. The snakes spawn on the left and right side at the positions `(2, 10)` and `(17, 10)` precisely.
+The board is 20x20 discrete grid of squares. The origin of the board is at the
+bottom left and is zero indexed (i.e the bottom left cell is `(0, 0)`). Each
+part of each snake takes up one cell. The snakes spawn on the left and right
+side at the positions `(2, 10)` and `(17, 10)` precisely.
+
+## Resource Limits
+
+During the actual tournament, every bot will run with 1 gigahertz of CPU, 2
+gigabytes of RAM, and 5 seconds of computation time. Unlike a computationally
+expensive game like Chess, computing the logic for this game should not reach
+anywhere near these limits unless you accidentally have an infinite loop. These
+limits are for logistic purposes such as when a bot enters an infinite loop
 
 ## Win Conditions
