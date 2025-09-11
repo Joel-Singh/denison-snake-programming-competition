@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pos_0',['Pos',['../classPos.html',1,'']]],
-  ['programming_20competition_1',['DU CODE Snake Programming Competition',['../index.html',1,'']]]
+  ['with_5fdir_0',['with_dir',['../classPos.html#a56059a0c4a3530733b19e012f931a21a',1,'Pos']]],
+  ['writing_20a_20bot_1',['Writing a bot',['../index.html#autotoc_md2',1,'']]]
 ];

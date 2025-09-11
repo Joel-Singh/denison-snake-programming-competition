@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instructions_0',['Compilation Instructions',['../md_documentation_2COMPILING.html',1,'']]]
+  ['snake_20programming_20competition_0',['DU CODE Snake Programming Competition',['../index.html',1,'']]]
 ];

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['macos_0',['MacOS',['../md_documentation_2COMPILING.html#autotoc_md10',1,'']]],
-  ['manual_1',['Game Manual',['../md_documentation_2GAME__MANUAL.html',1,'']]],
-  ['mybot_2',['MyBot',['../classMyBot.html',1,'']]]
+  ['snake_20programming_20competition_0',['DU CODE Snake Programming Competition',['../index.html',1,'']]]
 ];

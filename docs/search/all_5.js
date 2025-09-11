@@ -6,7 +6,5 @@ var searchData=
   ['find_5fother_5fpositions_3',['find_other_positions',['../classGrid.html#a6c365f3569e8c122be468a9481277ef2',1,'Grid']]],
   ['find_5fself_5fhead_4',['find_self_head',['../classGrid.html#ad7f70b4469150a1d6b4fc6f70fd1c08c',1,'Grid']]],
   ['find_5fself_5fpositions_5',['find_self_positions',['../classGrid.html#a2f0e9b72b001028e9594182e3c8fff20',1,'Grid']]],
-  ['format_6',['Game format',['../index.html#autotoc_md1',1,'']]],
-  ['from_20the_20terminal_7',['Running from the terminal',['../md_documentation_2COMPILING.html#autotoc_md12',1,'']]],
-  ['fruits_8',['Fruits',['../md_documentation_2GAME__MANUAL.html#autotoc_md17',1,'']]]
+  ['format_6',['Game format',['../index.html#autotoc_md1',1,'']]]
 ];

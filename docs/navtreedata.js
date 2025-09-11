@@ -26,23 +26,6 @@ var NAVTREE =
 [
   [ "DU CODE Snake Competition", "index.html", [
     [ "DU CODE Snake Programming Competition", "index.html", "index" ],
-    [ "Compilation Instructions", "md_documentation_2COMPILING.html", [
-      [ "Introduction", "md_documentation_2COMPILING.html#autotoc_md8", null ],
-      [ "Windows", "md_documentation_2COMPILING.html#autotoc_md9", null ],
-      [ "MacOS", "md_documentation_2COMPILING.html#autotoc_md10", null ],
-      [ "Linux", "md_documentation_2COMPILING.html#autotoc_md11", null ],
-      [ "Running from the terminal", "md_documentation_2COMPILING.html#autotoc_md12", null ],
-      [ "Configuring VSCode", "md_documentation_2COMPILING.html#autotoc_md13", [
-        [ "Next Steps", "md_documentation_2COMPILING.html#autotoc_md14", null ]
-      ] ]
-    ] ],
-    [ "Game Manual", "md_documentation_2GAME__MANUAL.html", [
-      [ "How the game logic works", "md_documentation_2GAME__MANUAL.html#autotoc_md16", null ],
-      [ "Fruits", "md_documentation_2GAME__MANUAL.html#autotoc_md17", null ],
-      [ "Board", "md_documentation_2GAME__MANUAL.html#autotoc_md18", null ],
-      [ "Resource Limits", "md_documentation_2GAME__MANUAL.html#autotoc_md19", null ],
-      [ "Win/Loss/Draw Conditions", "md_documentation_2GAME__MANUAL.html#autotoc_md20", null ]
-    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
