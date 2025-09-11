@@ -15,7 +15,10 @@ edge, itself, or the other snake, it loses. If the heads of the snakes run into
 each other, the game is considered a draw. And of course, if a fruit is eaten,
 the snake gets longer.
 
-Competitors will implement a bot to control their snake detailed below.
+If the game is not over at the start of the 100th time step, the longer snake
+will win or both draw if they are the same size.
+
+Competitors will implement a bot to control their snake as detailed below.
 
 # Writing a bot
 
@@ -58,6 +61,10 @@ instructions](https://joel-singh.github.io/denison-snake-programming-competition
 - Submissions will be due Oct. 9th Thursday at 8 pm. A google form for submission will be sent out a week before.
 
 - The actual competition will occur on Oct. 11th Saturday. Every match will be streamed live.
+
+- Any bugs found will be fixed up to September 18th. After that, unless a bug
+is particularly egregious, they will remain as part of the "official" game.
+Please immediately tell Joel if you find any bugs!
 
 # FAQ
 
