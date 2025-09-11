@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['your_20bot_0',['Testing your bot',['../index.html#autotoc_md3',1,'']]]
+  ['vscode_0',['Configuring VSCode',['../md_documentation_2COMPILING.html#autotoc_md13',1,'']]]
 ];

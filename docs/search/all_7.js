@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['instructions_0',['Compilation Instructions',['../md_documentation_2COMPILING.html',1,'']]],
-  ['introduction_1',['Introduction',['../md_documentation_2COMPILING.html#autotoc_md8',1,'']]]
+  ['how_20the_20game_20logic_20works_0',['How the game logic works',['../md_documentation_2GAME__MANUAL.html#autotoc_md16',1,'']]]
 ];

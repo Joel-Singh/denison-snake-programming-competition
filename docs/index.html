@@ -107,28 +107,34 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <p>Howdy! This is the repo for Denison University's Coding Club Snake Programming Competition. Participants will code a Snake bot in C++ to face off against others. The winner will be crowned Coding Supreme.</p>
+<p><img src="./README-assets/snake-screenshot.png" alt="Screenshot of the multiplayer snake game" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Game format</h1>
-<p>The game is very similar to classic snake except there are two. Every timestep, the head of each snake will go up, down, left, or right and a fruit will spawn on a regular interval. If the head of one snake runs into the edge, itself, or the other snake, it loses. If the heads of the snakes run into each other, the game is considered a draw. And of course, if a fruit is eaten, the snake gets longer.</p>
+<p>The game is very similar to classic snake except there are two snakes. Every timestep, the head of each snake will go up, down, left, or right and a fruit will spawn on a regular interval. If the head of one snake runs into the edge, itself, or the other snake, it loses. If the heads of the snakes run into each other, the game is considered a draw. And of course, if a fruit is eaten, the snake gets longer.</p>
+<p>If the game is not over at the start of the 100th time step, the longer snake will win or both draw if they are the same size.</p>
+<p>Competitors will implement a bot to control their snake as detailed below.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Writing a bot</h1>
 <p>Your bot will be implemented in <code>src/MyBot.cpp</code>, this is what will be submitted. You may write additional helper methods and functions but they must be contained within that single file and you may not modify the signature of the <code>think</code> function. You can of course create more scripts to test your bot, but in the end, <code>MyBot.cpp</code> is what will be submitted.</p>
-<p>The <code>think</code> function is what will be called every time step and is what determines what your bot does. See the <a href="https://joel-singh.github.io/denison-snake-programming-competition/">documentation</a>. In particular, the <code><a class="el" href="classGrid.html" title="Represents the grid of cells containing snakes and fruits. Grid is used in the MyBot::think function ...">Grid</a></code> class which is passed into <code>think</code> and is the main way for you to see what is on the board.</p>
+<p>The <code>think</code> function is what will be called every time step and is what determines what your bot does. the <code>think</code> function returns a <code><a class="el" href="direction_8h.html#a224b9163917ac32fc95a60d8c1eec3aa" title="Represents a direction and is returned by your bot in MyBot::think.">Direction</a></code> and takes in a <code><a class="el" href="classGrid.html" title="Represents the grid of cells containing snakes and fruits. Grid is used in the MyBot::think function ...">Grid</a></code> as a parameter. See the <a href="https://joel-singh.github.io/denison-snake-programming-competition/">documentation</a>. The <code><a class="el" href="classGrid.html" title="Represents the grid of cells containing snakes and fruits. Grid is used in the MyBot::think function ...">Grid</a></code> class contains the information for what is on the board.</p>
 <p>To start, you'll want to read <a href="https://joel-singh.github.io/denison-snake-programming-competition/md_documentation_2COMPILING.html">the compilation instructions</a> which also includes how to get the project set up for specifically VSCode. It'll guide you in installing a cpp compiler and running the project. If compiling provides a hurdle in you participating, sessions are being run every Thursday in Olin 311 from 7 to 8 pm to help with DU Slither!</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Testing your bot</h1>
 <p>When running this project, there are three options for testing:</p>
 <ul>
-<li><a class="el" href="classMyBot.html">MyBot</a> vs <a class="el" href="classEvilBot.html">EvilBot</a> (contained in <code>src/EvilBot</code>)</li>
+<li><a class="el" href="classMyBot.html">MyBot</a> vs <a class="el" href="classEvilBot.html">EvilBot</a> (contained in <code>src/EvilBot</code>.) Evil bot is simply another bot you can customize to go against <a class="el" href="classMyBot.html">MyBot</a>.</li>
 <li><a class="el" href="classMyBot.html">MyBot</a> vs yourself (controls are WASD or arrow keys)</li>
 <li><a class="el" href="classMyBot.html">MyBot</a> vs <a class="el" href="classMyBot.html">MyBot</a></li>
 </ul>
-<p>To choose one, pass in <code>--evil-bot</code>, <code>--yourself</code>, or <code>--my-bot</code> as an option to the compiled binary (e.g <code>./build/bin/main --yourself</code>).</p>
-<p>Evil bot will be chosen by default if no flags are passed.</p>
+<p>After following <a href="https://joel-singh.github.io/denison-snake-programming-competition/md_documentation_2COMPILING.html">the compilation instructions</a>, you'll be able to select which option through the VSCode run and debug menu:</p>
+<p><img src="./README-assets/run-and-debug-in-vs-code.png" alt="VSCode run and debug menu with options for every operating system" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Additional Rules</h1>
 <ul>
 <li>You may work alone or in a group (no size limit)</li>
+<li>Submissions will be due Oct. 9th Thursday at 8 pm. A google form for submission will be sent out a week before.</li>
+<li>The actual competition will occur on Oct. 11th Saturday. Every match will be streamed live.</li>
+<li>Any bugs found will be fixed up to September 18th. After that, unless a bug is particularly egregious, they will remain as part of the "official" game. Please immediately tell Joel if you find any bugs!</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md5"></a>
 FAQ</h1>
@@ -139,10 +145,14 @@ FAQ</h1>
 </ul>
 <p>I'm having issues compiling and running the project</p>
 <ul>
-<li>You can <a href="https://github.com/Joel-Singh/denison-snake-programming-competition/issues">create an issue</a> with the relevant errors, contact Joel on the Coding Club discord server, or see Joel directly at the next coding club meeting.</li>
+<li>Contact Joel on the Coding Club discord server or show up to the daily DU Slither help meets on Thursdays from 7 to 8 pm in Olin 311.</li>
 </ul>
 <p>Can I use AI?</p>
 <p>no.</p>
+<p>Will there be resource limits on the bots?</p>
+<p>Yes, but for the purpose of logistics rather than an actual limitation on you. Every bot will receive 2 gigs of ram, 1 gigahertz of CPU, and 5 seconds every game tick to think in the tournament. Unlike a computationally expensive game like Chess, computing the logic for this game should not reach anywhere near these limits unless you accidentally have an infinite loop.</p>
+<p>Can I use the standard cpp library?</p>
+<p>Yes, except for parts that obviously don't make sense such as network or IO. Also, you may not use <code>std::srand</code>, this is done already in main, just use <code>std::rand</code>.</p>
 <h1><a class="anchor" id="autotoc_md6"></a>
 Attributions</h1>
 <p>I was heavily inspired by Sebastian Lague's <a href="https://github.com/SebLague/Chess-Challenge">Chess Challenge</a> and this idea for two player snake was taken from one of his <a href="https://youtu.be/kIMHRQWorkE?t=711">unfinished projects.</a> </p>

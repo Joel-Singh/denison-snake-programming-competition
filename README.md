@@ -35,7 +35,7 @@ takes in a `Grid` as a parameter. See the
 The `Grid` class contains the information for what is on the board.
 
 To start, you'll want to read [the compilation
-instructions](https://joel-singh.github.io/denison-snake-programming-competition/md_documentation_2COMPILING.html)
+instructions](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/COMPILING.md)
 which also includes how to get the project set up for specifically VSCode.
 It'll guide you in installing a cpp compiler and running the project. If
 compiling provides a hurdle in you participating, sessions are being run every
@@ -50,7 +50,7 @@ When running this project, there are three options for testing:
 - MyBot vs MyBot
 
 After following [the compilation
-instructions](https://joel-singh.github.io/denison-snake-programming-competition/md_documentation_2COMPILING.html), you'll be able to select which option through the VSCode run and debug menu:
+instructions](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/COMPILING.md), you'll be able to select which option through the VSCode run and debug menu:
 
 ![VSCode run and debug menu with options for every operating system](./README-assets/run-and-debug-in-vs-code.png)
 

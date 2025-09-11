@@ -113,47 +113,36 @@ Introduction</h1>
 <p>Daily sessions to help with DU Slither are held Thursdays in Olin 311 from 7 to 8 pm. If compiling is a hurdle to participating, come get Joel! Environment setup is the most frustrating part of programming.</p>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Windows</h1>
-<ol type="1">
-<li>Install <a href="https://cmake.org/download">CMake</a></li>
-</ol>
+<p>First: Install <a href="https://cmake.org/download">CMake</a></p>
 <p>you'll specifically want to download and run the Windows x64 installer, <code>cmake-4.1.0-rc4-windows-x86_64.msi</code>.</p>
-<ol type="1">
-<li>Install <a href="https://code.visualstudio.com/download">VSCode</a></li>
-<li>Install <a href="https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022">the build tools for Visual Studio</a> which will allow us to install the Microsoft C++ Compiler</li>
-</ol>
+<p>Second: Install <a href="https://code.visualstudio.com/download">VSCode</a></p>
+<p>Third: Install <a href="https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022">the build tools for Visual Studio</a> which will allow us to install the Microsoft C++ Compiler</p>
 <ul>
 <li>Go to <a href="https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022">https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022</a></li>
 <li>Scroll down to "Build Tools for Visual Studio" and download.</li>
 <li>Run the downloaded installer.</li>
 <li>If the website keeps redirecting you to bing instead of a download, see Joel.</li>
 </ul>
-<ol type="1">
-<li>Install the <a href="https://code.visualstudio.com/docs/cpp/config-msvc">Microsoft C++ compiler</a> (MSVC)</li>
-</ol>
+<p>Fourth: Install the <a href="https://code.visualstudio.com/docs/cpp/config-msvc">Microsoft C++ compiler</a> (MSVC)</p>
 <ul>
 <li>type in "Visual Studio Installer" on the search menu then run the installer</li>
 <li>Click "Modify" on Visual Studio Build Tools 2022</li>
 <li>Check "Desktop development with C++"</li>
 <li>Hit modify to save changes</li>
 </ul>
-<ol type="1">
-<li>Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</li>
-</ol>
+<p>Fifth: Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</p>
 <h1><a class="anchor" id="autotoc_md10"></a>
 MacOS</h1>
-<p>First, we need to install a cpp compiler or check if we have one.</p><ol type="1">
-<li>Open a terminal</li>
-<li>Type <code>g++ --version</code></li>
-<li>If you don't see output describing the cpp compiler you have installed, a prompt should appear to install it</li>
-<li>Install <a href="https://cmake.org/download/">cmake</a> for your version of MacOS</li>
-<li>Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</li>
-</ol>
+<p>To start, we need to install a cpp compiler or check if we have one.</p>
+<p>First: Open a terminal</p>
+<p>Second: Type <code>g++ --version</code></p>
+<p>If you don't see output describing the cpp compiler you have installed, a prompt should appear to install it</p>
+<p>Fourth: Install <a href="https://cmake.org/download/">cmake</a> for your version of MacOS</p>
+<p>Fifth: Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</p>
 <h1><a class="anchor" id="autotoc_md11"></a>
 Linux</h1>
-<ol type="1">
-<li>Install <a href="https://cmake.org/download/">cmake</a></li>
-<li>Ensure all dependencies are installed</li>
-</ol>
+<p>First: Install <a href="https://cmake.org/download/">cmake</a></p>
+<p>Second: Ensure all dependencies are installed</p>
 <p>On Ubuntu and other Debian based distributions: </p><div class="fragment"><div class="line">sudo apt update</div>
 <div class="line">sudo apt install \</div>
 <div class="line">    libxrandr-dev \</div>
@@ -166,9 +155,7 @@ Linux</h1>
 <div class="line">    libgl1-mesa-dev \</div>
 <div class="line">    libegl1-mesa-dev \</div>
 <div class="line">    libfreetype-dev</div>
-</div><!-- fragment --><ol type="1">
-<li>Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</li>
-</ol>
+</div><!-- fragment --><p>Third: Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode</p>
 <h1><a class="anchor" id="autotoc_md12"></a>
 Running from the terminal</h1>
 <div class="fragment"><div class="line"># Make sure these are run in the root of the project</div>
@@ -178,30 +165,28 @@ Running from the terminal</h1>
 </div><!-- fragment --><p>You can pass the following flags to put <code><a class="el" href="classMyBot.html">MyBot</a></code> up against different other bots: <code>--evil-bot</code> to go against the evil bot, <code>--my-bot</code> to go against itself, and <code>--yourself</code> to go against yourself with WASD controls.</p>
 <h1><a class="anchor" id="autotoc_md13"></a>
 Configuring VSCode</h1>
-<ol type="1">
-<li>Install the C++ and CMake VSCode extensions:</li>
-</ol>
+<p>First: Install the C++ and CMake VSCode extensions:</p>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C++ extension</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake extension</a></li>
 </ul>
-<ol type="1">
-<li>Clone the repository</li>
-<li>Configuring CMake:</li>
-</ol>
+<p>Second: Clone the repository</p>
+<p>Third: Configuring CMake:</p>
 <p>note: the following is taken from an <a href="https://code.visualstudio.com/docs/cpp/cmake-linux#_configure-hello-world">official vscode guide.</a></p>
 <p>Run each of the following commands, <b>after opening the project (file &gt; open folder) in VSCode</b>, with the command pallete (Ctrl + Shift + P):</p>
 <p><code>CMake: Select a Kit</code>: scans your computer for compilers and lets you select one for use. Simply click "unspecified" and let it choose for you.</p>
 <p><code>CMake: Select variant</code>: lets you select the kind of build to do. Simply click Debug.</p>
 <p><code>CMake: Configure</code>: Takes what you selected before, and generates the necessary files in build/.</p>
 <p>You only need to run the above once.</p>
-<ol type="1">
-<li>Running the project</li>
-</ol>
+<p>Fourth: Running the project</p>
 <p>You can now use the "Run and Debug" section on the left to run your code :-). Simply choose what to run <code><a class="el" href="classMyBot.html">MyBot</a></code> against with your operating system.</p>
-<p>note to self update thiis image <img src="./README-assets/run-and-debug-in-vs-code.png" alt="What Run and Debug looks like" class="inline"/></p>
+<p><img src="../README-assets/run-and-debug-in-vs-code.png" alt="What Run and Debug looks like" class="inline"/></p>
 <p>p.s you have to use the "Run and Debug" section on the left, trying to run <code>MyBot.cpp</code> directly with the run button in the top right won't work.</p>
-<p>p.s.s <code><a class="el" href="classMyBot.html">MyBot</a></code>, the one you're writing, is the purple one </p>
+<p>p.s.s <code><a class="el" href="classMyBot.html">MyBot</a></code>, is the purple one</p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Next Steps</h2>
+<p>After ensuring you're correctly setup, all thats left is to start writing your bot! Your bot will be written in <code>src/m_bot.cpp</code>. You'll want to dive into <a href="https://joel-singh.github.io/denison-snake-programming-competition/">the documentation</a>, specifically the <code><a class="el" href="classGrid.html" title="Represents the grid of cells containing snakes and fruits. Grid is used in the MyBot::think function ...">Grid</a></code> class that you have access to within <code>think</code>. <code><a class="el" href="classGrid.html" title="Represents the grid of cells containing snakes and fruits. Grid is used in the MyBot::think function ...">Grid</a></code> has a wonderful array of methods to figure out where things like fruit are on the board.</p>
+<p>You'll also want to take a look at <a href="https://joel-singh.github.io/denison-snake-programming-competition/md_documentation_2GAME__MANUAL.html">the game manual</a>, which details more specific rules. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

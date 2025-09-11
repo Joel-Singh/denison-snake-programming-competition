@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['macos_0',['MacOS',['../md_documentation_2COMPILING.html#autotoc_md10',1,'']]],
-  ['manual_1',['Game Manual',['../md_documentation_2GAME__MANUAL.html',1,'']]],
-  ['mybot_2',['MyBot',['../classMyBot.html',1,'']]]
+  ['limits_0',['Resource Limits',['../md_documentation_2GAME__MANUAL.html#autotoc_md19',1,'']]],
+  ['linux_1',['Linux',['../md_documentation_2COMPILING.html#autotoc_md11',1,'']]],
+  ['logic_20works_2',['How the game logic works',['../md_documentation_2GAME__MANUAL.html#autotoc_md16',1,'']]],
+  ['loss_20draw_20conditions_3',['Win/Loss/Draw Conditions',['../md_documentation_2GAME__MANUAL.html#autotoc_md20',1,'']]]
 ];

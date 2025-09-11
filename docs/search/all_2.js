@@ -5,5 +5,6 @@ var searchData=
   ['code_20snake_20programming_20competition_2',['DU CODE Snake Programming Competition',['../index.html',1,'']]],
   ['competition_3',['DU CODE Snake Programming Competition',['../index.html',1,'']]],
   ['compilation_20instructions_4',['Compilation Instructions',['../md_documentation_2COMPILING.html',1,'']]],
-  ['configuring_20vscode_5',['Configuring VSCode',['../md_documentation_2COMPILING.html#autotoc_md13',1,'']]]
+  ['conditions_5',['Win/Loss/Draw Conditions',['../md_documentation_2GAME__MANUAL.html#autotoc_md20',1,'']]],
+  ['configuring_20vscode_6',['Configuring VSCode',['../md_documentation_2COMPILING.html#autotoc_md13',1,'']]]
 ];
