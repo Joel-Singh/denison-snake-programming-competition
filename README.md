@@ -66,6 +66,8 @@ instructions](https://github.com/Joel-Singh/denison-snake-programming-competitio
 is particularly egregious, they will remain as part of the "official" game.
 Please immediately tell Joel if you find any bugs!
 
+- For more specifics on how the game works, see [the game manual](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/GAME_MANUAL.md).
+
 # FAQ
 
 What is the competition format?
