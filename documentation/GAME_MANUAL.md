@@ -17,7 +17,7 @@ details when you need it.
 This snake game operates on the notion of "game ticks". Every tick, the think
 methods of each bot are called and then the resulting directions are put into
 the `compute_game_logic` function which will figure out whether a snake has
-won, new positions, etc. On the 100th game tick, `compute_game_logic` will return an end state (winner or draw.)
+won, new positions, etc. On the 300th game tick, `compute_game_logic` will return an end state (winner or draw.)
 
 Ticks start at 0, so the first tick returned by `Grid::get_current_tick` will be 0 and the final will be `FINAL_TICK`.
 

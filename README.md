@@ -15,7 +15,7 @@ edge, itself, or the other snake, it loses. If the heads of the snakes run into
 each other, the game is considered a draw. And of course, if a fruit is eaten,
 the snake gets longer.
 
-If the game is not over at the start of the 100th time step, the longer snake
+If the game is not over at the start of the 300th time step, the longer snake
 will win or both draw if they are the same size.
 
 Competitors will implement a bot to control their snake as detailed below.
@@ -98,6 +98,11 @@ Can I use the standard cpp library?
 
 Yes, except for parts that obviously don't make sense such as network or IO. Also, you may not use
 `std::srand`, this is done already in main, just use `std::rand`.
+
+# Changelog
+The game will remain static starting on September 18th, unless any particularly egregious bugs are found.
+
+09-11-2025: Changed the final tick of the game to be 300 instead of 100. So games last a minute rather than 20 seconds.
 
 # Attributions
 
