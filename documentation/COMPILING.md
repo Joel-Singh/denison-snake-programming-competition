@@ -97,6 +97,10 @@ You can pass the following flags to put `MyBot` up against different other bots:
 
 \2. Clone the repository
 
+- In VSCode, click the three circles connected by lines on the left
+- If you don't have git installed, there'll be a button that links to an install
+- Once git is installed, you'll see an option to clone from a link, clone from this link: https://github.com/Joel-Singh/denison-snake-programming-competition.git
+
 \3. Configuring CMake:
 
 note: the following is taken from an [official vscode guide.](https://code.visualstudio.com/docs/cpp/cmake-linux#_configure-hello-world)
