@@ -122,7 +122,6 @@ int main(int argc, char *argv[]) {
   sf::RenderWindow window(sf::VideoMode({200, 200}), "Denison Snake!");
   window.setFramerateLimit(60);
 
-  sf::Clock clock;
   Input input;
 
   GameState game_state = GameState::ON_GOING;
@@ -229,10 +228,6 @@ int main(int argc, char *argv[]) {
       outf << match_vec_to_str(matches);
     }
 
-    if (game_state != GameState::ON_GOING) {
-      throw runtime_error("crash");
-    }
-
     if (input.was_D_pressed && game_state != GameState::ON_GOING) {
       input.was_D_pressed = false;
     } else if (input.was_D_pressed && game_state == GameState::ON_GOING) {
@@ -243,26 +238,6 @@ int main(int argc, char *argv[]) {
     draw_cells(window, cells);
     window.display();
   }
-
-  // for (const auto &match : matches) {
-  //   std::cout << "std::get<0>(match)" << (std::get<0>(match)) << std::endl;
-  //   std::cout << "std::get<1>(match)" << (std::get<1>(match)) << std::endl;
-  //   std::cout << "------------------------------" << std::endl;
-  // }
-  //
-  // // Create all of our game data
-  // sf::Clock clock;
-  // Input input;
-  //
-  // GameState game_state = GameState::ON_GOING;
-  // unsigned int game_ticks = 0;
-  //
-  // std::vector<Pos> player_one_segments = {player_one_start};
-  // std::vector<Pos> player_two_segments = {player_two_start};
-  //
-  // Cells cells =
-  //     create_from_segments(CELL_SIZE, player_one_segments,
-  //     player_two_segments);
 }
 
 GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
