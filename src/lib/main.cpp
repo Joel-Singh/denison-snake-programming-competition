@@ -204,6 +204,18 @@ int main(int argc, char *argv[]) {
         cout << player_two_name + " has won!" << endl;
       }
 
+      if (game_state == GameState::DRAW) {
+        cout << "Draw!" << endl;
+      }
+
+      if (game_ticks == FINAL_TICK) {
+        cout << "Final tick was reached!" << endl;
+      }
+
+      if (game_ticks % 50 == 0 && game_ticks != 0) {
+        cout << (FINAL_TICK - game_ticks) << " game ticks left" << endl;
+      }
+
       input.was_L_pressed = false;
       game_ticks++;
     } else if (input.was_L_pressed && game_state != GameState::ON_GOING) {
