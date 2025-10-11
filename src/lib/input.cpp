@@ -29,5 +29,17 @@ void update_input(const std::optional<sf::Event> &event, Input &input) {
         scancode == sf::Keyboard::Scan::Right) {
       input.was_right_pressed = true;
     }
+
+    if (scancode == sf::Keyboard::Scan::D) {
+      input.was_D_pressed = true;
+    }
+
+    if (scancode == sf::Keyboard::Scan::L) {
+      input.was_L_pressed = true;
+    }
+
+    if (scancode == sf::Keyboard::Scan::A) {
+      input.was_A_pressed = true;
+    }
   }
 }

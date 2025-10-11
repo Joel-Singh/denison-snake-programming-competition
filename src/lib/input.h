@@ -9,6 +9,10 @@ struct Input {
   bool was_down_pressed = false;
   bool was_left_pressed = false;
   bool was_right_pressed = false;
+  bool was_D_pressed = false;
+  bool was_L_pressed = false;
+  bool was_A_pressed = false;
+
   bool any_pressed() const; /// Returns true if any pressed bools are true
 };
 

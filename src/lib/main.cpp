@@ -20,6 +20,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <optional>
 #include <stdexcept>
 
 namespace fs = std::filesystem;
@@ -28,13 +29,14 @@ using namespace std;
 const sf::Time GAME_TICK_TIME = sf::seconds(0.2);
 const sf::Color BACKGROUND_COLOR = sf::Color::Black;
 
-const Pos player_one_start = Pos(2, CELL_SIZE / 2);
-const Pos player_two_start = Pos(CELL_SIZE - 3, CELL_SIZE / 2);
+const Pos player_one_start = Pos(2, GRID_SIZE / 2);
+const Pos player_two_start = Pos(GRID_SIZE - 3, GRID_SIZE / 2);
 
 GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
                            std::vector<Pos> &player_two_segments,
-                           const Bot *player_one, const Bot *player_two,
+                           Direction player_one_dir, Direction player_two_dir,
                            const unsigned int game_ticks);
+string get_path_to_bot(string name);
 
 /// \brief runs a round robin rounmanet with the compiled bots in
 /// ./src/tournament/bots.
@@ -88,6 +90,111 @@ int main(int argc, char *argv[]) {
     outf << match_vec_to_str(matches);
   }
 
+  string player_one;
+  string player_two;
+
+  // Get the first match not run
+  bool found = false;
+  for (Match match : matches) {
+    if (match.match_result == MatchResult::NotRun) {
+      player_one = get_path_to_bot(match.get_player_one());
+      player_two = get_path_to_bot(match.get_player_two());
+      found = true;
+    }
+
+    if (found) {
+      break;
+    }
+  }
+
+  if (!found) {
+    throw runtime_error("Not matches to run");
+  }
+
+  // Create all of our game data
+  sf::RenderWindow window(sf::VideoMode({200, 200}), "Denison Snake!");
+  window.setFramerateLimit(60);
+
+  sf::Clock clock;
+  Input input;
+
+  GameState game_state = GameState::ON_GOING;
+  unsigned int game_ticks = 0;
+
+  std::vector<Pos> player_one_segments = {player_one_start};
+  std::vector<Pos> player_two_segments = {player_two_start};
+
+  Cells cells =
+      create_from_segments(GRID_SIZE, player_one_segments, player_two_segments);
+
+  while (window.isOpen()) {
+    while (const std::optional event = window.pollEvent()) {
+      if (event->is<sf::Event::Closed>())
+        window.close();
+
+      if (const auto *resized = event->getIf<sf::Event::Resized>()) {
+        // update the view to the new size of the window
+        sf::FloatRect visibleArea({0.f, 0.f}, sf::Vector2f(resized->size));
+        window.setView(sf::View(visibleArea));
+      }
+
+      update_input(event, input);
+    }
+
+    if (input.was_L_pressed && game_state == GameState::ON_GOING) {
+      optional<Direction> direction_one;
+      optional<BotFailureException> one_bot_failure;
+
+      optional<Direction> direction_two;
+      optional<BotFailureException> two_bot_failure;
+
+      try {
+        direction_one = run_bot(player_one, true, game_ticks, cells,
+                                player_one_segments, player_two_segments);
+      } catch (BotFailureException ex) {
+        one_bot_failure = ex;
+      }
+
+      try {
+        direction_two = run_bot(player_two, false, game_ticks, cells,
+                                player_one_segments, player_two_segments);
+      } catch (BotFailureException ex) {
+        two_bot_failure = ex;
+      }
+
+      if (one_bot_failure.has_value() && two_bot_failure.has_value()) {
+        cout << "Both bots failed to run" << endl;
+        cout << player_one << ": " << one_bot_failure->what() << endl;
+        cout << player_two << ": " << two_bot_failure->what() << endl;
+
+        game_state = GameState::DRAW;
+      } else if (one_bot_failure.has_value()) {
+        cout << player_one << "failed to run: " << one_bot_failure->what()
+             << endl;
+
+        game_state = GameState::PLAYER_TWO_WON;
+      } else if (two_bot_failure.has_value()) {
+        cout << player_two << "failed to run: " << two_bot_failure->what()
+             << endl;
+
+        game_state = GameState::PLAYER_ONE_WON;
+      }
+
+      input.was_L_pressed = false;
+
+      if (!one_bot_failure.has_value() && !two_bot_failure.has_value()) {
+        cout << dir_to_str(direction_one.value()) << endl;
+        cout << dir_to_str(direction_two.value()) << endl;
+      }
+
+      game_ticks++;
+    }
+
+    window.clear(BACKGROUND_COLOR);
+    draw_cells(window, cells);
+    window.display();
+  }
+
   // for (const auto &match : matches) {
   //   std::cout << "std::get<0>(match)" << (std::get<0>(match)) << std::endl;
   //   std::cout << "std::get<1>(match)" << (std::get<1>(match)) << std::endl;
@@ -111,19 +218,12 @@ int main(int argc, char *argv[]) {
 
 GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
                            std::vector<Pos> &player_two_segments,
-                           const Bot *player_one, const Bot *player_two,
+                           Direction player_one_dir, Direction player_two_dir,
                            const unsigned int game_ticks) {
-
-  assert(player_one != nullptr);
-  assert(player_two != nullptr);
-
   Grid player_one_grid(true, game_ticks, cells, player_one_segments,
                        player_two_segments);
   Grid player_two_grid(false, game_ticks, cells, player_one_segments,
                        player_two_segments);
-
-  Direction player_one_dir = player_one->think(player_one_grid);
-  Direction player_two_dir = player_two->think(player_two_grid);
 
   GameState game_state =
       compute_game_logic(cells, game_ticks, player_one_dir, player_two_dir,
@@ -131,3 +231,7 @@ GameState run_two_bot_game(Cells &cells, std::vector<Pos> &player_one_segments,
 
   return game_state;
 }
+
+// \brief Gets the path to a bot binary, assuming the cwd is the root of the
+// project
+string get_path_to_bot(string name) { return "./src/tournament/bots/" + name; }
