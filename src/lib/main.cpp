@@ -90,15 +90,19 @@ int main(int argc, char *argv[]) {
     outf << match_vec_to_str(matches);
   }
 
-  string player_one;
-  string player_two;
+  string player_one_path;
+  string player_one_name;
+  string player_two_path;
+  string player_two_name;
 
   // Get the first match not run
   bool found = false;
   for (Match match : matches) {
     if (match.match_result == MatchResult::NotRun) {
-      player_one = get_path_to_bot(match.get_player_one());
-      player_two = get_path_to_bot(match.get_player_two());
+      player_one_path = get_path_to_bot(match.get_player_one());
+      player_one_name = match.get_player_one();
+      player_two_path = get_path_to_bot(match.get_player_two());
+      player_two_name = match.get_player_two();
       found = true;
     }
 
@@ -127,6 +131,10 @@ int main(int argc, char *argv[]) {
   Cells cells =
       create_from_segments(GRID_SIZE, player_one_segments, player_two_segments);
 
+  cout << player_one_name + " (purple)" << endl
+       << "vs" << endl
+       << player_two_name + " (yellow)" << endl;
+
   while (window.isOpen()) {
     while (const std::optional event = window.pollEvent()) {
       if (event->is<sf::Event::Closed>())
@@ -149,14 +157,14 @@ int main(int argc, char *argv[]) {
       optional<BotFailureException> two_bot_failure;
 
       try {
-        direction_one = run_bot(player_one, true, game_ticks, cells,
+        direction_one = run_bot(player_one_path, true, game_ticks, cells,
                                 player_one_segments, player_two_segments);
       } catch (BotFailureException ex) {
         one_bot_failure = ex;
       }
 
       try {
-        direction_two = run_bot(player_two, false, game_ticks, cells,
+        direction_two = run_bot(player_two_path, false, game_ticks, cells,
                                 player_one_segments, player_two_segments);
       } catch (BotFailureException ex) {
         two_bot_failure = ex;
@@ -164,26 +172,34 @@ int main(int argc, char *argv[]) {
 
       if (one_bot_failure.has_value() && two_bot_failure.has_value()) {
         cout << "Both bots failed to run" << endl;
-        cout << player_one << ": " << one_bot_failure->what() << endl;
-        cout << player_two << ": " << two_bot_failure->what() << endl;
+        cout << player_one_name << ": " << one_bot_failure->what() << endl;
+        cout << player_two_name << ": " << two_bot_failure->what() << endl;
 
         game_state = GameState::DRAW;
       } else if (one_bot_failure.has_value()) {
-        cout << player_one << " failed to run: " << one_bot_failure->what()
+        cout << player_one_name << " failed to run: " << one_bot_failure->what()
              << endl;
 
         game_state = GameState::PLAYER_TWO_WON;
       } else if (two_bot_failure.has_value()) {
-        cout << player_two << " failed to run: " << two_bot_failure->what()
+        cout << player_two_name << " failed to run: " << two_bot_failure->what()
              << endl;
 
         game_state = GameState::PLAYER_ONE_WON;
       }
 
       if (!one_bot_failure.has_value() && !two_bot_failure.has_value()) {
-        run_two_bot_game(cells, player_one_segments, player_two_segments,
-                         direction_one.value(), direction_two.value(),
-                         game_ticks);
+        game_state = run_two_bot_game(
+            cells, player_one_segments, player_two_segments,
+            direction_one.value(), direction_two.value(), game_ticks);
+      }
+
+      if (game_state == GameState::PLAYER_ONE_WON) {
+        cout << player_one_name + " has won!" << endl;
+      }
+
+      if (game_state == GameState::PLAYER_TWO_WON) {
+        cout << player_two_name + " has won!" << endl;
       }
 
       input.was_L_pressed = false;
