@@ -229,6 +229,41 @@ int main(int argc, char *argv[]) {
     }
 
     if (input.was_D_pressed && game_state != GameState::ON_GOING) {
+      game_state = GameState::ON_GOING;
+      game_ticks = 0;
+
+      player_one_segments = {player_one_start};
+      player_two_segments = {player_two_start};
+
+      cells = create_from_segments(GRID_SIZE, player_one_segments,
+                                   player_two_segments);
+
+      found = false;
+      for (int i = 0; i < matches.size(); i++) {
+        if (matches[i].match_result == MatchResult::NotRun) {
+
+          player_one_path = get_path_to_bot(matches[i].get_player_one());
+          player_one_name = matches[i].get_player_one();
+          player_two_path = get_path_to_bot(matches[i].get_player_two());
+          player_two_name = matches[i].get_player_two();
+
+          current_match_index = i;
+          found = true;
+        }
+
+        if (found) {
+          break;
+        }
+      }
+
+      if (!found) {
+        throw runtime_error("All matches finished!");
+      }
+
+      cout << player_one_name + " (purple)" << endl
+           << "vs" << endl
+           << player_two_name + " (yellow)" << endl;
+
       input.was_D_pressed = false;
     } else if (input.was_D_pressed && game_state == GameState::ON_GOING) {
       input.was_D_pressed = false;
