@@ -169,24 +169,24 @@ int main(int argc, char *argv[]) {
 
         game_state = GameState::DRAW;
       } else if (one_bot_failure.has_value()) {
-        cout << player_one << "failed to run: " << one_bot_failure->what()
+        cout << player_one << " failed to run: " << one_bot_failure->what()
              << endl;
 
         game_state = GameState::PLAYER_TWO_WON;
       } else if (two_bot_failure.has_value()) {
-        cout << player_two << "failed to run: " << two_bot_failure->what()
+        cout << player_two << " failed to run: " << two_bot_failure->what()
              << endl;
 
         game_state = GameState::PLAYER_ONE_WON;
       }
 
-      input.was_L_pressed = false;
-
       if (!one_bot_failure.has_value() && !two_bot_failure.has_value()) {
-        cout << dir_to_str(direction_one.value()) << endl;
-        cout << dir_to_str(direction_two.value()) << endl;
+        run_two_bot_game(cells, player_one_segments, player_two_segments,
+                         direction_one.value(), direction_two.value(),
+                         game_ticks);
       }
 
+      input.was_L_pressed = false;
       game_ticks++;
     }
 
