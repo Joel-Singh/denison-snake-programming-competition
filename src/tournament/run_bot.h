@@ -9,6 +9,27 @@
 
 using namespace std;
 
+enum class BotFailureReason { BOT_OVER_TIME_LIMIT, FAILED_TO_OUTPUT_DIRECTION };
+
+class BotFailureException : public std::exception {
+private:
+  BotFailureReason reason; // handle our own string
+
+public:
+  BotFailureException(BotFailureReason reason) : reason(reason) {}
+
+  // std::exception::what() returns a const char*, so we must as well
+  const char *what() const noexcept override {
+    if (reason == BotFailureReason::BOT_OVER_TIME_LIMIT) {
+      return "Bot over time limit";
+    } else {
+      return "Failed to ouput direction";
+    }
+  }
+
+  const BotFailureReason get_reason() { return reason; }
+};
+
 /// \brief runs the bot binary using the limits described in game_settings.h. If
 /// the bot could not be run or it runs over limits, a runtime_error is thrown.
 ///

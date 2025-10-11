@@ -34,7 +34,7 @@ Direction run_bot(string path_to_bot, bool is_player_one, int current_tick,
   /// Example for using popen here:
   /// https://web.archive.org/web/20250821042717/https://c-for-dummies.com/blog/?p=1418
   if (bot_binary_stdout == NULL) {
-    throw runtime_error("Bot could not be run");
+    throw runtime_error("The bot binary itself could not be run");
   }
 
   // Set the std out of bot binary to not be blocking when callling getc, so
@@ -48,7 +48,7 @@ Direction run_bot(string path_to_bot, bool is_player_one, int current_tick,
     auto now = chrono::system_clock::now();
     auto time_passed = now - start_time;
     if (time_passed > TIME_LIMIT) {
-      throw runtime_error("Bot went over time limit!");
+      throw BotFailureException(BotFailureReason::BOT_OVER_TIME_LIMIT);
     }
 
     int ch;
@@ -68,7 +68,7 @@ Direction run_bot(string path_to_bot, bool is_player_one, int current_tick,
   pclose(bot_binary_stdout);
 
   if (chosen_direction == "") {
-    throw runtime_error("bot binary did not output a direction");
+    throw BotFailureException(BotFailureReason::FAILED_TO_OUTPUT_DIRECTION);
   } else {
     return str_to_dir(chosen_direction);
   }
