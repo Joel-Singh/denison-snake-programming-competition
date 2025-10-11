@@ -94,15 +94,18 @@ int main(int argc, char *argv[]) {
   string player_one_name;
   string player_two_path;
   string player_two_name;
+  int current_match_index;
 
   // Get the first match not run
   bool found = false;
-  for (Match match : matches) {
-    if (match.match_result == MatchResult::NotRun) {
-      player_one_path = get_path_to_bot(match.get_player_one());
-      player_one_name = match.get_player_one();
-      player_two_path = get_path_to_bot(match.get_player_two());
-      player_two_name = match.get_player_two();
+  for (int i = 0; i < matches.size(); i++) {
+    if (matches[i].match_result == MatchResult::NotRun) {
+      player_one_path = get_path_to_bot(matches[i].get_player_one());
+      player_one_name = matches[i].get_player_one();
+      player_two_path = get_path_to_bot(matches[i].get_player_two());
+      player_two_name = matches[i].get_player_two();
+
+      current_match_index = i;
       found = true;
     }
 
@@ -112,7 +115,7 @@ int main(int argc, char *argv[]) {
   }
 
   if (!found) {
-    throw runtime_error("Not matches to run");
+    throw runtime_error("No matches to run");
   }
 
   // Create all of our game data
@@ -204,6 +207,36 @@ int main(int argc, char *argv[]) {
 
       input.was_L_pressed = false;
       game_ticks++;
+    } else if (input.was_L_pressed && game_state != GameState::ON_GOING) {
+      input.was_L_pressed = false;
+    }
+
+    if (game_state != GameState::ON_GOING) {
+      Match current_match = matches[current_match_index];
+      if (game_state == GameState::DRAW) {
+        current_match.match_result = MatchResult::Draw;
+      } else if (game_state == GameState::PLAYER_ONE_WON) {
+        current_match.match_result = MatchResult::PlayerOneWon;
+      } else if (game_state == GameState::PLAYER_TWO_WON) {
+        current_match.match_result = MatchResult::PlayerTwoWon;
+      } else {
+        throw runtime_error("If statement missing branch for GameState");
+      }
+
+      matches[current_match_index] = current_match;
+
+      std::ofstream outf{du_slither_current_matches_path};
+      outf << match_vec_to_str(matches);
+    }
+
+    if (game_state != GameState::ON_GOING) {
+      throw runtime_error("crash");
+    }
+
+    if (input.was_D_pressed && game_state != GameState::ON_GOING) {
+      input.was_D_pressed = false;
+    } else if (input.was_D_pressed && game_state == GameState::ON_GOING) {
+      input.was_D_pressed = false;
     }
 
     window.clear(BACKGROUND_COLOR);

@@ -23,7 +23,7 @@ public:
     if (reason == BotFailureReason::BOT_OVER_TIME_LIMIT) {
       return "Bot over time limit";
     } else {
-      return "Failed to ouput direction";
+      return "Failed to output direction";
     }
   }
 

@@ -70,6 +70,10 @@ Direction run_bot(string path_to_bot, bool is_player_one, int current_tick,
   if (chosen_direction == "") {
     throw BotFailureException(BotFailureReason::FAILED_TO_OUTPUT_DIRECTION);
   } else {
-    return str_to_dir(chosen_direction);
+    try {
+      return str_to_dir(chosen_direction);
+    } catch (invalid_argument) {
+      throw BotFailureException(BotFailureReason::FAILED_TO_OUTPUT_DIRECTION);
+    }
   }
 }
