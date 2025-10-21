@@ -30,7 +30,7 @@ add_executable(
   src/lib/draw_text.cpp
   src/lib/input.cpp
   src/lib/create_from_segments.cpp
-  src/lib/get_player_from_args.cpp
+  src/lib/get_commandline_args.cpp
 )
 
 target_compile_features(main PRIVATE cxx_std_17)

@@ -1,4 +1,4 @@
-#include "lib/get_player_from_args.h"
+#include "lib/get_commandline_args.h"
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -11,7 +11,7 @@ const std::string MY_BOT = "--my-bot";
 
 /// \brief Figures out what player 2 should be from commandline args, throwing
 /// if args is wrong.
-PlayerType get_player_from_args(int argc, char *argv[]) {
+PlayerType get_commandline_args(int argc, char *argv[]) {
   bool options_correct = true;
   if (argc > 2) {
     throw std::invalid_argument("error: there should only be one option, "
