@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
 
   PlayerType player_two_type;
   try {
-    player_two_type = get_commandline_args(argc, argv);
+    player_two_type = get_commandline_args(argc, argv).player_type;
   } catch (std::invalid_argument &e) {
     std::cerr << e.what() << std::endl;
     return 1;

@@ -37,14 +37,24 @@ TEST(get_commandline_args, throws_on_incorrect_option) {
 TEST(get_commandline_args, correct_player_type_for_each_option) {
   // Default for no options is EvilBot
   char *no_options[] = {(char *)"./main"};
-  EXPECT_EQ(get_commandline_args(1, no_options), PlayerType::EvilBot);
+  EXPECT_EQ(get_commandline_args(1, no_options),
+            (Arguments{
+                .infinite = false,
+                .player_type = PlayerType::EvilBot,
+            }));
 
   char *evil_bot[] = {(char *)"./main", (char *)"--evil-bot"};
-  EXPECT_EQ(get_commandline_args(2, evil_bot), PlayerType::EvilBot);
+  EXPECT_EQ(get_commandline_args(2, evil_bot),
+            (Arguments{
+                .infinite = false,
+                .player_type = PlayerType::EvilBot,
+            }));
 
   char *yourself[] = {(char *)"./main", (char *)"--yourself"};
-  EXPECT_EQ(get_commandline_args(2, yourself), PlayerType::Manual);
+  EXPECT_EQ(get_commandline_args(2, yourself),
+            (Arguments{.infinite = false, .player_type = PlayerType::Manual}));
 
   char *my_bot[] = {(char *)"./main", (char *)"--my-bot"};
-  EXPECT_EQ(get_commandline_args(2, my_bot), PlayerType::MyBot);
+  EXPECT_EQ(get_commandline_args(2, my_bot),
+            (Arguments{.infinite = false, .player_type = PlayerType::MyBot}));
 }

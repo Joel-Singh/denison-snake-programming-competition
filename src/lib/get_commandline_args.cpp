@@ -9,9 +9,7 @@ const std::string EVIL_BOT = "--evil-bot";
 const std::string YOURSELF = "--yourself";
 const std::string MY_BOT = "--my-bot";
 
-/// \brief Figures out what player 2 should be from commandline args, throwing
-/// if args is wrong.
-PlayerType get_commandline_args(int argc, char *argv[]) {
+Arguments get_commandline_args(int argc, char *argv[]) {
   bool options_correct = true;
   if (argc > 2) {
     throw std::invalid_argument("error: there should only be one option, "
@@ -20,7 +18,10 @@ PlayerType get_commandline_args(int argc, char *argv[]) {
 
   // EvilBot by default if no options
   if (argc == 1) {
-    return PlayerType::EvilBot;
+    return Arguments{
+        .infinite = false,
+        .player_type = PlayerType::EvilBot,
+    };
   }
 
   if (!is_valid_option(argv[1])) {
@@ -30,11 +31,21 @@ PlayerType get_commandline_args(int argc, char *argv[]) {
   };
 
   if (YOURSELF == argv[1]) {
-    return PlayerType::Manual;
+    return Arguments{
+        .infinite = false,
+        .player_type = PlayerType::Manual,
+    };
   } else if (MY_BOT == argv[1]) {
-    return PlayerType::MyBot;
+    return Arguments{
+        .infinite = false,
+        .player_type = PlayerType::MyBot,
+    };
+
   } else {
-    return PlayerType::EvilBot;
+    return Arguments{
+        .infinite = false,
+        .player_type = PlayerType::EvilBot,
+    };
   }
 }
 
