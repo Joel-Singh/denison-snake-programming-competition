@@ -32,7 +32,7 @@ And then run the resulting test binary:
 ./build/bin/main_tests
 ```
 
-Note, tests are also run automatically on every pull request (TODO: need to set this up)
+Note, tests are also run automatically on every pull request.
 
 ## Documentation
 Currently, there is documentation written for the code used by students in the competition, but only partial documentation for internals (sorry!)
