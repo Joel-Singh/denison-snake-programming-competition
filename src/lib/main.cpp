@@ -114,13 +114,12 @@ int main(int argc, char *argv[]) {
         }
       }
     } else {
-      if (game_state == GameState::PLAYER_ONE_WON) {
-        draw_text("Player 1 Won!", window, font);
-      } else if (game_state == GameState::PLAYER_TWO_WON) {
-        draw_text("Player 2 Won!", window, font);
-      } else if (game_state == GameState::DRAW) {
-        draw_text("Draw!", window, font);
-      }
+      game_state = GameState::ON_GOING;
+      game_ticks = 0;
+
+      player_one_segments = {player_one_start};
+      player_two_segments = {player_two_start};
+      cells = create_from_segments(GRID_SIZE, player_one_segments, player_two_segments);
     }
 
     draw_cells(window, cells);
