@@ -4,6 +4,6 @@
 const unsigned int FINAL_TICK = 300;
 
 /// \brief The size of the grid.
-const int GRID_SIZE = 20; // Square grid
+const int GRID_SIZE = 100; // Square grid
 
 const int FRUIT_SPAWN_INTERVAL = 5; // in ticks
