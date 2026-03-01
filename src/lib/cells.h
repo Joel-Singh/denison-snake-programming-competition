@@ -5,6 +5,13 @@
 #include <vector>
 
 /// \cond INTERNAL
+/// \brief Cells represent the board containing fruit, player
+/// segments, empty spots, etc  
+///
+/// The difference betwee \ref Cells and \ref Grid is that Grid
+/// is exposed to the competitors and can not be mutated while Cells
+/// is used internally and can be mutated.
+
 class Cells {
 private:
   std::vector<std::vector<Cell>> cells;
