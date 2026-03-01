@@ -19,7 +19,20 @@ static void clear_cells_at(const std::vector<Pos> &positions, Cells &cells);
 static void update_cells_with_segments(const std::vector<Pos> &segments,
                                        const bool is_player_one, Cells &cells);
 
-// First element of segments is the head
+/// \brief the main logic function, taking in the state of the
+/// board and returning what the next \ref GameState should be.
+///
+/// \param cells the cells on the board
+///
+/// \param game_ticks the number of ticks that have passed since
+/// the game start
+///
+/// \param player_one_dir, player_two_dir the direction the each player wants
+/// to move in
+///
+/// \param player_one_segments, player_two_segments the
+/// positions of each player part. By convention, the first
+/// element is the head.
 GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
                              const Direction player_one_dir,
                              const Direction player_two_dir,
