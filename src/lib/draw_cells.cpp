@@ -18,7 +18,7 @@ const sf::Color PLAYER_ONE_BODY_COLOR = sf::Color(149, 117, 205);
 const sf::Color PLAYER_TWO_HEAD_COLOR = sf::Color(232, 202, 0);
 const sf::Color PLAYER_TWO_BODY_COLOR = sf::Color(47, 143, 92);
 const sf::Color FRUIT_COLOR = sf::Color(255, 29, 35);
-const sf::Color EMPTY_COLOR = sf::Color(46, 43, 41);
+const sf::Color EMPTY_COLOR = sf::Color(1, 50, 32);
 
 // Draws a centered grid
 void draw_cells(sf::RenderWindow &window, const Cells &cells) {
