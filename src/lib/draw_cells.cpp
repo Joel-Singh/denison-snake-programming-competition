@@ -69,7 +69,7 @@ float calculate_individual_cell_size(unsigned int win_height,
                                      unsigned int cells_height_count) {
 
   const float MIN_CELL_SIZE = 5;
-  const float MARGIN = 200;
+  const float MARGIN = 0;
 
   float cell_size = ((float)win_height - MARGIN) / cells_height_count;
 
