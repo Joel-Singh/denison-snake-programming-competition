@@ -55,7 +55,8 @@ If you don't see output describing the cpp compiler you have installed, a prompt
 
 ## Linux
 
-\1. Install [cmake](https://cmake.org/download/)
+\1. Install [cmake](https://cmake.org/download/). If you're on
+Ubuntu just run `sudo apt install cmake`
 
 \2. Ensure all dependencies are installed
 
