@@ -71,7 +71,7 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
 
     if (one_length > two_length) {
       return GameState::PLAYER_ONE_WON;
-    } else if (two_length > one_length) {
+    } else if (two_length < one_length) {
       return GameState::PLAYER_TWO_WON;
     } else {
       return GameState::DRAW;
