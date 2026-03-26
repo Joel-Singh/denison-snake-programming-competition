@@ -22,6 +22,11 @@ Competitors will implement a bot to control their snake as detailed below.
 
 # Writing a bot
 
+There are two languages you can choose to write your bot in: C++
+or Python. Both are detailed below
+
+## C++
+
 Your bot will be implemented in `src/MyBot.cpp`, this is what will be
 submitted. You may write additional helper methods and functions but they
 must be contained within that single file and you may not modify the
@@ -33,6 +38,25 @@ determines what your bot does. the `think` function returns a `Direction` and
 takes in a `Grid` as a parameter. See the
 [documentation](https://joel-singh.github.io/denison-snake-programming-competition/).
 The `Grid` class contains the information for what is on the board.
+
+To start, you'll want to read [the compilation
+instructions](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/COMPILING.md)
+which also includes how to get the project set up for specifically VSCode.
+It'll guide you in installing a cpp compiler and running the project. If
+compiling provides a hurdle in you participating, sessions are being run every
+Thursday in Olin 311 from 7 to 8 pm to help with DU Slither!
+
+## Python
+
+Your bot will be implemented in `src/python/my_bot.py`, this is what will be
+submitted. You may write additional helper methods and functions but they
+must be contained within that single file. You can of course create more scripts
+to test your bot, but in the end, `my_bot.py` is what will be submitted.
+
+The `my_bot_think` function is what will be called every time step and is what
+determines what your bot does. The `my_bot_think` function returns a `Direction` and
+takes in a `Grid` as a parameter. The documentation for Python
+will be released by the end of today, check back for the link!
 
 To start, you'll want to read [the compilation
 instructions](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/COMPILING.md)
@@ -58,11 +82,11 @@ instructions](https://github.com/Joel-Singh/denison-snake-programming-competitio
 
 - You may work alone or in a group (no size limit)
 
-- Submissions will be due Oct. 9th Thursday at 8 pm. A google form for submission will be sent out a week before.
+- The actual competition will occur on April 25th Saturday.
+  Every match will be streamed live. Submissions will open the
+  Thursday beforehand.
 
-- The actual competition will occur on Oct. 11th Saturday. Every match will be streamed live.
-
-- Any bugs found will be fixed up to September 18th. After that, unless a bug
+- Any bugs found will be fixed for the first two weeks. After that, unless a bug
 is particularly egregious, they will remain as part of the "official" game.
 Please immediately tell Joel if you find any bugs!
 
@@ -74,7 +98,7 @@ Please immediately tell Joel if you find any bugs!
 
 What is the competition format?
 
-- The actual tournament format is TBD
+- The competition format is round robin.
 - We will all meet and the most interesting games / bots will be picked
 out and discussed along with running the tournament for a winner.
 
@@ -89,20 +113,20 @@ no.
 Will there be resource limits on the bots?
 
 Yes, but for the purpose of logistics rather than an actual limitation on you.
-Every bot will receive 2 gigs of ram, 1 gigahertz of CPU, and 5 seconds every
-game tick to think in the tournament. Unlike a computationally expensive game
+Every bot will receive 10 seconds to run. Unlike a computationally expensive game
 like Chess, computing the logic for this game should not reach anywhere near
-these limits unless you accidentally have an infinite loop.
+these limits unless you accidentally have an infinite loop
+(which is why we have the time limit!)
 
-Can I use the standard cpp library?
+Can I use my language's standard library?
 
 Yes, except for parts that obviously don't make sense such as network or IO. Also, you may not use
-`std::srand`, this is done already in main, just use `std::rand`.
+`std::srand` in C++, this is done already in main, just use `std::rand`.
 
 # Changelog
-The game will remain static starting on September 18th, unless any particularly egregious bugs are found.
+The game will remain static starting on April 9th, unless any particularly egregious bugs are found.
 
-09-11-2025: Changed the final tick of the game to be 300 instead of 100. So games last a minute rather than 20 seconds.
+- No Changes yet
 
 # Attributions
 

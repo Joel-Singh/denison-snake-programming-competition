@@ -21,23 +21,25 @@ setup is the most frustrating part of programming.
 
 you'll specifically want to download and run the Windows x64 installer, `cmake-4.1.0-rc4-windows-x86_64.msi`.
 
-\2. Install [VSCode](https://code.visualstudio.com/download)
+\2. Optionally install [Python](https://www.python.org/downloads/windows/) if you're using the python implementation. You still need CMake by the way, even if your only programming in python!
 
-\3. Install [the build tools for Visual Studio](https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022) which will allow us to install the Microsoft C++ Compiler
+\3. Install [VSCode](https://code.visualstudio.com/download)
+
+\4. Install [the build tools for Visual Studio](https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022) which will allow us to install the Microsoft C++ Compiler
 
 - Go to [https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022](https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022)
 - Scroll down to "Build Tools for Visual Studio" and download.
 - Run the downloaded installer.
 - If the website keeps redirecting you to bing instead of a download, see Joel.
 
-\4. Install the [Microsoft C++ compiler](https://code.visualstudio.com/docs/cpp/config-msvc) (MSVC)
+\5. Install the [Microsoft C++ compiler](https://code.visualstudio.com/docs/cpp/config-msvc) (MSVC)
 
 - type in "Visual Studio Installer" on the search menu then run the installer
 - Click "Modify" on Visual Studio Build Tools 2022
 - Check "Desktop development with C++"
 - Hit modify to save changes
 
-\5. Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode
+\6. Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode
 
 ## MacOS
 
@@ -51,7 +53,12 @@ If you don't see output describing the cpp compiler you have installed, a prompt
 
 \3. Install [cmake](https://cmake.org/download/) for your version of MacOS
 
-\4. Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode
+\4. Optionally install
+[Python](https://www.python.org/downloads/macos/) if you're
+using the python implementation. You still need CMake by the
+way, even if your only programming in python!
+
+\5. Now, scroll down to the bottom of this document and follow the instructions for configuring VSCode
 
 ## Linux
 
@@ -101,6 +108,8 @@ You can pass the following flags to put `MyBot` up against different other bots:
 - In VSCode, click the three circles connected by lines on the left
 - If you don't have git installed, there'll be a button that links to an install
 - Once git is installed, you'll see an option to clone from a link, clone from this link: https://github.com/Joel-Singh/denison-snake-programming-competition.git
+- Once you've cloned the repository, go to where it says
+  "branches", and switch to the Python one
 
 \3. Configuring CMake:
 
@@ -130,11 +139,13 @@ p.s.s `MyBot`, is the purple one
 
 ### Next Steps
 
-After ensuring you're correctly setup, all thats left is to start writing your
-bot! Your bot will be written in `src/MyBot.cpp`. You'll want to dive into [the
+After ensuring you're correctly setup, all thats left is to
+start writing your bot! Your bot will be written in
+`src/MyBot.cpp` or `src/python/my_bot.py`. You'll want to dive
+into [the
 documentation](https://joel-singh.github.io/denison-snake-programming-competition/),
-specifically the `Grid` class that you have access to within `think`. `Grid`
-has a wonderful array of methods to figure out where things like fruit are on
-the board.
+specifically the `Grid` class that you have access to within
+`think`. `Grid` has a wonderful array of methods to figure out
+where things like fruit are on the board.
 
 You'll also want to take a look at [the game manual](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/GAME_MANUAL.md), which details more specific rules.
