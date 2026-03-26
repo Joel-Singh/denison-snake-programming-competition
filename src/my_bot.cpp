@@ -1,46 +1,39 @@
 #include "my_bot.h"
 #include "grid.h"
 #include "pos.h"
+#include <string>
+#include <pybind11/embed.h>
 
-bool is_safe_to_move(Pos pos, const Grid &grid);
+#include "lib/writers/write_cells.h"
+#include "lib/writers/write_segments.h"
+
+namespace py = pybind11;
 
 /// \brief The function you'll implement for your bot! The default code here
 /// simply has `MyBot` move randomly, only going into squares that are empty or
 /// have fruit.
 Direction MyBot::think(const Grid &grid) const {
-  Pos head = grid.find_self_head();
+  py::scoped_interpreter guard{}; // start the interpreter and keep it alive
 
-  Direction random_direction;
+  py::module_ my_bot = py::module::import("src.python.my_bot_wrapper");
 
-  // Keep choosing a random direction until its safe
-  do {
-    int rand = std::rand() % 4;
-    if (rand == 0) {
-      random_direction = Direction::UP;
-    } else if (rand == 1) {
-      random_direction = Direction::DOWN;
-    } else if (rand == 2) {
-      random_direction = Direction::LEFT;
-    } else {
-      random_direction = Direction::RIGHT;
-    }
-  } while (!is_safe_to_move(head.with_dir(random_direction), grid));
+  std::string is_player_one_str = grid.is_player_one ? "true" : "false";
+  std::string current_tick_str = std::to_string(grid.current_tick);
+  std::string cells_str = write_cells(grid.cells);
+  std::string player_one_segments_str = write_segments(grid.player_one_segments);
+  std::string player_two_segments_str = write_segments(grid.player_two_segments);
+  py::object result = my_bot.attr("think_wrapper")(is_player_one_str + "\n" + current_tick_str + "\n" + cells_str + "\n" + player_one_segments_str + "\n" + player_two_segments_str);
 
-  return random_direction;
-}
-
-// Notice I can put helper methods for use in my actual think method!
-bool is_safe_to_move(Pos pos, const Grid &grid) {
-  // Make sure that `pos` is valid
-  if (pos.x < 0 || pos.x >= grid.get_width()) {
-    return false;
+  std::string direction = result.cast<std::string>();
+  if (direction == "UP") {
+    return Direction::UP;
+  } else if (direction == "DOWN") {
+    return Direction::DOWN;
+  } else if (direction == "LEFT") {
+    return Direction::LEFT;
+  } else if (direction == "RIGHT") {
+    return Direction::RIGHT;
+  } else {
+    throw std::logic_error("Missing branch");
   }
-
-  if (pos.y < 0 || pos.y >= grid.get_height()) {
-    return false;
-  }
-
-  // Now that we know position is a valid spot on the board, we can use
-  // Grid::get and check to see if its empty
-  return grid.get(pos) == Cell::EMPTY || grid.get(pos) == Cell::FRUIT;
 }

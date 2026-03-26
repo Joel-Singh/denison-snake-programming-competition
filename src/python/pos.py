@@ -1,4 +1,4 @@
-from direction import Direction
+from src.python.direction import Direction
 
 class Pos:
   def __init__(self, x, y):

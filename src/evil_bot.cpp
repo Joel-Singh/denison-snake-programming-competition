@@ -2,8 +2,13 @@
 #include "grid.h"
 #include "pos.h"
 #include <stdexcept>
+#include <string>
+#include <pybind11/embed.h>
 
-int get_distance(Pos a, Pos b);
+#include "lib/writers/write_cells.h"
+#include "lib/writers/write_segments.h"
+
+namespace py = pybind11;
 
 /// \brief This evil bot goes to the closest fruit on the board if one exists,
 /// else, just go in a random direction
@@ -14,59 +19,27 @@ int get_distance(Pos a, Pos b);
 /// many more. This initial code is meant to give an example of how to use \ref
 /// Grid and write a bot.
 Direction EvilBot::think(const Grid &grid) const {
-  std::vector<Pos> fruits = grid.find_fruits();
+  py::scoped_interpreter guard{}; // start the interpreter and keep it alive
 
-  // if no fruits, just go in random direction
-  if (grid.find_fruits().size() == 0) {
-    int random = std::rand() % 4;
-    if (random == 0) {
-      return Direction::UP;
-    } else if (random == 1) {
-      return Direction::DOWN;
-    } else if (random == 2) {
-      return Direction::LEFT;
-    } else if (random == 3) {
-      return Direction::RIGHT;
-    } else {
-      std::cerr << "Uh oh! my code shouldn't reach here. I have a bug somewhere"
-                << std::endl;
-    }
-  }
+  py::module_ evil_bot = py::module::import("src.python.evil_bot_wrapper");
 
-  Pos head = grid.find_self_head();
+  std::string is_player_one_str = grid.is_player_one ? "true" : "false";
+  std::string current_tick_str = std::to_string(grid.current_tick);
+  std::string cells_str = write_cells(grid.cells);
+  std::string player_one_segments_str = write_segments(grid.player_one_segments);
+  std::string player_two_segments_str = write_segments(grid.player_two_segments);
+  py::object result = evil_bot.attr("think_wrapper")(is_player_one_str + "\n" + current_tick_str + "\n" + cells_str + "\n" + player_one_segments_str + "\n" + player_two_segments_str);
 
-  // Find the closest fruit
-  Pos closest_fruit = fruits.at(0);
-  for (int i = 1; i < fruits.size(); i++) {
-    Pos fruit = fruits.at(i);
-    if (get_distance(head, fruit) < get_distance(head, closest_fruit)) {
-      closest_fruit = fruit;
-    }
-  }
-
-  bool is_fruit_left = (closest_fruit.x - head.x) < 0;
-  bool is_fruit_right = (closest_fruit.x - head.x) > 0;
-  bool is_fruit_down = (closest_fruit.y - head.y) < 0;
-  bool is_fruit_up = (closest_fruit.y - head.y) > 0;
-
-  if (is_fruit_left) {
-    return Direction::LEFT;
-  } else if (is_fruit_right) {
-    return Direction::RIGHT;
-  } else if (is_fruit_down) {
+  std::string direction = result.cast<std::string>();
+  if (direction == "UP") {
+    return Direction::UP;
+  } else if (direction == "DOWN") {
     return Direction::DOWN;
-  } else if (is_fruit_up) {
-    return Direction::UP;
+  } else if (direction == "LEFT") {
+    return Direction::LEFT;
+  } else if (direction == "RIGHT") {
+    return Direction::RIGHT;
   } else {
-
-    // Return a default direction of UP incase our code has a bug and all the
-    // bools are false
-    return Direction::UP;
+    throw std::logic_error("Missing branch");
   }
-}
-
-// Get the distance from a to b
-// Notice I can put helper methods for use in my actual think method!
-int get_distance(Pos a, Pos b) {
-  return std::abs((b.x - a.x)) + std::abs((b.y - a.y));
 }

@@ -21,6 +21,11 @@
 /// python list.
 class Grid {
 public:
+  const Cells &cells;
+  bool is_player_one;
+  const std::vector<Pos> &player_one_segments;
+  const std::vector<Pos> &player_two_segments;
+  const int current_tick;
   ///
   /// \cond INTERNAL
   /// Hide the constructor as students will never directly use the constructor
@@ -76,10 +81,5 @@ public:
   std::vector<Pos> find_other_positions() const;
 
 private:
-  const Cells &cells;
-  bool is_player_one;
-  const int current_tick;
-  const std::vector<Pos> &player_one_segments;
-  const std::vector<Pos> &player_two_segments;
   std::vector<Pos> find(Cell cell) const;
 };

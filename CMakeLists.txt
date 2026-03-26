@@ -33,6 +33,10 @@ add_executable(
   src/lib/input.cpp
   src/lib/create_from_segments.cpp
   src/lib/get_player_from_args.cpp
+  src/lib/cell_to_str.cpp
+
+  src/lib/writers/write_cells.cpp
+  src/lib/writers/write_segments.cpp
 )
 
 target_compile_features(main PRIVATE cxx_std_17)

@@ -1,6 +1,6 @@
-from readers import *
-from evil_bot import evil_bot_think
-from grid import Grid
+from src.python.readers import *
+from src.python.evil_bot import evil_bot_think
+from src.python.grid import Grid
 
 # Expected string format of the Grid, each argument separated with a newline:
 #

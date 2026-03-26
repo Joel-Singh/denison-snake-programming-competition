@@ -1,5 +1,5 @@
-from cell import Cell
-from pos import Pos
+from src.python.cell import Cell
+from src.python.pos import Pos
 
 """
 Represents cells. Has a cells property.

@@ -1,6 +1,6 @@
-from cell import Cell
-from grid import Cells
-from pos import Pos
+from src.python.cell import Cell
+from src.python.grid import Cells
+from src.python.pos import Pos
 
 """
 Takes in a string representing player segments. The string are
