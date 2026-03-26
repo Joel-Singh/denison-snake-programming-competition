@@ -1,0 +1,9 @@
+from enum import Enum
+
+class Cell(Enum):
+  EMPTY = "EMPTY"
+  FRUIT = "FRUIT"
+  PLAYER_ONE = "PLAYER_ONE"
+  PLAYER_ONE_HEAD = "PLAYER_ONE_HEAD"
+  PLAYER_TWO = "PLAYER_TWO"
+  PLAYER_TWO_HEAD = "PLAYER_TWO_HEAD"

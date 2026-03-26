@@ -16,6 +16,8 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
+add_subdirectory(extern/pybind11)
+
 add_executable(
   main
   src/lib/main.cpp
@@ -35,7 +37,7 @@ add_executable(
 
 target_compile_features(main PRIVATE cxx_std_17)
 target_link_libraries(main PRIVATE SFML::Graphics)
-
+target_link_libraries(main PRIVATE pybind11::embed)
 
 # Don't compile tests on Windows. Tests don't compile on
 # Windows, I'm not sure why!

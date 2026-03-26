@@ -18,6 +18,8 @@ Cells::Cells(unsigned int size) {
   }
 }
 
+Cells::Cells(std::vector<std::vector<Cell>> cells_vec) : cells(cells_vec) {}
+
 unsigned int Cells::height() const {
   assert(cells.size() > 0);
   return cells.size();

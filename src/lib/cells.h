@@ -18,6 +18,7 @@ private:
 
 public:
   Cells(unsigned int size);
+  Cells(std::vector<std::vector<Cell>> cells_vec);
 
   unsigned int height() const;
 
