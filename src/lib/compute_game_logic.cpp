@@ -146,9 +146,9 @@ static GameState check_for_game_end(const Cells &cells,
   if (one_dead && two_dead) {
     return GameState::DRAW;
   } else if (one_dead) {
-    return GameState::PLAYER_ONE_WON;
-  } else if (two_dead) {
     return GameState::PLAYER_TWO_WON;
+  } else if (two_dead) {
+    return GameState::PLAYER_ONE_WON;
   } else {
     return GameState::ON_GOING;
   }
