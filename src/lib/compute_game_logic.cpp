@@ -73,9 +73,9 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
       return GameState::PLAYER_ONE_WON;
     } else if (one_length == 4 || one_length == 13 || one_length == 14) {
       return GameState::PLAYER_TWO_WON;
-    } else if (one_length > two_length) {
+    } else if (one_length < two_length) {
       return GameState::PLAYER_ONE_WON;
-    } else if (two_length > one_length) {
+    } else if (two_length < one_length) {
       return GameState::PLAYER_TWO_WON;
     } else {
       return GameState::DRAW;
@@ -146,9 +146,9 @@ static GameState check_for_game_end(const Cells &cells,
   if (one_dead && two_dead) {
     return GameState::DRAW;
   } else if (one_dead) {
-    return GameState::PLAYER_TWO_WON;
-  } else if (two_dead) {
     return GameState::PLAYER_ONE_WON;
+  } else if (two_dead) {
+    return GameState::PLAYER_TWO_WON;
   } else {
     return GameState::ON_GOING;
   }
