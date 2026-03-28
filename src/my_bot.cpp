@@ -11,11 +11,11 @@ Direction MyBot::think(const Grid &grid) const {
   Pos head = grid.find_self_head();
 
   Direction random_direction;
-
+/*
   // Keep choosing a random direction until its safe
   do {
     int rand = std::rand() % 4;
-    /*if (rand == 0) {
+    if (rand == 0) {
       random_direction = Direction::UP;
     } else if (rand == 1) {
       random_direction = Direction::DOWN;
@@ -23,11 +23,10 @@ Direction MyBot::think(const Grid &grid) const {
       random_direction = Direction::LEFT;
     } else {
       random_direction = Direction::RIGHT;
-    }*/
-    random_direction = Direction::LEFT;
+    }
   } while (!is_safe_to_move(head.with_dir(random_direction), grid));
-
-  return random_direction;
+*/
+  return Direction::LEFT;
 }
 
 // Notice I can put helper methods for use in my actual think method!
