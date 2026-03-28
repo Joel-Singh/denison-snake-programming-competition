@@ -11,7 +11,7 @@ Direction MyBot::think(const Grid &grid) const {
   Pos head = grid.find_self_head();
 
   Direction random_direction;
-/*
+
   // Keep choosing a random direction until its safe
   do {
     int rand = std::rand() % 4;
@@ -25,20 +25,20 @@ Direction MyBot::think(const Grid &grid) const {
       random_direction = Direction::RIGHT;
     }
   } while (!is_safe_to_move(head.with_dir(random_direction), grid));
-*/
-  return Direction::LEFT;
+
+  return random_direction;
 }
 
 // Notice I can put helper methods for use in my actual think method!
 bool is_safe_to_move(Pos pos, const Grid &grid) {
   // Make sure that `pos` is valid
-  /*if (pos.x < 0 || pos.x >= grid.get_width()) {
+  if (pos.x < 0 || pos.x >= grid.get_width()) {
     return false;
   }
 
   if (pos.y < 0 || pos.y >= grid.get_height()) {
     return false;
-  }*/
+  }
 
   // Now that we know position is a valid spot on the board, we can use
   // Grid::get and check to see if its empty
