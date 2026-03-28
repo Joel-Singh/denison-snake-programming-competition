@@ -114,10 +114,10 @@ static GameState check_for_game_end(const Cells &cells,
     return GameState::DRAW;
   }
 
-  auto hit_wall = [&cells](Pos head) {
+  /*auto hit_wall = [&cells](Pos head) {
     return (head.x >= cells.width() || head.x < 0 || head.y >= cells.height() ||
             head.y < 0);
-  };
+  };*/
 
   auto hit_segment = [&cells, &one_segments, &two_segments](Pos head_moved) {
     bool collided = false;
