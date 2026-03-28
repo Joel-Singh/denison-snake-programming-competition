@@ -19,6 +19,8 @@ static void clear_cells_at(const std::vector<Pos> &positions, Cells &cells);
 static void update_cells_with_segments(const std::vector<Pos> &segments,
                                        const bool is_player_one, Cells &cells);
 
+Pos loop_boarder(Pos &head, const Cells &cells);
+
 /// \brief the main logic function, taking in the state of the
 /// board and returning what the next \ref GameState should be.
 ///
@@ -99,6 +101,10 @@ static GameState check_for_game_end(const Cells &cells,
 
   Pos one_head_moved = one_head.with_dir(one_dir);
   Pos two_head_moved = two_head.with_dir(two_dir);
+
+  //add change to loop heads around the boarder
+  one_head_moved = loop_boarder(one_head_moved, cells);
+  two_head_moved = loop_boarder(two_head_moved, cells);
 
   bool heads_ran_into_eachother =
       (one_head_moved == two_head) && (two_head_moved == one_head);
@@ -215,4 +221,20 @@ static void spawn_fruit(Cells &cells) {
   } while (cells.get(random_x, random_y) != Cell::EMPTY);
 
   cells.set(random_x, random_y, Cell::FRUIT);
+}
+
+// Causes the heads to loop around the boarder, ie from top to bottom and left 
+// to right edges of the map.
+Pos loop_boarder(Pos &head, const Cells &cells){
+  if (head.x >= cells.width()){
+    head.x = 0;
+  } else if (head.x < 0){
+    head.x = (cells.width()-1);
+  }
+
+  if (head.y >= cells.height()){
+    head.y = 0;
+  } else if (head.y < 0){
+    head.y = (cells.height()-1);
+  }
 }
