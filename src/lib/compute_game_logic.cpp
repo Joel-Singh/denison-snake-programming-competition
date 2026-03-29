@@ -142,8 +142,8 @@ static GameState check_for_game_end(const Cells &cells,
 
   // Short circuit important because no bounds checking happens in
   // hit_segment when accessing cells
-  bool one_dead = hit_wall(one_head_moved) || hit_segment(one_head_moved);
-  bool two_dead = hit_wall(two_head_moved) || hit_segment(two_head_moved);
+  bool one_dead = /*hit_wall(one_head_moved) ||*/ hit_segment(one_head_moved);
+  bool two_dead = /*hit_wall(two_head_moved) ||*/ hit_segment(two_head_moved);
 
   if (one_dead && two_dead) {
     return GameState::DRAW;
@@ -237,4 +237,5 @@ Pos loop_boarder(Pos &head, const Cells &cells){
   } else if (head.y < 0){
     head.y = (cells.height()-1);
   }
+  return head;
 }
