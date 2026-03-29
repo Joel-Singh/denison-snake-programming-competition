@@ -94,30 +94,26 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
 static GameState check_for_game_end(const Cells &cells,
                                     const std::vector<Pos> &one_segments,
                                     const std::vector<Pos> &two_segments,
-                                    const Direction one_dir,
-                                    const Direction two_dir) {
-  Pos one_head = one_segments.front();
-  Pos two_head = two_segments.front();
+                                    const Direction player_one_dir,
+                                    const Direction player_two_dir) {
+  Pos player_one_head = one_segments.front();
+  Pos player_two_head = two_segments.front();
 
-  Pos one_head_moved = one_head.with_dir(one_dir);
-  Pos two_head_moved = two_head.with_dir(two_dir);
-
-  //add change to loop heads around the boarder
-  one_head_moved = loop_boarder(one_head_moved, cells);
-  two_head_moved = loop_boarder(two_head_moved, cells);
+  Pos player_one_head_moved = player_one_head.with_dir(player_one_dir);
+  Pos player_two_head_moved = player_two_head.with_dir(player_two_dir);
 
   bool heads_ran_into_eachother =
-      (one_head_moved == two_head) && (two_head_moved == one_head);
-  bool heads_moved_into_same_space = one_head_moved == two_head_moved;
+      (player_one_head_moved == player_two_head) && (player_two_head_moved == player_one_head);
+  bool heads_moved_into_same_space = player_one_head_moved == player_two_head_moved;
 
   if (heads_moved_into_same_space || heads_ran_into_eachother) {
     return GameState::DRAW;
   }
 
-  /*auto hit_wall = [&cells](Pos head) {
+  auto hit_wall = [&cells](Pos head) {
     return (head.x >= cells.width() || head.x < 0 || head.y >= cells.height() ||
             head.y < 0);
-  };*/
+  };
 
   auto hit_segment = [&cells, &one_segments, &two_segments](Pos head_moved) {
     bool collided = false;
@@ -142,8 +138,8 @@ static GameState check_for_game_end(const Cells &cells,
 
   // Short circuit important because no bounds checking happens in
   // hit_segment when accessing cells
-  bool one_dead = /*hit_wall(one_head_moved) ||*/ hit_segment(one_head_moved);
-  bool two_dead = /*hit_wall(two_head_moved) ||*/ hit_segment(two_head_moved);
+  bool one_dead = hit_wall(player_one_head_moved) || hit_segment(player_one_head_moved);
+  bool two_dead = hit_wall(player_two_head_moved) || hit_segment(player_two_head_moved);
 
   if (one_dead && two_dead) {
     return GameState::DRAW;
@@ -221,21 +217,4 @@ static void spawn_fruit(Cells &cells) {
   } while (cells.get(random_x, random_y) != Cell::EMPTY);
 
   cells.set(random_x, random_y, Cell::FRUIT);
-}
-
-// Causes the heads to loop around the boarder, ie from top to bottom and left 
-// to right edges of the map.
-Pos loop_boarder(Pos &head, const Cells &cells){
-  if (head.x >= cells.width()){
-    head.x = 0;
-  } else if (head.x < 0){
-    head.x = (cells.width()-1);
-  }
-
-  if (head.y >= cells.height()){
-    head.y = 0;
-  } else if (head.y < 0){
-    head.y = (cells.height()-1);
-  }
-  return head;
 }
