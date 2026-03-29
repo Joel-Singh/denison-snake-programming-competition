@@ -37,8 +37,8 @@ target_compile_features(main PRIVATE cxx_std_17)
 target_link_libraries(main PRIVATE SFML::Graphics)
 
 
-# This doesn't compile on windows for some reason! I don't know
-# why
+# Don't compile tests on Windows. Tests don't compile on
+# Windows, I'm not sure why!
 if (NOT WIN32)
 
 include(FetchContent)
@@ -67,6 +67,7 @@ add_executable(
 target_link_libraries(
   main_tests
   GTest::gtest_main
+  SFML::Graphics
 )
 
 include(GoogleTest)
