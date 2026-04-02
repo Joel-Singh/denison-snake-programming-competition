@@ -147,8 +147,10 @@ p.s.s `MyBot`, is the purple one
 After ensuring you're correctly setup, all thats left is to
 start writing your bot! Your bot will be written in
 `src/MyBot.cpp` or `src/python/my_bot.py`. You'll want to dive
-into [the
-documentation](https://joel-singh.github.io/denison-snake-programming-competition/),
+into [the C++
+documentation](https://joel-singh.github.io/denison-snake-programming-competition/)
+or [the python
+documentationn](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/python/src/python/docs/python-documentation.pdf)
 specifically the `Grid` class that you have access to within
 `think`. `Grid` has a wonderful array of methods to figure out
 where things like fruit are on the board.

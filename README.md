@@ -53,10 +53,12 @@ submitted. You may write additional helper methods and functions but they
 must be contained within that single file. You can of course create more scripts
 to test your bot, but in the end, `my_bot.py` is what will be submitted.
 
-The `my_bot_think` function is what will be called every time step and is what
-determines what your bot does. The `my_bot_think` function returns a `Direction` and
-takes in a `Grid` as a parameter. The documentation for Python
-will be released by the end of today, check back for the link!
+The `my_bot_think` function is what will be called every time
+step and is what determines what your bot does. The
+`my_bot_think` function returns a `Direction` and takes in a
+`Grid` as a parameter. See the [documentation](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/python/src/python/docs/python-documentation.pdf).
+The `Grid` class contains the information for what is on the
+board.
 
 To start, you'll want to read [the compilation
 instructions](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/COMPILING.md)
