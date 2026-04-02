@@ -108,8 +108,13 @@ You can pass the following flags to put `MyBot` up against different other bots:
 - In VSCode, click the three circles connected by lines on the left
 - If you don't have git installed, there'll be a button that links to an install
 - Once git is installed, you'll see an option to clone from a link, clone from this link: https://github.com/Joel-Singh/denison-snake-programming-competition.git
-- Once you've cloned the repository, go to where it says
-  "branches", and switch to the Python one
+
+- If you want to use Python you'll have to switch to the python
+  branch. On the bottom left there will be
+  some text that says "master". Click on it, and then type in
+  "Python" to switch to the python version of the codebase.
+
+- Additionally for Python, you'll need to run `git submodule add -b stable https://github.com/pybind/pybind11 extern/pybind11` in the terminal.
 
 \3. Configuring CMake:
 
