@@ -9,3 +9,4 @@ out
 compile_commands.json
 .direnv
 .ccls-cache
+*__pycache__*
