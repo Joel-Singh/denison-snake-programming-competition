@@ -7,6 +7,7 @@ var classGrid =
     [ "find_self_positions", "classGrid.html#a2f0e9b72b001028e9594182e3c8fff20", null ],
     [ "get", "classGrid.html#ae0eaacd5140385c62c6b8d068e6baca9", null ],
     [ "get", "classGrid.html#abff6121930ab3ee599706945d43b228f", null ],
+    [ "get_current_tick", "classGrid.html#a7ac1ee7c0477275164429f3b74f7d251", null ],
     [ "get_height", "classGrid.html#a562af7b7f38419dadfc66b36278a8b78", null ],
     [ "get_width", "classGrid.html#a6bb067bd9ce928c3b1f174952376882e", null ]
 ];

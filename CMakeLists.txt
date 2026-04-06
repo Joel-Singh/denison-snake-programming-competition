@@ -16,15 +16,6 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/52eb8108c5bdec04579160ae17225d66034bd723.zip
-)
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
 add_executable(
   main
   src/lib/main.cpp
@@ -45,6 +36,21 @@ add_executable(
 target_compile_features(main PRIVATE cxx_std_17)
 target_link_libraries(main PRIVATE SFML::Graphics)
 
+
+# Don't compile tests on Windows. Tests don't compile on
+# Windows, I'm not sure why!
+if (NOT WIN32)
+
+include(FetchContent)
+FetchContent_Declare(
+googletest
+URL https://github.com/google/googletest/archive/52eb8108c5bdec04579160ae17225d66034bd723.zip
+)
+
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 enable_testing()
 
 add_executable(
@@ -61,7 +67,10 @@ add_executable(
 target_link_libraries(
   main_tests
   GTest::gtest_main
+  SFML::Graphics
 )
 
 include(GoogleTest)
 gtest_discover_tests(main_tests)
+
+endif()

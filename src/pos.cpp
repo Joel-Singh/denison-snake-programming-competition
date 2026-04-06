@@ -1,4 +1,5 @@
 #include "pos.h"
+#include "game_settings.h"
 #include "stdexcept"
 #include <iostream>
 
@@ -12,17 +13,31 @@ bool Pos::operator==(const Pos &other) const {
 /// \brief Returns a position if it moved in the given direction. Note,
 /// Pos::with_dir does NOT mutate the position this is called on.
 Pos Pos::with_dir(const Direction dir) const {
+  Pos retPos = Pos(x,y);
   if (dir == Direction::UP) {
-    return Pos(x, y + 1);
+    retPos.y = retPos.y + 1;
   } else if (dir == Direction::DOWN) {
-    return Pos(x, y - 1);
+    retPos.y = retPos.y - 1;
   } else if (dir == Direction::LEFT) {
-    return Pos(x - 1, y);
+    retPos.x = retPos.x - 1;
   } else if (dir == Direction::RIGHT) {
-    return Pos(x + 1, y);
+    retPos.x = retPos.x + 1;
   } else {
     throw std::logic_error("Missing branch for Direction");
   }
+  while(retPos.x>=GRID_SIZE){
+    retPos.x = retPos.x - GRID_SIZE;
+  }
+  while(retPos.x<0){
+    retPos.x = retPos.x + GRID_SIZE;
+  }
+  while(retPos.y>=GRID_SIZE){
+    retPos.y = retPos.y - GRID_SIZE;
+  }
+  while(retPos.y<0){
+    retPos.y = retPos.y + GRID_SIZE;
+  }
+  return retPos;
 }
 
 std::ostream &operator<<(std::ostream &os, const Pos &pos) {

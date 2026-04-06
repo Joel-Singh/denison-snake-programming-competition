@@ -1,24 +1,31 @@
 # DU CODE Snake Programming Competition
 
-<!-- TODO: Add link to blog post -->
-
-Howdy! This is the repo for Denison University's Coding Club [Snake
-Programming Competition](). Participants will code a Snake bot in C++ to
+Howdy! This is the repo for Denison University's Coding Club Snake
+Programming Competition. Participants will code a Snake bot in C++ to
 face off against others. The winner will be crowned Coding Supreme.
 
-<!-- TODO: Instead of crowning them Coding Supreme, perhaps we can get
-teachers to agree to a bit of extra credit -->
+![Screenshot of the multiplayer snake game](./README-assets/snake-screenshot.png)
 
 # Game format
 
-The game is very similar to classic snake except there are two of the
-slithery fellows. Every timestep, the head of each snake will go up, down,
-left, or right and every 10 seconds a fruit will spawn. If the head of
-one snake runs into the edge, itself, or the other snake, it loses. If
-the heads of the snakes run into each other, the game is considered a
-draw. And of course, if a fruit is eaten, the snake gets longer.
+The game is very similar to classic snake except there are two snakes.
+Every timestep, the head of each snake will go up, down, left, or right and
+a fruit will spawn on a regular interval. If the head of one snake runs into the
+edge, itself, or the other snake, it loses. If the heads of the snakes run into
+each other, the game is considered a draw. And of course, if a fruit is eaten,
+the snake gets longer.
+
+If the game is not over at the start of the 300th time step, the longer snake
+will win or both draw if they are the same size.
+
+Competitors will implement a bot to control their snake as detailed below.
 
 # Writing a bot
+
+There are two languages you can choose to write your bot in: C++
+or Python. Both are detailed below
+
+## C++
 
 Your bot will be implemented in `src/MyBot.cpp`, this is what will be
 submitted. You may write additional helper methods and functions but they
@@ -26,95 +33,100 @@ must be contained within that single file and you may not modify the
 signature of the `think` function. You can of course create more scripts
 to test your bot, but in the end, `MyBot.cpp` is what will be submitted.
 
-<!-- TODO: Add a documentation link -->
-
 The `think` function is what will be called every time step and is what
-determines what your bot does. See the [documentation]().
+determines what your bot does. the `think` function returns a `Direction` and
+takes in a `Grid` as a parameter. See the
+[documentation](https://joel-singh.github.io/denison-snake-programming-competition/).
+The `Grid` class contains the information for what is on the board.
+
+To start, you'll want to read [the compilation
+instructions](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/COMPILING.md)
+which also includes how to get the project set up for specifically VSCode.
+It'll guide you in installing a cpp compiler and running the project. If
+compiling provides a hurdle in you participating, sessions are being run every
+Thursday in Olin 311 from 7 to 8 pm to help with DU Slither!
+
+## Python
+
+Your bot will be implemented in `src/python/my_bot.py`, this is what will be
+submitted. You may write additional helper methods and functions but they
+must be contained within that single file. You can of course create more scripts
+to test your bot, but in the end, `my_bot.py` is what will be submitted.
+
+The `my_bot_think` function is what will be called every time
+step and is what determines what your bot does. The
+`my_bot_think` function returns a `Direction` and takes in a
+`Grid` as a parameter. See the [documentation](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/python/src/python/docs/python-documentation.pdf).
+The `Grid` class contains the information for what is on the
+board.
+
+To start, you'll want to read [the compilation
+instructions](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/COMPILING.md)
+which also includes how to get the project set up for specifically VSCode.
+It'll guide you in installing a cpp compiler and running the project. If
+compiling provides a hurdle in you participating, sessions are being run every
+Thursday in Olin 311 from 7 to 8 pm to help with DU Slither!
 
 # Testing your bot
 
 When running this project, there are three options for testing: 
 
-- MyBot vs EvilBot (contained in `src/EvilBot`)
+- MyBot vs EvilBot (contained in `src/EvilBot`.) Evil bot is simply another bot you can customize to go against MyBot.
 - MyBot vs yourself (controls are WASD or arrow keys)
 - MyBot vs MyBot
 
-To choose one, pass in `--evil-bot`, `--yourself`, or `--my-bot` as an
-option to the compiled binary (e.g `./build/bin/main --yourself`).
+After following [the compilation
+instructions](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/COMPILING.md), you'll be able to select which option through the VSCode run and debug menu:
 
-Evil bot will be chosen by default if no flags are passed.
-
-# Compilation Instructions
-
-For context, this project uses `cmake` and was created from the [sfml
-template](https://github.com/SFML/cmake-sfml-project)
-
-## Windows
-
-<!-- TODO: Create instructions for Windows -->
-
-## MacOS
-
-<!-- TODO: Create instructions for MacOS -->
-
-## Linux
-1. Install [cmake](https://cmake.org/download/)
-2. Ensure all dependencies are installed
-
-On Ubuntu and other Debian based distributions:
-<!-- Taken from https://github.com/SFML/cmake-sfml-project -->
-```
-sudo apt update
-sudo apt install \
-    libxrandr-dev \
-    libxcursor-dev \
-    libxi-dev \
-    libudev-dev \
-    libfreetype-dev \
-    libflac-dev \
-    libvorbis-dev \
-    libgl1-mesa-dev \
-    libegl1-mesa-dev \
-    libfreetype-dev
-```
-
-3. Configuring and building
-
-Instructions for integrating directly with VSCode are provided further
-down. If you wish to run the project directly on the command line:
-```
-# Make sure these are run in the root of the project
-cmake -B build
-cmake --build build
-./build/bin/main
-```
-
-## Integrating with VSCode
-
-<!-- TODO : Add instructions for how to set up passing in the relevant flags (`--evil-bot`, `--yourself`, or `--my-bot`) -->
-
-Use the [cmake extension](https://code.visualstudio.com/docs/cpp/cmake-linux)
+![VSCode run and debug menu with options for every operating system](./README-assets/run-and-debug-in-vs-code.png)
 
 # Additional Rules
 
 - You may work alone or in a group (no size limit)
 
-# FAQ
+- The actual competition will occur on April 25th Saturday.
+  Every match will be streamed live. Submissions will open the
+  Thursday beforehand.
 
-<!-- The best format will depend on the number of entrants -->
+- Any bugs found will be fixed for the first two weeks. After that, unless a bug
+is particularly egregious, they will remain as part of the "official" game.
+Please immediately tell Joel if you find any bugs!
+
+- For more specifics on how the game works, see [the game manual](https://github.com/Joel-Singh/denison-snake-programming-competition/blob/master/documentation/GAME_MANUAL.md).
+
+# FAQ
 
 What is the competition format?
 
-- The actual tournament format is TBD
+- The competition format is round robin.
 - We will all meet and the most interesting games / bots will be picked
 out and discussed along with running the tournament for a winner.
 
 I'm having issues compiling and running the project
 
-- You can [create an
-issue](https://github.com/Joel-Singh/denison-snake-programming-competition/issues)
-with the relevant errors, contact Joel on the Coding Club discord server,
-or see Joel directly at the next coding club meeting.
+- Contact Joel on the Coding Club discord server or show up to the daily DU Slither help meets on Thursdays from 7 to 8 pm in Olin 311.
+
+Can I use AI?
+
+no.
+
+Will there be resource limits on the bots?
+
+Yes, but for the purpose of logistics rather than an actual limitation on you.
+Every bot will receive 10 seconds to run. Unlike a computationally expensive game
+like Chess, computing the logic for this game should not reach anywhere near
+these limits unless you accidentally have an infinite loop
+(which is why we have the time limit!)
+
+Can I use my language's standard library?
+
+Yes, except for parts that obviously don't make sense such as network or IO. Also, you may not use
+`std::srand` in C++, this is done already in main, just use `std::rand`.
+
+# Changelog
+The game will remain static starting on April 9th, unless any particularly egregious bugs are found.
+
+- No Changes yet
 
 # Attributions
 

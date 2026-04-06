@@ -49,6 +49,8 @@ Direction EvilBot::think(const Grid &grid) const {
   bool is_fruit_down = (closest_fruit.y - head.y) < 0;
   bool is_fruit_up = (closest_fruit.y - head.y) > 0;
 
+
+  return Direction::UP;
   if (is_fruit_left) {
     return Direction::LEFT;
   } else if (is_fruit_right) {
