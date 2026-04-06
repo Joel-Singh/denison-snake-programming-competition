@@ -3,6 +3,7 @@
 #include "direction.h"
 #include "stdexcept"
 #include <iostream>
+#include "game_settings.h"
 
 /// \brief @ref Pos represents a position on the @ref Grid; the origin is bottom
 /// left.
