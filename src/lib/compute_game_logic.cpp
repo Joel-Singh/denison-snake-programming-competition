@@ -19,6 +19,8 @@ static void clear_cells_at(const std::vector<Pos> &positions, Cells &cells);
 static void update_cells_with_segments(const std::vector<Pos> &segments,
                                        const bool is_player_one, Cells &cells);
 
+Pos loop_boarder(Pos &head, const Cells &cells);
+
 /// \brief the main logic function, taking in the state of the
 /// board and returning what the next \ref GameState should be.
 ///
@@ -92,17 +94,17 @@ GameState compute_game_logic(Cells &cells, const unsigned int game_ticks,
 static GameState check_for_game_end(const Cells &cells,
                                     const std::vector<Pos> &one_segments,
                                     const std::vector<Pos> &two_segments,
-                                    const Direction one_dir,
-                                    const Direction two_dir) {
-  Pos one_head = one_segments.front();
-  Pos two_head = two_segments.front();
+                                    const Direction player_one_dir,
+                                    const Direction player_two_dir) {
+  Pos player_one_head = one_segments.front();
+  Pos player_two_head = two_segments.front();
 
-  Pos one_head_moved = one_head.with_dir(one_dir);
-  Pos two_head_moved = two_head.with_dir(two_dir);
+  Pos player_one_head_moved = player_one_head.with_dir(player_one_dir);
+  Pos player_two_head_moved = player_two_head.with_dir(player_two_dir);
 
   bool heads_ran_into_eachother =
-      (one_head_moved == two_head) && (two_head_moved == one_head);
-  bool heads_moved_into_same_space = one_head_moved == two_head_moved;
+      (player_one_head_moved == player_two_head) && (player_two_head_moved == player_one_head);
+  bool heads_moved_into_same_space = player_one_head_moved == player_two_head_moved;
 
   if (heads_moved_into_same_space || heads_ran_into_eachother) {
     return GameState::DRAW;
@@ -136,8 +138,8 @@ static GameState check_for_game_end(const Cells &cells,
 
   // Short circuit important because no bounds checking happens in
   // hit_segment when accessing cells
-  bool one_dead = hit_wall(one_head_moved) || hit_segment(one_head_moved);
-  bool two_dead = hit_wall(two_head_moved) || hit_segment(two_head_moved);
+  bool one_dead = hit_wall(player_one_head_moved) || hit_segment(player_one_head_moved);
+  bool two_dead = hit_wall(player_two_head_moved) || hit_segment(player_two_head_moved);
 
   if (one_dead && two_dead) {
     return GameState::DRAW;
