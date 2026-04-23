@@ -40,9 +40,10 @@ directions.
 
 = Grid
 
-- `grid.height()` returns the height of the `grid` as an
+- `grid.get_height()` returns the height of the `grid` as an
   integer.
-- `grid.width()` returns the width of the `grid` as an integer.
+- `grid.get_width()` returns the width of the `grid` as an
+  integer.
 
 For example:
 
